@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/IngenioUN/front_end#readme",
   "dependencies": {
-    "express": "^4.17.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
