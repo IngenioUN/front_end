@@ -115,7 +115,8 @@ export default {
         email: "",
         password: "",
         passwordos: ""
-      }
+      },
+      users: []
     };
   },
   //
@@ -148,12 +149,13 @@ export default {
       fetch("/ingenio")
         .then(res => res.json())
         .then(data => {
-          this.tasks = data;
+          this.users = data;
+          console.log(this.users);
         });
     },
 
     editTask(taskId) {
-      fetch("ingenio" + taskId)
+      fetch("/ingenio" + taskId)
         .then(res => res.json())
         .then(data => {
           const { _id, title, description } = data;
