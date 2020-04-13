@@ -122,20 +122,20 @@
                             </div>
                             <button type="button" class="btn btn-link" href="javascript:void(0)" @click="form.type=2" v-if="form.type!=2">Recuperar contraseña</button>
                             <button type="button" class="btn btn-link" href="javascript:void(0)" @click="form.type=1" v-if="form.type!=1">Registrarme</button>
-                            <button type="button" class="btn btn-link" href="javascript:void(0)" @click="form.type=0" v-if="form.type!=0">Iniciar sesión</button>                
+                            <button type="button" class="btn btn-link" href="javascript:void(0)" @click="form.type=0" v-if="form.type!=0">Iniciar sesión</button>                            
                         </form>
                     </div>
                 </div>
             </div>
 <!--------------------------------------------------------------------------------------------------------------------------->
 <!----------------------------------------------- Cuadro Derecho: Vacio ----------------------------------------------------->
-            <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+            <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">              
                 <!-- <a>Espacio</a> -->
             </div>
 <!--------------------------------------------------------------------------------------------------------------------------->        
         </div>
 
-
+        
 
 
 
