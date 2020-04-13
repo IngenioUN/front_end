@@ -1,6 +1,10 @@
 <template>
   <div>
-    <div class="row">            
+
+
+    <div class="divlogin">
+<!----------------------------------------------- Barra de navegacion ------------------------------------------------------->
+        <div class="row">            
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-flex justify-content-between">		
                     <a class="navbar-brand" href="#">
@@ -59,49 +63,82 @@
                 </nav>
             </div>
         </div>
-
-    <div class="divlogin">
-      <div class="container">
-        <div class="divcont">
-          <h3>{{ title }}</h3>
-          <form @submit.prevent="sendform()">
-            <div class="form-group">
-              <input
-                type="email"
-                :class="{'error':validaEmail}"
-                placeholder="Correo"
-                v-model="form.email"
-              />
+<!--------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------- Cuadro Izquierdo: Vacio --------------------------------------------------->
+        <div class="row">
+            <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <!-- <a>Espacio</a> -->
             </div>
-            <div class="form-group">
-              <input
-                type="password"
-                v-if="form.type!=2"
-                :class="{'error':validaPassword}"
-                placeholder="Contraseña"
-                v-model="form.password"
-              />
+<!--------------------------------------------------------------------------------------------------------------------------->
+<!------------------------------ Cuadro Central: Iniciar Sesion, Registrarse y Olvide Contraseña ---------------------------->
+            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <div id="usuario" class="border border-dark rounded bg-light container fluid mt-5 divcont">
+                    <div class="divcont">
+                        <h1><i>{{title}}</i></h1>
+                        <form @submit.prevent="sendForm()" >
+                            <!-- Clases para form utiles: action="/action_page.php class="was-validated" -->                    
+                            <div class="form-group" v-if="form.type==0">
+                                <label for="uname">Usuario:</label>
+                                <input
+                                  type="email"
+                                  class="form-control"                                  
+                                  :class="{'border border-success':!validaEmail}"
+                                  placeholder="Correo"
+                                  v-model="form.email"
+                                  required
+                                />                                
+                                <label for="pwd">Contraseña:</label>
+                                <input
+                                  type="password"
+                                  class="form-control"
+                                  v-if="form.type!=2"
+                                  :class="{'border border-success':!validaPassword}"
+                                  placeholder="Contraseña"
+                                  v-model="form.password"
+                                  required
+                                />                                
+                                <!-- <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Favor llenar este campo.</div> -->
+                                <button @click="validar()" class="btn btn-outline-dark mb-3 mt-3" v-if="form.type==0">Ingresar</button>
+                            </div>
+                            <div class="form-group" v-if="form.type==1">
+                                <label for="uname">Usuario:</label>                        
+                                <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email" v-model="form.email" required>
+                                <label for="pwd">Contraseña:</label>                        
+                                <input type="password" class="form-control" :class="{'border border-success':!validaPassword}" placeholder="Ingresar contraseña" v-model="form.password" required>
+                                <label for="pwd">Repetir Contraseña:</label>                        
+                                <input type="password" class="form-control" :class="{'border border-success':!validaRepetirPassword, 'border border-danger':validaRepetirPassword}" placeholder="Repetir contraseña" v-model="form.passwordos" required>                                
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" name="remember" required> Acepto los terminos y condiciones de Ingenio.
+                                    </label>
+                                </div>
+                                <button @click="validar()" class="btn btn-outline-dark mb-3 mt-3" v-if="form.type==1">Registrarme</button>
+                            </div>
+                            <div v-if="form.type==2">
+                                <label for="uname">Ingresar Email:</label>                        
+                                <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email" v-model="form.email" required>
+                                <button @click="validar()" class="btn btn-outline-dark mb-3 mt-3">Olvide Contraseña</button>
+                            </div>
+                            <button type="button" class="btn btn-link" href="javascript:void(0)" @click="form.type=2" v-if="form.type!=2">Recuperar contraseña</button>
+                            <button type="button" class="btn btn-link" href="javascript:void(0)" @click="form.type=1" v-if="form.type!=1">Registrarme</button>
+                            <button type="button" class="btn btn-link" href="javascript:void(0)" @click="form.type=0" v-if="form.type!=0">Iniciar sesión</button>                
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-              <input
-                type="password"
-                v-if="form.type==1"
-                :class="{'error':validaRepetirPassword}"
-                placeholder="Repetir contraseña"
-                v-model="form.passwordos"
-              />
+<!--------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------- Cuadro Derecho: Vacio ----------------------------------------------------->
+            <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <!-- <a>Espacio</a> -->
             </div>
-
-            <button v-if="form.type!=1">Iniciar sesión</button>
-            <button v-if="form.type!=0">Registar</button>
-            <div>
-              <!--<a href="javascript:void(0)" @click="form.type=2" v-if="form.type!=2" >Recuper contraseña</a>-->
-              <a href="javascript:void(0)" @click="form.type=1" v-if="form.type!=1">Registrarme</a>
-              <a href="javascript:void(0)" @click="form.type=0" v-if="form.type!=0">Iniciar sesión</a>
-            </div>
-          </form>
+<!--------------------------------------------------------------------------------------------------------------------------->        
         </div>
-      </div>
+
+
+
+
+
     </div>
   </div>
 </template>>
