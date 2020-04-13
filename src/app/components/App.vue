@@ -130,7 +130,7 @@ export default {
       this.form.passwordos = "";
 
       //solicitud y envio de datos al server
-      fetch("/api/forms", {
+      fetch("/ingenio", {
         method: "POST",
         body: JSON.stringify(this.form),
         headers: {
@@ -145,7 +145,7 @@ export default {
         });
     },
     getTasks() {
-      fetch("/api/tasks")
+      fetch("/ingenio")
         .then(res => res.json())
         .then(data => {
           this.tasks = data;
@@ -153,7 +153,7 @@ export default {
     },
 
     editTask(taskId) {
-      fetch("/api/tasks/" + taskId)
+      fetch("ingenio" + taskId)
         .then(res => res.json())
         .then(data => {
           const { _id, title, description } = data;
