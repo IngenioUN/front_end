@@ -1,8 +1,64 @@
 <template>
   <div>
-    <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="/">IngenioUN</a>
-    </nav>
+    <div class="row">            
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-flex justify-content-between">		
+                    <a class="navbar-brand" href="#">
+                    <h1><i>Ingenio</i></h1>    <!-- <img src="images/ingenio.png" alt="Ingenio" style="width:200px;"> -->
+                    </a>
+                    <ul class="navbar-nav">				
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#home">Inicio</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categorias</a>
+                            <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#one">Sistemas</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#two">Electricidad</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#three">Medicina</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Autores</a>
+                            <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#one">Valeria Huepa</a>
+                            <a class="dropdown-item" href="#two">Tatiana Zambrano</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#three">Jose Peña</a>
+                            <a class="dropdown-item" href="#three">Carlos Rincon</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Lo mas recientes</a>
+                            <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#one">2020</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#two">2019</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#three">2018</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#three">2017</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#fat">Lo mas visto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#fat">Sobre Nosotros</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="#mdo">Contactenos</a>
+                        </li>
+                        <div class="justify-content-between">
+                            <button class="btn btn-secondary" href="#usuario" @click="form.type=1">Registrarse</button>
+                            <button class="btn btn-secondary" href="#usuario" @click="form.type=0">Iniciar Sesion</button>			
+                        </div>
+                    </ul>
+                </nav>
+            </div>
+        </div>
 
     <div class="divlogin">
       <div class="container">
