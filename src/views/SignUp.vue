@@ -63,11 +63,11 @@
             <div class="form-group col-12">   
               <ul id="roles">
                 <li v-for="role in roles" :key="role.firstName">
-                  <!-- {{role.firstName}} -->
-                  <!-- {{role.firstName}}<br/>
+                  {{role.firstName}} -->
+                  {{role.firstName}}<br/>
                   {{role.lastName}}<br/>
-                  {{role.description}}<br/> -->
-                  {{role}}
+                  {{role.description}}<br/>
+                  <!-- {{role}} -->
                 </li>
               </ul>
             </div>

@@ -58,8 +58,7 @@
         methods: {
             register( event ){
                 axios
-                .post( this.$store.state.backURL + path, // URL
-                    
+                .post( this.$store.state.backURL + path, // URL                    
                     {
                       "firstName": this.firstName,
                       "lastName": this.lastName,
@@ -73,7 +72,7 @@
                         alert( "Error en la autenticación" );
                     }else{
                         //localStorage.setItem( 'token', response.data.access_token );
-                        alert( "Funciono esta vaina!" )
+                        //alert( "Funciono esta vaina!" )
                         console.log(response.message);
                         //this.$router.push( {name: 'home'} )
                     }
