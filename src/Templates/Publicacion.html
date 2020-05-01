@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Buscador</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+</head>
+<body>
+    
+    <div class="divlogin">
+<!----------------------------------------------- Barra de navegacion ------------------------------------------------------->
+        <div class="row">            
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-flex justify-content-between">		
+                    <a class="navbar-brand" href="#">
+                    <h1><i>Ingenio</i></h1>    <!-- <img src="images/ingenio.png" alt="Ingenio" style="width:200px;"> -->
+                    </a>
+                    <ul class="navbar-nav">				
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#home">Inicio</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categorias</a>
+                            <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#one">Sistemas</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#two">Electricidad</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#three">Medicina</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Autores</a>
+                            <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#one">Valeria Huepa</a>
+                            <a class="dropdown-item" href="#two">Tatiana Zambrano</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#three">Jose Peña</a>
+                            <a class="dropdown-item" href="#three">Carlos Rincon</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Lo mas recientes</a>
+                            <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#one">2020</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#two">2019</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#three">2018</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#three">2017</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#fat">Lo mas visto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#fat">Sobre Nosotros</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="#mdo">Contactenos</a>
+                        </li>
+                        <div class="justify-content-between">
+                            <button class="btn btn-secondary" href="#usuario" @click="form.type=1">Registrarse</button>
+                            <button class="btn btn-secondary" href="#usuario" @click="form.type=0">Iniciar Sesion</button>			
+                        </div>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+<!--------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------- Cuadro Izquierdo: Vacio --------------------------------------------------->
+        <div class="row">
+            <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <!-- <a>Espacio</a> -->
+            </div>
+<!--------------------------------------------------------------------------------------------------------------------------->
+<!------------------------------ Cuadro Central: Iniciar Sesion, Registrarse y Olvide Contraseña ---------------------------->
+            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <h1>Titulo de la Publicacion</h1></br>
+                <img src="../assets/img/paris.jpg" alt="Paris">                
+            </div>
+<!--------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------- Cuadro Derecho: Vacio ----------------------------------------------------->
+            <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <!-- <a>Espacio</a> -->
+            </div>
+<!--------------------------------------------------------------------------------------------------------------------------->        
+        </div>
+    </div>
+    </div>
+    <script src="assets/js/vue.min.js"></script>
+    <script src="assets/js/registro.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
