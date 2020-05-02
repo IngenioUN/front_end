@@ -1,12 +1,15 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import SignUp from "./views/SignUp";
-import Login from "./views/Login";
-import Home from "./views/Home";
-import NavBar from "./views/NavBar";
-import Ingreso from "./views/Ingreso";
-import AddRole from "./components/AddRole";
-import Roles from "./components/Roles";
+
+//Views
+import Usuario from "./views/Usuario";
+import Ingenio from "./views/Ingenio";
+
+//Components
+import NavBar from "./components/NavBar";
+import IniciarSesion from "./components/IniciarSesion";
+import Registro from "./components/Registro";
+import OlvidarContrasena from "./components/OlvidarContrasena";
 
 
 Vue.use(Router);
@@ -14,44 +17,35 @@ Vue.use(Router);
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [
-    {//End Points Laboratorio 2
-      path: "/registro",
+  routes: [    
+    //End Points Ingenio    
+    {
+      path: "/registrar",
       name: "signup",
-      component: SignUp
+      component: Registro
     },
     {
-      path: "/iniciar-sesion",
-      name: "login",
-      component: Login
-    },    
-    {
-      path: "/principal",
-      name: "home",
-      component: Home,
-      children: [
-        {
-          path: "nuevo-rol",
-          name: "add-role",
-          component: AddRole
-        },
-        {
-          path: "roles",
-          name: "traer-roles",
-          component: Roles
-        }
-      ]
-    },
-    //End Points Ingenio
-    {
-      path: "/nav-bar",
-      name: "NavBar",
-      component: NavBar
+      path: "/olvidarcontrasena",
+      name: "forgetpass",
+      component: OlvidarContrasena
     },
     {
-      path: "/ingreso",
-      name: "ingreso",
-      component: Ingreso
+      path: "/ingresar",
+      name: "signin",
+      component: IniciarSesion
+    },       
+    {
+      path: "/ingenio",
+      name: "ingenio",
+      component: Ingenio
     },
+    {
+      path: "/usuarios",
+      name: "usuario",
+      component: Usuario
+    }//,
+    // beforeCreated(){
+    //   router =  {name: 'home'}
+    // }
   ]
 })

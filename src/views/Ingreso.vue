@@ -96,7 +96,7 @@ export default {
                     alert( "Error en la autenticación" );
                 }else{
                     //localStorage.setItem( 'token', response.data.access_token );
-                    alert( "Funciono esta vaina!" )
+                    //alert( "Funciono esta vaina!" )
                     console.log(response.message);
                     //this.$router.push( {name: 'home'} )
                 }
