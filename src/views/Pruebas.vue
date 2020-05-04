@@ -4,11 +4,9 @@
     </div>    
     <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
       <div id="usuario" class="container mt-5 border border-dark rounded bg-light">
-        <br/>
-      <div class="row">
-        <router-view></router-view>
-      </div>
-      <button @click="get()" class="btn btn-outline-dark mb-3 mt-3">Get</button>
+      <h1>Pruebas de REST API</h1>
+      <br/>
+      <button @click="get()" class="btn btn-outline-dark mb-3 mt-3">Obtener usuarios</button>
       <div class="form-group col-12">   
           <ul id="roles">
             <li v-for="role in roles" :key="role.id" :value="role.id">
@@ -16,7 +14,7 @@
             </li>
           </ul>
         </div>
-      <button @click="register()" class="btn btn-outline-dark mb-3 mt-3">Post</button>
+      <button @click="register()" class="btn btn-outline-dark mb-3 mt-3">Agregar usuario</button>
       </div>  
     </div>
   </div> 
@@ -40,7 +38,7 @@ import axios from 'axios';
         email1: "pperez@gmail.com",
         password: "12345",
         email2: "pepo@gmail.com",
-        description: "Prueba 2 Desde Vue"
+        description: "Prueba 5 Desde Vue"
       }
     },
     beforeCreate( ){

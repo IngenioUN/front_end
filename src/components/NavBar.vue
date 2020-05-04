@@ -4,23 +4,25 @@
         <div class="row">            
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark d-flex justify-content-between">                    
-                    <a class="navbar-brand text-success" href="#"><i><h1>Ingenio</h1></i></a>
+                    <router-link class="nav-link text-success" to="/"><i><h1>Ingenio</h1></i></router-link>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Categorias -->
-                        <a class="nav-link text-success">Categorias</a>
+                        <router-link class="nav-link text-success" to="/categorias">Categorias</router-link>
                         <!-- Autores -->
-                        <a class="nav-link text-success">Autores</a>
+                        <router-link class="nav-link text-success" to="/olvidarcontrasena">Autores</router-link>
                         <!-- Recientes -->
-                        <a class="nav-link text-success">Lo mas recientes</a>
-                        <!-- Lo mas visto -->
-                        <a class="nav-link text-success">Lo mas visto</a>
-                        <!-- Sobre Nosotros -->
-                        <a class="nav-link text-success">Sobre Nosotros</a>
+                        <router-link class="nav-link text-success" to="/lomasreciente">Lo mas reciente</router-link>
+                        <!-- Perfil -->
+                        <router-link class="nav-link text-success" to="/Perfil">Perfil</router-link>
+                        <!-- Publicacion -->
+                        <router-link class="nav-link text-success" to="/Publicacion">Publicacion</router-link>
                         <!-- Contactenos -->
-                        <a class="nav-link text-success" @click="this.$router.push({name: 'usuario'})">Contactenos</a>
+                        <router-link class="nav-link text-success" to="/contactenos">Contactenos</router-link>
+                        <!-- Contactenos -->
+                        <router-link class="nav-link text-success"  to="/pruebas">Pruebas</router-link>
                         <!-- Registro -->
                         <a data-toggle="modal" data-target="#RegistrarseModal">
                             <div class="card-body">

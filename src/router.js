@@ -2,8 +2,12 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 //Views
-import Usuario from "./views/Usuario";
+import Pruebas from "./views/Pruebas";
 import Ingenio from "./views/Ingenio";
+import Contactenos from "./views/Contactenos";
+import Categorias from "./views/Categorias";
+import LoMasReciente from "./views/LoMasReciente";
+import Perfil from "./views/Perfil";
 
 //Components
 import NavBar from "./components/NavBar";
@@ -35,17 +39,34 @@ export default new Router({
       component: IniciarSesion
     },       
     {
-      path: "/ingenio",
+      path: "/",
       name: "ingenio",
       component: Ingenio
     },
     {
-      path: "/usuarios",
+      path: "/pruebas",
       name: "usuario",
-      component: Usuario
-    }//,
-    // beforeCreated(){
-    //   router =  {name: 'home'}
-    // }
+      component: Pruebas
+    },
+    {
+      path: "/contactenos",
+      name: "contactenos",
+      component: Contactenos
+    },
+    {
+      path: "/categorias",
+      name: "categorias",
+      component: Categorias
+    },
+    {
+      path: "/lomasreciente",
+      name: "lomasreciente",
+      component: LoMasReciente
+    },
+    {
+      path: "/perfil",
+      name: "perfil",
+      component: Perfil
+    }
   ]
 })

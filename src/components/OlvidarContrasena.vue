@@ -1,5 +1,5 @@
 <template>
-    <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 offset-2">                
+    <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 offset-2 mt-3">                
         <div class="divcont">
             <h1><i>Olvidar Contraseña</i></h1>
             <form @submit.prevent="sendForm()">

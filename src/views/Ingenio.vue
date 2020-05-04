@@ -12,22 +12,22 @@
                       <div class="carousel-item active" >
                         <img src="../assets/images/arches.jpg" class="d-block w-100" alt="Arches" style="height: 500px; opacity: 0.2">
                         <div class="carousel-caption d-none d-md-block text-dark">
-                          <h1>Arches</h1>
-                          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                          <h1>Ingenio</h1>
+                          <p>Una pagina donde puedes...</p>
                         </div>
                       </div>
                       <div class="carousel-item">
                         <img src="../assets/images/building.jpg" class="d-block w-100" alt="building" style="height: 500px; opacity: 0.2">
                         <div class="carousel-caption d-none d-md-block text-dark">
-                          <h1>Building</h1>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                          <h1>Ingenio</h1>
+                          <p>..encontrar cada noticia, informacion o investigacion ...</p>
                         </div>
                       </div>
                       <div class="carousel-item">
                         <img src="../assets/images/car.jpg" class="d-block w-100" alt="car" style="height: 500px; opacity: 0.2">
                         <div class="carousel-caption d-none d-md-block text-dark">
-                          <h1>Car</h1>
-                          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                          <h1>Ingenio</h1>
+                          <p>... de tus temas favoritos.</p>
                         </div>
                       </div>
                     </div>
@@ -319,15 +319,15 @@
         <div class="row">            
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-flex justify-content-between">		
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand">
                     <h1><i>Ingenio</i></h1>    <!-- <img src="images/ingenio.png" alt="Ingenio" style="width:200px;"> -->
                     </a>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#fat">Sobre Nosotros</a>
+                            <a class="nav-link">Sobre Nosotros</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" href="#mdo">Contactenos</a>
+                            <a class="nav-link">Contactenos</a>
                         </li>
                     </ul>
                 </nav>
