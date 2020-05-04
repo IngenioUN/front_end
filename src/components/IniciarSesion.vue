@@ -3,8 +3,9 @@
         <div class="divcont">
             <h2><i>Iniciar Sesion</i></h2>
             <form @submit.prevent="sendForm()">
-                <!-- Clases para form utiles: action="/action_page.php class="was-validated" -->                    
+                <!-- Clases para form utiles: action="/action_page.php class="was-validated" -->
                 <div class="form-group">
+<<<<<<< HEAD
                     <label for="uname">Usuario:</label>                        
                     <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email" v-model="form.email1" required>
                     <label for="pwd">Contraseña:</label>                        
@@ -13,11 +14,21 @@
                     <div class="invalid-feedback">Favor llenar este campo.</div> -->
                     <button @click="login()" class="btn btn-outline-dark mb-3 mt-3" v-if="form.type==0">Ingresar</button>
                 </div>                            
+=======
+                    <label for="uname">Usuario:</label>
+                    <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email" v-model="form.email" required>
+                    <label for="pwd">Contraseña:</label>
+                    <input type="password" class="form-control" v-if="form.type!=2" :class="{'border border-success':!validaPassword}" placeholder="Contraseña" v-model="form.password" required>
+                    <!-- <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Favor llenar este campo.</div> -->
+                    <button @click="sendForm()" class="btn btn-outline-dark mb-3 mt-3" v-if="form.type==0">Ingresar</button>
+                </div>
+>>>>>>> ca41baef8dfb11bc39e3553b49325361cb74dc6b
                 <!-- <button type="button" class="btn btn-link" href="javascript:void(0)" @click="form.type=2" v-if="form.type!=2">Recuperar contraseña</button>
                 <button type="button" class="btn btn-link" href="javascript:void(0)" @click="form.type=1" v-if="form.type!=1">Registrarme</button>
                 <button type="button" class="btn btn-link" href="javascript:void(0)" @click="form.type=0" v-if="form.type!=0">Iniciar sesión</button>                 -->
             </form>
-        </div>                
+        </div>
     </div>
 </template>
 
@@ -32,13 +43,20 @@ export default {
     return {
         form:{
             type: 0, // 0 - Iniciar Sesion , 1 - Registro,  2 - Recuperar contraseña
+<<<<<<< HEAD
             email1:"",
             password:""
             //passwordos:""           
+=======
+            email:"",
+            password:"",
+            passwordos:""
+>>>>>>> ca41baef8dfb11bc39e3553b49325361cb74dc6b
         }
     }
     },
     methods:{
+<<<<<<< HEAD
         login( event ){
                 axios
                 .post( this.$store.state.backURL + '/ingenio/signin', // URL
@@ -66,6 +84,9 @@ export default {
                // event.preventDefault();
             },
         sendForm(){
+=======
+        sendForm(){                 //Validar
+>>>>>>> ca41baef8dfb11bc39e3553b49325361cb74dc6b
             if(this.validaType()){
                 console.log(this.form);
             }
@@ -82,7 +103,7 @@ export default {
             }
             return false;
         }
-        
+
     },
     computed:{
         validaEmail(){

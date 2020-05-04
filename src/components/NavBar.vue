@@ -1,9 +1,9 @@
-<template>  
+<template>
 <!----------------------------------------------- Barra de navegacion ------------------------------------------------------->
     <div id="NavBar">
-        <div class="row">            
+        <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <nav class="navbar navbar-expand-lg bg-dark navbar-dark d-flex justify-content-between">                    
+                <nav class="navbar navbar-expand-lg bg-dark navbar-dark d-flex justify-content-between">
                     <router-link class="nav-link text-success" to="/"><i><h1>Ingenio</h1></i></router-link>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
                                 <button type="button" class="btn btn-outline-success">Iniciar Sesion</button>
                             </div>
                         </a>
-                        
+
                     </div>
                 </nav>
             </div>
@@ -83,7 +83,7 @@
             </div>
         </div>
     </div>
-<!----------------------------------------------- Barra de navegacion ------------------------------------------------------->    
+<!----------------------------------------------- Barra de navegacion ------------------------------------------------------->
 </template>
 
 <script>
