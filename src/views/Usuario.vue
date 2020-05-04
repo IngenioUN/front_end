@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-    </div>    
+    </div>
     <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
       <div id="usuario" class="container mt-5 border border-dark rounded bg-light">
         <br/>
@@ -9,7 +9,7 @@
         <router-view></router-view>
       </div>
       <button @click="get()" class="btn btn-outline-dark mb-3 mt-3">Get</button>
-      <div class="form-group col-12">   
+      <div class="form-group col-12">
           <ul id="roles">
             <li v-for="role in roles" :key="role.id" :value="role.id">
               {{role.firstName}}, {{role.lastName}}, {{role.email1}}, {{role.description}}
@@ -17,9 +17,9 @@
           </ul>
         </div>
       <button @click="register()" class="btn btn-outline-dark mb-3 mt-3">Post</button>
-      </div>  
+      </div>
     </div>
-  </div> 
+  </div>
 </template>
 
 <script>
@@ -53,7 +53,7 @@ import axios from 'axios';
       register( event ){
             axios
             .post( this.$store.state.backURL + "/user", // URL
-                
+
                 {
                     "firstName": this.firstName,
                     "lastName": this.lastName,
@@ -89,7 +89,7 @@ import axios from 'axios';
                 }else{
                     //localStorage.setItem( 'token', response.data.access_token );
                     //alert( "Funciono esta vaina!" )
-                    console.log(response.data);                    
+                    console.log(response.data);
                     this.roles = response.data;
                 }
             } ).catch( error => {
@@ -101,7 +101,7 @@ import axios from 'axios';
             } );
             //event.preventDefault();
         }
-    },    
+    },
     components:{
     }
   }

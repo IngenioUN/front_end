@@ -3,21 +3,21 @@
         <div class="divcont">
             <h1><i>Registro</i></h1>
             <form @submit.prevent="sendForm()">
-                <!-- Clases para form utiles: action="/action_page.php class="was-validated" -->                
+                <!-- Clases para form utiles: action="/action_page.php class="was-validated" -->
                 <div class="form-group">
                     <label for="uname">Usuario:</label>
                     <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email" v-model="form.email" required>
                     <label for="pwd">Contraseña:</label>
                     <input type="password" class="form-control" :class="{'border border-success':!validaPassword}" placeholder="Ingresar contraseña" v-model="form.password" required>
                     <label for="pwd">Repetir Contraseña:</label>
-                    <input type="password" class="form-control" :class="{'border border-success':!validaRepetirPassword, 'border border-danger':validaRepetirPassword}" placeholder="Repetir contraseña" v-model="form.passwordos" required>                                
+                    <input type="password" class="form-control" :class="{'border border-success':!validaRepetirPassword, 'border border-danger':validaRepetirPassword}" placeholder="Repetir contraseña" v-model="form.passwordos" required>
                     <div class="form-group form-check">
                         <label class="form-check-label">
                             <input class="form-check-input" type="checkbox" name="remember" required> Acepto los terminos y condiciones de Ingenio.
                         </label>
                     </div>
-                    <button @click="validar()" class="btn btn-outline-dark">Registrarme</button>
-                </div>                
+                    <button @click="register()" class="btn btn-outline-dark">Registrarme</button>
+                </div>
             </form>
         </div>
     </div>
@@ -26,7 +26,7 @@
 <script>
 import axios from 'axios';
 
-const path = "/user";
+const path = "/user/signup";
 
 export default {
   name: 'Ingreso.vue',
@@ -36,7 +36,7 @@ export default {
         form:{
             type: 0, // 0 - Iniciar Sesion , 1 - Registro,  2 - Recuperar contraseña
             email:"",
-            password:"", 
+            password:"",
             passwordos:"",
 
             //Post
@@ -54,7 +54,7 @@ export default {
         register( event ){
             axios
             .post( this.$store.state.backURL + path, // URL
-                
+
                 {
                     "firstName": this.firstName,
                     "lastName": this.lastName,
@@ -98,7 +98,7 @@ export default {
             }
             return false;
         }
-        
+
     },
     computed:{
         validaEmail(){

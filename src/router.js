@@ -17,8 +17,8 @@ Vue.use(Router);
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [    
-    //End Points Ingenio    
+  routes: [
+    //End Points Ingenio
     {
       path: "/registrar",
       name: "signup",
@@ -33,7 +33,7 @@ export default new Router({
       path: "/ingresar",
       name: "signin",
       component: IniciarSesion
-    },       
+    },
     {
       path: "/ingenio",
       name: "ingenio",
