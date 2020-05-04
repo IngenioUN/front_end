@@ -1,4 +1,4 @@
-<template>    
+<template>
     <div class="divlogin">
         <div class="row container-fuild">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" >
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-<!----------------------------------------------- Cuadro Izquierdo: Vacio --------------------------------------------------->        
+<!----------------------------------------------- Cuadro Izquierdo: Vacio --------------------------------------------------->
         <hr width="70%"/>
         <div class="row">
             <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
@@ -62,7 +62,7 @@
                             <h5 class="card-title text-dark">Paris, la capital del mundo</h5>
                         </a>
                         <p class="card-text">
-                        Paris ha sido una de las ciudades mas importantes debido a la cantidad de personas en el mundo que 
+                        Paris ha sido una de las ciudades mas importantes debido a la cantidad de personas en el mundo que
                         la visitan constantemente, dado que...</p>
                         <button type="button" class="btn btn-outline-primary mt-2">Internacional</button>
                         <button type="button" class="btn btn-outline-secondary mt-2">Ingenieria</button>
@@ -86,14 +86,14 @@
                     </div>
                     <div class="card">
                     <a href="Publicacion.html"  target="_blank">
-                        <img src="../assets/images/newyork.jpg" class="card-img-top" alt="NewYork">                        
-                    </a>                      
+                        <img src="../assets/images/newyork.jpg" class="card-img-top" alt="NewYork">
+                    </a>
                     <div class="card-body">
                         <a href="Publicacion.html" target="_blank">
                             <h5 class="card-title text-dark">El secreto de New York</h5>
                         </a>
                         <p class="card-text">
-                            New York ha sido por mucho tiempo la ciudad mas cara para vivir. 
+                            New York ha sido por mucho tiempo la ciudad mas cara para vivir.
                             Pero lo que muchos no saben es que...
                         </p>
                         <p class="card-text"><small class="text-muted">Actualizado hace 3 minutos</small></p>
@@ -118,12 +118,12 @@
                                 <p class="card-text">
                                     Existen 5 trucos para lograr ser un buen desarrollador...
                                 </p>
-                                <p class="card-text"><small class="text-muted">Actualizado hace 2 minutos</small></p>                            
+                                <p class="card-text"><small class="text-muted">Actualizado hace 2 minutos</small></p>
                             </div>
                         </a>
                     </div>
                     <div class="card">
-                        <img src="../assets/images/office.jpg" class="card-img-top" alt="...">                        
+                        <img src="../assets/images/office.jpg" class="card-img-top" alt="...">
                     </div>
                     <div class="card p-3 text-right">
                       <blockquote class="blockquote mb-0">
@@ -149,7 +149,7 @@
                         </a>
                     </div>
                 </div>
-                                    
+
 <!------------------------------------------------- Modals ------------------------------------------------------------------>
                 <!-------------------------------- Modal Paris -------------------------------->
                 <div class="modal fade" id="ParisModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -161,13 +161,13 @@
                                 Paris, la capital del mundo<br/>
                                 Autor: Juan Perez
                             </i>
-                        </h5>                        
+                        </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         </div>
                         <div class="modal-body">
-                        Paris ha sido una de las ciudades mas importantes debido a la cantidad de personas en el mundo que 
+                        Paris ha sido una de las ciudades mas importantes debido a la cantidad de personas en el mundo que
                         la visitan constantemente, dado que...
                         </div>
                         <div class="modal-footer">
@@ -188,13 +188,13 @@
                                 El secreto de New York<br/>
                                 Autor: Ana Martinez
                             </i>
-                        </h5>                        
+                        </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         </div>
                         <div class="modal-body">
-                            New York ha sido por mucho tiempo la ciudad mas cara para vivir. 
+                            New York ha sido por mucho tiempo la ciudad mas cara para vivir.
                             Pero lo que muchos no saben es que...
                         </div>
                         <div class="modal-footer">
@@ -214,8 +214,8 @@
                             <i>
                                 ¿Como ser buen desarrollador?<br/>
                                 Autor: Pepe Zapata
-                            </i>                            
-                        </h5>                        
+                            </i>
+                        </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -240,8 +240,8 @@
                             <i>
                                 Trabajo Remoto<br/>
                                 Autor: Juana Cuevas
-                            </i>  
-                        </h5>                        
+                            </i>
+                        </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -257,7 +257,7 @@
                     </div>
                 </div>
                 <!-------------------------------------------------------------------------------------------------->
-                
+
             </div>
 <!--------------------------------------------------------------------------------------------------------------------------->
 <!----------------------------------------------- Cuadro Derecho: Vacio ----------------------------------------------------->
@@ -316,7 +316,7 @@
         </div>
         <hr width="70%"/>
 <!--------------------------------------- Barra de navegacion inferior ------------------------------------------------------>
-        <div class="row">            
+        <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-flex justify-content-between">		
                     <a class="navbar-brand">
@@ -334,7 +334,7 @@
             </div>
         </div>
 <!--------------------------------------------------------------------------------------------------------------------------->
-        
+
     </div>
 </template>
 
@@ -351,7 +351,7 @@ export default {
     }
     },
     methods:{
-        
+
     },
     computed:{}
 }

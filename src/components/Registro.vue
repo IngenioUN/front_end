@@ -39,7 +39,7 @@
 <script>
 import axios from 'axios';
 
-const path = "/user";
+const path = "/user/signup";
 
 export default {
   name: 'Ingreso.vue',
@@ -107,7 +107,7 @@ export default {
             }
             return false;
         }
-        
+
     },
     computed:{
         validaEmail(){
