@@ -14,7 +14,7 @@
                     <label for="pwd">Contraseña:</label>
                     <input type="password" class="form-control" :class="{'border border-success':!validaPassword}" placeholder="Ingresar contraseña" v-model="form.password" required>
                     <label for="pwd">Repetir Contraseña:</label>
-                    <input type="password" class="form-control" :class="{'border border-success':!validaRepetirPassword, 'border border-danger':validaRepetirPassword}" placeholder="Repetir contraseña" v-model="form.passwordos" required>
+                    <input type="password" class="form-control" :class="{'border border-success':!validaRepetirPassword, 'border border-danger':validaRepetirPassword}" placeholder="Repetir contraseña" v-model="form.confirmPassword" required>
                     <label for="pwd">Email 2:</label>
                     <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email2" v-model="form.email2" required>
                     <label for="pwd">Descripcion:</label>
@@ -38,8 +38,8 @@
 
 <script>
 import axios from 'axios';
+import router from '../router'
 
-const path = "/user/signup";
 
 export default {
   name: 'Ingreso.vue',
@@ -49,7 +49,7 @@ export default {
         form:{
             type: 0, // 0 - Iniciar Sesion , 1 - Registro,  2 - Recuperar contraseña            
             email1:"",
-            passwordos:"",
+            confirmPassword:"",
             //Post
             firstName: "",
             lastName: "",
@@ -63,12 +63,13 @@ export default {
         //REST API
       register( event ){
             axios
-            .post( this.$store.state.backURL + "/user", // URL
+            .post( this.$store.state.backURL +'/ingenio/signup', // URL
                 {
                     "firstName": this.form.firstName,
                     "lastName": this.form.lastName,
                     "email1": this.form.email1,
                     "password": this.form.password,
+                    "confirmPassword": this.form.confirmPassword,
                     "email2": this.form.email2,
                     "description": this.form.description
                 }
@@ -127,7 +128,7 @@ export default {
             }
         },
         validaRepetirPassword(){
-            if(this.form.password==this.form.passwordos && this.form.passwordos != ''){
+            if(this.form.password==this.form.confirmPassword && this.form.confirmPassword != ''){
                 return false;
             } else{
                 return true;

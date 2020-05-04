@@ -6,12 +6,12 @@
                 <!-- Clases para form utiles: action="/action_page.php class="was-validated" -->                    
                 <div class="form-group">
                     <label for="uname">Usuario:</label>                        
-                    <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email" v-model="form.email" required>
+                    <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email" v-model="form.email1" required>
                     <label for="pwd">Contraseña:</label>                        
                     <input type="password" class="form-control" v-if="form.type!=2" :class="{'border border-success':!validaPassword}" placeholder="Contraseña" v-model="form.password" required>
                     <!-- <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Favor llenar este campo.</div> -->
-                    <button @click="validar()" class="btn btn-outline-dark mb-3 mt-3" v-if="form.type==0">Ingresar</button>
+                    <button @click="login()" class="btn btn-outline-dark mb-3 mt-3" v-if="form.type==0">Ingresar</button>
                 </div>                            
                 <!-- <button type="button" class="btn btn-link" href="javascript:void(0)" @click="form.type=2" v-if="form.type!=2">Recuperar contraseña</button>
                 <button type="button" class="btn btn-link" href="javascript:void(0)" @click="form.type=1" v-if="form.type!=1">Registrarme</button>
@@ -22,6 +22,9 @@
 </template>
 
 <script>
+import axios from 'axios'
+import router from '../router'
+
 export default {
   name: 'Ingreso.vue',
   components: {},
@@ -29,13 +32,39 @@ export default {
     return {
         form:{
             type: 0, // 0 - Iniciar Sesion , 1 - Registro,  2 - Recuperar contraseña
-            email:"",
-            password:"", 
-            passwordos:""           
+            email1:"",
+            password:""
+            //passwordos:""           
         }
     }
     },
     methods:{
+        login( event ){
+                axios
+                .post( this.$store.state.backURL + '/ingenio/signin', // URL
+                    {
+                        "email1": this.form.email1,
+                        "password": this.form.password
+                        //grant_type: 'password'
+                    }
+                ).then( response => {
+                    if( response.status !== 200 ){
+                        alert( "Error en la autenticación" );
+                    }else{
+                        localStorage.setItem( 'token', response.data.access_token );
+                        alert( "¡Autenticación Exitosa! El token se ha almacenado en el Local Storage" )
+                        //this.$router.push('principal')
+                    }
+                } ).catch( error => {
+                    if( error.response.status === 400 ){
+                      alert( "Credenciales incorrectas" );
+                    }else{
+                      alert( "¡Parece que hubo un error de comunicación con el servidor!" );
+                    }
+                } );
+
+               // event.preventDefault();
+            },
         sendForm(){
             if(this.validaType()){
                 console.log(this.form);
@@ -58,7 +87,7 @@ export default {
     computed:{
         validaEmail(){
             var exp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-            if(exp.test(this.form.email)){
+            if(exp.test(this.form.email1)){
                 return false;
             } else{
                 return true;
