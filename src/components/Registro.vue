@@ -30,7 +30,7 @@
                         </label>
                     </div>
                     <button @click="register()"  class="btn btn-outline-dark">Registrarme</button>
-                </div>                
+                </div>
             </form>
         </div>
     </div>
@@ -39,7 +39,7 @@
 <script>
 import axios from 'axios';
 
-const path = "/user/signup";
+
 
 export default {
   name: 'Ingreso.vue',
@@ -47,7 +47,7 @@ export default {
   data: function (){
     return {
         form:{
-            type: 0, // 0 - Iniciar Sesion , 1 - Registro,  2 - Recuperar contraseña            
+            type: 0, // 0 - Iniciar Sesion , 1 - Registro,  2 - Recuperar contraseña
             email1:"",
             passwordos:"",
             //Post
@@ -63,7 +63,7 @@ export default {
         //REST API
       register( event ){
             axios
-            .post( this.$store.state.backURL + "/user", // URL
+            .post( this.$store.state.backURL + "/user/registrar", // URL
                 {
                     "firstName": this.form.firstName,
                     "lastName": this.form.lastName,
@@ -79,7 +79,7 @@ export default {
                     //localStorage.setItem( 'token', response.data.access_token );
                     //alert( "Funciono esta vaina!" )
                     console.log(response);
-                    //this.$router.push( {name: 'home'} )
+                    //this.$router.replace( {name: 'ingenio'} )
                 }
             } ).catch( error => {
                 if( error.response.status === 400 ){
