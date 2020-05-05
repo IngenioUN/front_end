@@ -10,7 +10,6 @@ import LoMasReciente from "./views/LoMasReciente";
 import Perfil from "./views/Perfil";
 
 //Components
-import NavBar from "./components/NavBar";
 import IniciarSesion from "./components/IniciarSesion";
 import Registro from "./components/Registro";
 import OlvidarContrasena from "./components/OlvidarContrasena";
