@@ -42,299 +42,63 @@
                 </div>
             </div>
         </div>
-<!----------------------------------------------- Cuadro Izquierdo: Vacio --------------------------------------------------->
         <hr width="70%"/>
         <div class="row">
-            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
-                <a></a>
+          <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mt-5 offset-1">
+            <div class="row">
+              <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" v-for="item of publicaciones" :key="item.id">
+                <div class="card">
+                  <img src="../assets/images/paris.jpg" class="card-img-top" alt="Paris">
+                  <div class="card-body">
+                      <router-link class="nav-link text-dark" to="/Publicacion"><h5>{{item.titulo}}</h5></router-link>
+                      <p class="card-text">
+                      {{item.abstract}}
+                      </p>
+                      <button type="button" class="btn btn-outline-dark mt-2">{{item.tags}}</button>
+                  </div>
+                </div>
+              </div>
             </div>
-<!--------------------------------------------------------------------------------------------------------------------------->
-<!---------------------------------------------- Cuadro Central: Publicaciones ---------------------------------------------->
-            <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mt-5">
-                <div class="card-columns">
-                    <div class="card">
-                    <a href="Publicacion.html"  target="_blank">
-                        <!-- data-toggle="modal" data-target="#ParisModal" -->
-                        <img src="../assets/images/paris.jpg" class="card-img-top" alt="Paris">
-                    </a>
-                    <div class="card-body">
-                        <a href="Publicacion.html" target="_blank">
-                            <h5 class="card-title text-dark">Paris, la capital del mundo</h5>
-                        </a>
-                        <p class="card-text">
-                        Paris ha sido una de las ciudades mas importantes debido a la cantidad de personas en el mundo que
-                        la visitan constantemente, dado que...</p>
-                        <button type="button" class="btn btn-outline-primary mt-2">Internacional</button>
-                        <button type="button" class="btn btn-outline-secondary mt-2">Ingenieria</button>
-                        <button type="button" class="btn btn-outline-success mt-2">Capitales</button>
-                        <button type="button" class="btn btn-outline-danger mt-2">Reciente</button>
-                        <button type="button" class="btn btn-outline-warning mt-2">Francia</button>
-                        <button type="button" class="btn btn-outline-info mt-2">2020</button>
-                        <button type="button" class="btn btn-outline-light mt-2">Construcciones</button>
-                        <button type="button" class="btn btn-outline-dark mt-2">Lugares Importantes</button>
-                    </div>
-                    </div>
-                    <div class="card p-3">
-                      <blockquote class="blockquote mb-0 card-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer class="blockquote-footer">
-                          <small class="text-muted">
-                            Tadeus Lockmasrs de <cite title="Source Title">Hebreus Mark</cite>
-                          </small>
-                        </footer>
-                      </blockquote>
-                    </div>
-                    <div class="card">
-                    <a href="Publicacion.html"  target="_blank">
-                        <img src="../assets/images/newyork.jpg" class="card-img-top" alt="NewYork">
-                    </a>
-                    <div class="card-body">
-                        <a href="Publicacion.html" target="_blank">
-                            <h5 class="card-title text-dark">El secreto de New York</h5>
-                        </a>
-                        <p class="card-text">
-                            New York ha sido por mucho tiempo la ciudad mas cara para vivir.
-                            Pero lo que muchos no saben es que...
-                        </p>
-                        <p class="card-text"><small class="text-muted">Actualizado hace 3 minutos</small></p>
-                    </div>
-                    </div>
-                    <div class="card p-3 text-right">
-                      <blockquote class="blockquote mb-0">
-                        <p>¿Quieres recibir notificaciones de nuevo contenido en tu correo?</p>
-                        <footer class="blockquote-footer">
-                          <small>
-                            Registrate en <cite title="Source Title">Ingenio</cite>
-                          </small>
-                        </footer>
-                      </blockquote>
-                    </div>
-                    <div class="card text-center">
-                        <a data-toggle="modal" data-target="#DesarrolladorModal">
-                            <div class="card-body">
-                                <a href="Publicacion.html" target="_blank">
-                                    <h5 class="card-title text-dark">¿Como ser buen desarrollador?</h5>
-                                </a>
-                                <p class="card-text">
-                                    Existen 5 trucos para lograr ser un buen desarrollador...
-                                </p>
-                                <p class="card-text"><small class="text-muted">Actualizado hace 2 minutos</small></p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                        <img src="../assets/images/office.jpg" class="card-img-top" alt="...">
-                    </div>
-                    <div class="card p-3 text-right">
-                      <blockquote class="blockquote mb-0">
-                        <p>
-                            Sigue a los mejores autores de tus categorias favoritas.
-                        </p>
-                        <footer class="blockquote-footer">
-                          <small class="text-muted">
-                            Registrate en <cite title="Source Title">Ingenio</cite>
-                          </small>
-                        </footer>
-                      </blockquote>
-                    </div>
-                    <div class="card">
-                        <a data-toggle="modal" data-target="#TrabajoRemotoModal">
-                            <div class="card-body">
-                                <h5 class="card-title">Trabajo Remoto</h5>
-                                <p class="card-text">
-                                    La mejor forma de trabajar en 2020, es de forma remota. Y hay formas muy faciles de hacerlo.
-                                </p>
-                                <p class="card-text"><small class="text-muted">Actualizad el mes pasado</small></p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-<!------------------------------------------------- Modals ------------------------------------------------------------------>
-                <!-------------------------------- Modal Paris -------------------------------->
-                <div class="modal fade" id="ParisModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">
-                            <i>
-                                Paris, la capital del mundo<br/>
-                                Autor: Juan Perez
-                            </i>
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body">
-                        Paris ha sido una de las ciudades mas importantes debido a la cantidad de personas en el mundo que
-                        la visitan constantemente, dado que...
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ver mas</button>
-                        <button type="button" class="btn btn-primary">Ir al sitio</button>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <!-------------------------------------------------------------------------------->
-                <!-------------------------------- Modal New York -------------------------------->
-                <div class="modal fade" id="NewYorkModal" tabindex="-1" role="dialog" aria-labelledby="NewYorkModalModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="NewYorkModalLabel">
-                            <i>
-                                El secreto de New York<br/>
-                                Autor: Ana Martinez
-                            </i>
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body">
-                            New York ha sido por mucho tiempo la ciudad mas cara para vivir.
-                            Pero lo que muchos no saben es que...
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ver mas</button>
-                        <button type="button" class="btn btn-primary">Ir al sitio</button>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <!-------------------------------------------------------------------------------->
-                <!-------------------------------- Modal Buen Desarrollador -------------------------------->
-                <div class="modal fade" id="DesarrolladorModal" tabindex="-1" role="dialog" aria-labelledby="DesarrolladorModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="DesarrolladorModalLabel">
-                            <i>
-                                ¿Como ser buen desarrollador?<br/>
-                                Autor: Pepe Zapata
-                            </i>
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body">
-                            Existen 5 trucos para lograr ser un buen desarrollador...
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ver mas</button>
-                        <button type="button" class="btn btn-primary">Ir al sitio</button>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <!-------------------------------------------------------------------------------------------------->
-                <!-------------------------------- Modal Trabajo Remoto -------------------------------->
-                <div class="modal fade" id="TrabajoRemotoModal" tabindex="-1" role="dialog" aria-labelledby="TrabajoRemotoModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="TrabajoRemotoModalLabel">
-                            <i>
-                                Trabajo Remoto<br/>
-                                Autor: Juana Cuevas
-                            </i>
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body">
-                            La mejor forma de trabajar en 2020, es de forma remota. Y hay formas muy faciles de hacerlo.
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ver mas</button>
-                        <button type="button" class="btn btn-primary">Ir al sitio</button>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <!-------------------------------------------------------------------------------------------------->
-
-            </div>
-<!--------------------------------------------------------------------------------------------------------------------------->
-<!----------------------------------------------- Cuadro Derecho: Vacio ----------------------------------------------------->
-            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
-                <a></a>
-            </div>
-<!--------------------------------------------------------------------------------------------------------------------------->
+          </div>
         </div>
         <hr width="70%"/>
         <div class="row">
-            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
-                <a></a>
+          <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mt-5 offset-1">
+            <div class="row row-cols-1 row-cols-md-3">
+              <div class="col mb-3">
+                <div class="card h-100">
+                  <img src="../assets/images/Perfil1.jpg" class="card-img-top" alt="Perfil1">
+                  <div class="card-body">
+                    <h5 class="card-title">Autor 1</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <a href="http://www.freepik.com" target="_blank">Designed by Freepik</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col mb-3">
+                <div class="card h-100">
+                  <img src="../assets/images/Perfil2.jpg" class="card-img-top" alt="Perfil2">
+                  <div class="card-body">
+                    <h5 class="card-title">Autor 2</h5>
+                    <p class="card-text">This is a short card.</p>
+                    <a href="http://www.freepik.com" target="_blank">Designed by Freepik</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col mb-3">
+                <div class="card h-100">
+                  <img src="../assets/images/Perfil3.jpg" class="card-img-top" alt="Perfil3">
+                  <div class="card-body">
+                    <h5 class="card-title">Autor 3</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                    <a href="http://www.freepik.com" target="_blank">Designed by Freepik</a>
+                  </div>
+                </div>
+              </div>
             </div>
-<!--------------------------------------------------------------------------------------------------------------------------->
-<!---------------------------------------------- Cuadro Central: Publicaciones ---------------------------------------------->
-            <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mt-5">
-                <div class="row row-cols-1 row-cols-md-3">
-                    <div class="col mb-3">
-                      <div class="card h-100">
-                        <img src="../assets/images/Perfil1.jpg" class="card-img-top" alt="Perfil1">
-                        <div class="card-body">
-                          <h5 class="card-title">Autor 1</h5>
-                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          <a href="http://www.freepik.com" target="_blank">Designed by Freepik</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col mb-3">
-                      <div class="card h-100">
-                        <img src="../assets/images/Perfil2.jpg" class="card-img-top" alt="Perfil2">
-                        <div class="card-body">
-                          <h5 class="card-title">Autor 2</h5>
-                          <p class="card-text">This is a short card.</p>
-                          <a href="http://www.freepik.com" target="_blank">Designed by Freepik</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col mb-3">
-                      <div class="card h-100">
-                        <img src="../assets/images/Perfil3.jpg" class="card-img-top" alt="Perfil3">
-                        <div class="card-body">
-                          <h5 class="card-title">Autor 3</h5>
-                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                          <a href="http://www.freepik.com" target="_blank">Designed by Freepik</a>
-                        </div>
-                      </div>
-                    </div>
-            </div>
-<!--------------------------------------------------------------------------------------------------------------------------->
-<!----------------------------------------------- Cuadro Derecho: Vacio ----------------------------------------------------->
-            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
-                <a></a>
-            </div>
-<!--------------------------------------------------------------------------------------------------------------------------->
-        </div>
+          </div>
         </div>
         <hr width="70%"/>
-<!--------------------------------------- Barra de navegacion inferior ------------------------------------------------------>
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-flex justify-content-between">		
-                    <a class="navbar-brand">
-                    <h1><i>Ingenio</i></h1>    <!-- <img src="images/ingenio.png" alt="Ingenio" style="width:200px;"> -->
-                    </a>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link">Sobre Nosotros</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link">Contactenos</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-<!--------------------------------------------------------------------------------------------------------------------------->
-
     </div>
 </template>
 
@@ -348,11 +112,83 @@ export default {
   components: {},
   data: function (){
     return {
+     publicaciones:{
+        pub1:{
+          id: 1,
+          img: '',
+          titulo: 'Paris, la capital del mundo',
+          abstract: 'Paris ha sido una de las ciudades mas importantes debido a la cantidad de personas en el mundo que la visitan constantemente, dado que...',
+          tags: {
+            _1: 'Lugares Importantes'
+          }
+        },
+        pub2:{
+          id: 2,
+          img: '',
+          titulo: 'El secreto de New York',
+          abstract: 'New York ha sido por mucho tiempo la ciudad mas cara para vivir. Pero lo que muchos no saben es que...',
+          tags: {
+            _1: 'USA'
+          }
+        },
+        pub3:{
+          id: 3,
+          img: '',
+          titulo: 'Trabajo Remoto',
+          abstract: 'La mejor forma de trabajar en 2020, es de forma remota. Y hay formas muy faciles de hacerlo.',
+          tags: {
+            _1: 'Online'
+          }
+        },
+        pub4:{
+          id: 4,
+          img: '',
+          titulo: 'Prueba',
+          abstract: 'Pruebita',
+          tags: {
+            _1: 'Ok'
+          }
+        },
+        pub6:{
+          id: 6,
+          img: '',
+          titulo: 'Prueba2',
+          abstract: 'Pruebita2',
+          tags: {
+            _1: 'Ok2'
+          }
+        },
+        pub7:{
+          id: 7,
+          img: '',
+          titulo: 'Prueba2',
+          abstract: 'Pruebita2',
+          tags: {
+            _1: 'Ok2'
+          }
+        },
+        pub7:{
+          id: 8,
+          img: '',
+          titulo: 'Prueba2',
+          abstract: 'Pruebita2',
+          tags: {
+            _1: 'Ok2'
+          }
+        },
+        pub9:{
+          id: 9,
+          img: '',
+          titulo: 'Prueba2',
+          abstract: 'Pruebita2',
+          tags: {
+            _1: 'Ok2'
+          }
+        }
+      } 
     }
-    },
-    methods:{
-
-    },
-    computed:{}
+  },  
+  methods:{},
+  computed:{}
 }
 </script>

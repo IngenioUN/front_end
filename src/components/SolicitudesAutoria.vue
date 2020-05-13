@@ -1,18 +1,35 @@
 <template>
-    <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 offset-2">
-        <div class="divcont">
-            <h2><i>Iniciar Sesion</i></h2>
-            <form @submit.prevent="sendForm()">
-                <!-- Clases para form utiles: action="/action_page.php class="was-validated" -->
-                <div class="form-group">
-                    <label for="uname">Usuario:</label>                        
-                    <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email" v-model="form.email1" required>
-                    <label for="pwd">Contraseña:</label>                        
-                    <input type="password" class="form-control" v-if="form.type!=2" :class="{'border border-success':!validaPassword}" placeholder="Contraseña" v-model="form.password" required>
-                    <button @click="login()" class="btn btn-outline-dark mb-3 mt-3">Ingresar</button>
-                </div>
-            </form>
-        </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <table class="table table-hover table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre Usuario</th>
+                    <th scope="col">Apellido Usuario</th>
+                    <th scope="col">Solicitud</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 

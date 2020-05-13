@@ -13,6 +13,12 @@ import Perfil from "./views/Perfil";
 import IniciarSesion from "./components/IniciarSesion";
 import Registro from "./components/Registro";
 import OlvidarContrasena from "./components/OlvidarContrasena";
+import SolicitudesAutoria from "./components/SolicitudesAutoria";
+import Siguiendo from "./components/Siguiendo";
+import PerfilInfoPersonal from "./components/PerfilInfoPersonal";
+import SolicitudAutor from "./components/SolicitudAutor";
+import SubirPublicacion from "./components/SubirPublicacion";
+import NavBar from "./components/NavBar";
 
 
 Vue.use(Router);
@@ -22,6 +28,11 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     //End Points Ingenio
+    {
+      path: "/navbar",
+      name: "nabvar",
+      component: NavBar
+    },
     {
       path: "/registrar",
       name: "signup",
@@ -63,9 +74,36 @@ export default new Router({
       component: LoMasReciente
     },
     {
+      path: "/solicitudesautoria",
+      name: "solicitudes autoria",
+      component: SolicitudesAutoria
+    },
+    {
+      path: "/siguiendo",
+      name: "siguiendo",
+      component: Siguiendo
+    },
+    {
       path: "/perfil",
       name: "perfil",
-      component: Perfil
+      component: Perfil,
+      children:[
+        { 
+          path: "solicitudautor",
+          name: "solicitudautor",
+          component: SolicitudAutor
+        },
+        { 
+          path: "subirpublicacion",
+          name: "subirpublicacion",
+          component: SubirPublicacion
+        },
+        {
+          path: "/pfinfopersonal",
+          name: "pfinfopersonal",
+          component: PerfilInfoPersonal
+        }
+      ]
     }
   ]
 })

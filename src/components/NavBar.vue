@@ -3,39 +3,42 @@
     <div id="NavBar">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <nav class="navbar navbar-expand-lg bg-dark navbar-dark d-flex justify-content-between">
-                    <router-link class="nav-link text-success" to="/"><i><h1>Ingenio</h1></i></router-link>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- fixed-top  -->
+                <nav id="navbar" class="navbar navbar-expand-lg d-flex justify-content-between">                    
+                    <!-- <i><h1>Ingenio</h1></i> -->
+                    <router-link class="nav-link text-white" to="/">
+                        <img src="../assets/images/IngenioLogo.png" class="card-img-top" alt="Personaje" style="height: 80px; width:160px">
+                    </router-link>
+                    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
-                    </button>
+                    </button> -->
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Categorias -->
-                        <router-link class="nav-link text-success" to="/categorias">Categorias</router-link>
+                        <router-link class="nav-link text-white" to="/categorias">Categorias</router-link>
                         <!-- Autores -->
-                        <router-link class="nav-link text-success" to="/olvidarcontrasena">Autores</router-link>
+                        <router-link class="nav-link text-white" to="/olvidarcontrasena">Autores</router-link>
                         <!-- Recientes -->
-                        <router-link class="nav-link text-success" to="/lomasreciente">Lo mas reciente</router-link>
+                        <router-link class="nav-link text-white" to="/lomasreciente">Lo mas reciente</router-link>
                         <!-- Perfil -->
-                        <router-link class="nav-link text-success" to="/Perfil">Perfil</router-link>
+                        <router-link class="nav-link text-white" to="/Perfil">Perfil</router-link>
                         <!-- Publicacion -->
-                        <router-link class="nav-link text-success" to="/Publicacion">Publicacion</router-link>
+                        <router-link class="nav-link text-white" to="/Publicacion">Publicacion</router-link>
                         <!-- Contactenos -->
-                        <router-link class="nav-link text-success" to="/contactenos">Contactenos</router-link>
+                        <router-link class="nav-link text-white" to="/contactenos">Contactenos</router-link>
                         <!-- Contactenos -->
-                        <router-link class="nav-link text-success"  to="/pruebas">Pruebas</router-link>
+                        <router-link class="nav-link text-white"  to="/pruebas">Pruebas</router-link>
                         <!-- Registro -->
                         <a data-toggle="modal" data-target="#RegistrarseModal">
                             <div class="card-body">
-                                <button type="button" class="btn btn-outline-success">Registrarse</button>
+                                <button type="button" class="btn btn-outline-light">Registrarse</button>
                             </div>
                         </a>
                         <!-- Iniciar sesion -->
                         <a data-toggle="modal" data-target="#IniciarSesionModal">
                             <div class="card-body">
-                                <button type="button" class="btn btn-outline-success">Iniciar Sesion</button>
+                                <button type="button" class="btn btn-outline-light" style="">Iniciar Sesion</button>
                             </div>
                         </a>
-
                     </div>
                 </nav>
             </div>
@@ -98,3 +101,7 @@ export default {
   }
 }
 </script>
+
+ <style scoped>
+ 
+ </style>
