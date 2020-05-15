@@ -28,7 +28,7 @@
                         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tarjeta Profesional">
                         <br/>
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1">¿A que te dedicas?</label>
+                            <label for="exampleFormControlInput2">¿A que te dedicas?</label>
                             <select class="custom-select" required>
                             <option value="">Seleccionar...</option>
                             <option value="1">Trabajo</option>

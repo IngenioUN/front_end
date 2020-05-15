@@ -9,13 +9,16 @@
               <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link active" id="siguiendo-tab" data-toggle="tab" href="#siguiendo1" role="tab" aria-controls="siguiendo1" aria-selected="true">Siguiendo</a>
+                    <a class="nav-link active" id="siguiendo-tab textcolor" data-toggle="tab" href="#siguiendo1" role="tab" aria-controls="siguiendo1" aria-selected="true">Siguiendo</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" id="mesiguen-tab" data-toggle="tab" href="#mesiguen" role="tab" aria-controls="mesiguen" aria-selected="false">Me Siguen</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="categorias-tab" data-toggle="tab" href="#categorias" role="tab" aria-controls="categorias" aria-selected="false">Categorias</a>
+                    <a class="nav-link" id="categorias-tab" data-toggle="tab" href="#categorias" role="tab" aria-controls="categorias" aria-selected="false">
+                      Categorias
+                      <a href="#" class="badge badge-dark">9</a>                    
+                    </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" id="articulosguardados-tab" data-toggle="tab" href="#articulosguardados" role="tab" aria-controls="articulosguardados" aria-selected="false">Articulos Guardados</a>
@@ -82,7 +85,7 @@ import PerfilInfoPersonal from '../components/PerfilInfoPersonal.vue'
 const path = "/user";
 
 export default {
-  name: 'Ingenio.vue',
+  name: 'Ingenio',
   components:{
       SolicitudesAutoria,
       Siguiendo,
@@ -103,3 +106,7 @@ export default {
 }
 </script>
 
+<style>
+a { color: #01403A; }
+
+</style>

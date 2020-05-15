@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-md-8 mb-3">
                         <label for="exampleFormControlInput1">Titulo de la publicacion</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tarjeta Profesional">
+                        <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="Tarjeta Profesional">
                         <br/>
                         <label for="validationTextarea">Abstract</label>
                         <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" required></textarea>
@@ -35,7 +35,7 @@
                         </div> -->
                         <br>
                         <div class="mb-3">
-                            <v-select multiple v-model="tag" :options="['Canada','United States']" />
+                            <!-- <v-select multiple v-model="tag" :options="['Canada','United States']" /> -->
                             <label for="exampleFormControlInput2">Tags</label>
                             <!-- <select class="custom-select" required>
                             <option value="">Seleccionar...</option>
@@ -82,6 +82,10 @@ export default {
         },
         tag: ''
     }
+    },
+    componenets:{
+        Vuetify,
+        VSelect
     },
     methods:{        
         addTag(tag){
