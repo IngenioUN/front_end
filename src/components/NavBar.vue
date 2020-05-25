@@ -15,8 +15,6 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Categorias -->
                         <router-link class="nav-link text-white" to="/categorias">Categorias</router-link>
-                        <!-- Autores -->
-                        <router-link class="nav-link text-white" to="/olvidarcontrasena">Autores</router-link>
                         <!-- Recientes -->
                         <router-link class="nav-link text-white" to="/lomasreciente">Lo mas reciente</router-link>
                         <!-- Perfil -->
@@ -98,6 +96,28 @@ export default {
   components:{
       IniciarSesion,
       Registro
+  },
+  data: function (){
+    return {
+      Role:3,
+      nameRole: ''
+    }
+  },
+  created: function(){
+    this.Role = parseInt(localStorage.getItem('Role'));
+     switch(this.Role) {
+       case "0":
+         this.nameRole = 'Usuario'
+         break;
+       case "1":
+         this.nameRole = 'Autor'
+         break;
+       case "2":
+         this.nameRole = 'Administrador'
+         break;
+       default:
+         this.nameRole = 'Error'
+    }
   }
 }
 </script>

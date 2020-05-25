@@ -1,45 +1,65 @@
 <template>
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <table class="table table-hover table-bordered">
+        <table class="table table-hover table-bordered" >
             <thead class="thead-light">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nombre Usuario</th>
-                    <th scope="col">Apellido Usuario</th>
-                    <th scope="col">Solicitud</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Acepted</th>
+                    <th scope="col">Send</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody v-for="item of items" :key="item.id">
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
+                    <th scope="row">{{item.id}}</th>
+                    <td>
+                        <a data-toggle="modal" data-target="#MoreInfoUser">
+                            {{item.nombre}} {{item.apellido}}
+                        </a>
+                    </td>
+                    <td><div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary">Send</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
+        <div class="modal fade" id="MoreInfoUser" tabindex="-1" role="dialog" aria-labelledby="MoreInfoUserModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-md modal-dialog-scrollable" role="document">
+              <div class="modal-content">
+                  <div class="modal-header bg-light">
+                  <h1 class="modal-title" id="MoreInfoUserModal"><i>User Information</i></h1>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  </div>
+                  <div class="modal-body bg-light container">
+                      <MoreInfoUser/>
+                      <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Ver mas</button>
+                      <button type="button" class="btn btn-primary">Ir al sitio</button> -->
+                  </div>
+                  <div class="modal-footer bg-light">
+                      Terms y Conditions
+                  </div>
+              </div>
+          </div>
+      </div>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
 import router from '../router'
+import MoreInfoUser from '../components/MoreInfoUser.vue'
 
 export default {
   name: 'Ingreso.vue',
-  components: {},
+  components: {
+      MoreInfoUser
+  },
   data: function (){
     return {
         form:{
@@ -47,7 +67,40 @@ export default {
             email1:"",
             password:""
             //passwordos:""           
+        },
+        items: {
+        usu1: {
+          id:1,
+          nombre: 'Pepo',
+          apellido: 'Perez',
+          img: '../assets/images/Perfil1.jpg'
+        },
+        usu2: {
+          id:2,
+          nombre: 'Juana',
+          apellido: 'Rodriguez',
+          img: '../assets/images/Perfil2.jpg'
+        },
+        usu3: {
+          id:3,
+          nombre: 'Roman',
+          apellido: 'Romero',
+          img: '../assets/images/Perfil3.jpg'
+        },
+        usu4: {
+          id:4,
+          nombre: 'Juancho',
+          apellido: 'Diaz',
+          img: '../assets/images/Perfil1.jpg'
+        },
+        usu5: {
+          id:5,
+          nombre: 'Mari',
+          apellido: 'Gonzalez',
+          img: '../assets/images/Perfil1.jpg'
         }
+      }
+    
     }
     },
     methods:{

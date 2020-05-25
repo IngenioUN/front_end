@@ -5,13 +5,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    backURL: 'http://localhost:3000',
-    rol: 1
+    backURL: 'http://localhost:3000'
   },
   mutations:{
-    cambiarRol(state,rolnuevo){
-      state.rol = rolnuevo
-    }
+    
   },
   actions: {
 
