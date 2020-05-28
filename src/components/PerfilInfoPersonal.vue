@@ -12,7 +12,7 @@
                     <p class="card-text">
                     Hola! <br/>
                     Me gusta la ingenieria.
-                    </p>  
+                    </p>
                     <a data-toggle="modal" data-target="#SolicitudAutorModal" v-if="rol==1">
                         <div class="card-body">
                             <button id="boton" type="button" class="btn btn-outline-dark">Solicitud Autor</button>

@@ -6,7 +6,7 @@
                     <div class="col-md-12 mb-3">
                         <label for="validationServer01"><h5>Hola, Mario Lopez</h5></label><br/>
                         <br><!-- <label for="validationServer01">Correo: mp@gmail.com</label> -->
-                        <p> 
+                        <p>
                             Al solicitar el rol de "Autor", adquiere las siguientes funcionalidades:
                             <br/>
                             <ul id="funciones">
@@ -24,8 +24,14 @@
                         </p>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <label for="exampleFormControlInput1">Tarjeta Profesional</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tarjeta Profesional">
+                        <label for="email2">E-mail de respaldo</label>
+                        <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email" v-model="form.email2" required>
+                        <label for="TP">Tarjeta Profesional</label>
+                        <input type="professionalCard" class="form-control" placeholder="Tarjeta Profesional" v-model="form.professionalCard" required>
+                        <label for="HE">Historial de Empleo</label>
+                        <input type="employmentHistory" class="form-control" placeholder="Historial de empleo" v-model="form.employmentHistory" required>
+                        <label for="HA">Historia Academica</label>
+                        <input type="academicHistory" class="form-control" placeholder="Historia Academica" v-model="form.academicHistory" required>
                         <br/>
                         <div class="mb-3">
                             <label for="exampleFormControlInput2">¿A que te dedicas?</label>
@@ -49,7 +55,7 @@
                             </label>
                             <div class="invalid-feedback">Debe marcar la casilla</div>
                         </div>
-                        <button type="submit" class="btn btn-dark mb-2">Enviar Solicitud</button>
+                        <button  @click="sendAuthReq()" class="btn btn-dark mb-2">Enviar Solicitud</button>
                     </div>
                 </form>
             </div>
@@ -58,12 +64,63 @@
 </template>
 
 <script>
+import axios from 'axios'
+import router from '../router'
 
 export default {
   name: 'SolicitudAutor',
+  components: {},
+  data: function (){
+    return {
+        form:{
+             email2: "",
+             professionalCard: "",
+             employmentHistory:"",
+             academicHistory:""
+        }
+    }
+    },
+    methods: {
+        sendAuthReq( event ){
+
+            axios
+                .post( this.$store.state.backURL + "/author-request/add-author-request", // URL
+                    {
+                        "email2": this.form.email2,
+                        "professionalCard": this.form.professionalCard,
+                        "employmentHistory": this.form.employmentHistory,
+                        "academicHistory": this.form.academicHistory
+                        //grant_type: 'password'
+                    }
+                ).then( response => {
+                    if( response.status !== 200 ){
+                        alert( "Error al solicitar la peticion de autor" );
+                    }else{
+                        alert( "Exito" )
+                        //this.$router.push('principal')
+                    }
+                } ).catch( error => {
+                    if( error.response.status === 400 ){
+                      alert( "Credenciales incorrectas" );
+                    }else{
+                      alert( "¡Parece que hubo un error de comunicación con el servidor!" );
+                    }
+                } );
+        },
+    },
+    computed:{
+        validaEmail(){
+            var exp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+            if(exp.test(this.form.email2)){
+                return false;
+            } else{
+                return true;
+            }
+        }
+    }
 }
 </script>
 
  <style scoped>
- 
+
  </style>
