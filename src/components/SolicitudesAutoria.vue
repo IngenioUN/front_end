@@ -37,7 +37,7 @@
                   </button>
                   </div>
                   <div class="modal-body bg-light container">
-                      <MoreInfoUser/>
+                      <MoreInfoUser :id="datoPasar"/>
                       <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Ver mas</button>
                       <button type="button" class="btn btn-primary">Ir al sitio</button> -->
                   </div>
@@ -62,12 +62,7 @@ export default {
   },
   data: function (){
     return {
-        form:{
-            type: 0, // 0 - Iniciar Sesion , 1 - Registro,  2 - Recuperar contraseña
-            email1:"",
-            password:""
-            //passwordos:""           
-        },
+        datoPasar : 'Pasar a otro comp',
         items: {
         usu1: {
           id:1,

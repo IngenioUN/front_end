@@ -18,6 +18,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <label for="validationServer01"><h5>Academic History: </h5></label>
             {{userdata.AcaHis}}
+            {{id}}
         </div>
     </div>
 </template>
@@ -44,6 +45,7 @@ export default {
     
     }
     },
+    props:['id'],
     methods:{
         login( event ){
                 axios

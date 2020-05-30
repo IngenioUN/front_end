@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <!-- fixed-top  -->
-                <nav id="navbar" class="navbar navbar-expand-lg nav-justified">
+                <nav id="navbar" class="navbar navbar-expand-lg d-flex justify-content-around">
                     <!-- <i><h1>Ingenio</h1></i> -->
                     <router-link class="nav-link text-white" to="/">
                         <img src="../assets/images/IngenioLogo.png" class="card-img-top" alt="Personaje" style="height: 80px; width:160px">
@@ -18,7 +18,7 @@
                         <!-- Recientes -->
                         <router-link class="nav-link text-white" to="/lomasreciente">Lo mas reciente</router-link>
                         <!-- Publicacion -->
-                        <router-link class="nav-link text-white" to="/Publication">Publicacion</router-link>
+                        <router-link class="nav-link text-white" to="/publication">Publicacion</router-link>
                         <!-- Contactenos -->
                         <router-link class="nav-link text-white" to="/contactenos">Contactenos</router-link>
                         <!-- Contactenos -->
@@ -32,13 +32,13 @@
                             </div>
                         </a>
                         <!-- Iniciar sesion -->
-                        <a data-toggle="modal" data-target="#IniciarSesionModal" > <!--v-if="Role==3"-->>
+                        <a data-toggle="modal" data-target="#IniciarSesionModal" v-if="Role==3">
                             <div class="card-body">
                                 <button type="button" class="btn btn-outline-light" style="">Sign In</button>
                             </div>
                         </a>
                         <!-- Cerrar sesion -->
-                        <a data-toggle="modal" data-target="#CerrarSesionModal" > <!--v-if="Role!=3"-->
+                        <a data-toggle="modal" data-target="#CerrarSesionModal" v-if="Role!=3">
                             <div class="card-body">
                                 <button type="button" class="btn btn-outline-light" style="">Sign Out</button>
                             </div>

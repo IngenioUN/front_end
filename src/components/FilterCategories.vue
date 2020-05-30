@@ -8,7 +8,7 @@
                 <div class="card">
                   <img src="../assets/images/paris.jpg" class="card-img-top" alt="Paris">
                   <div class="card-body">
-                      <router-link class="nav-link text-dark" to="/Publicacion"><h5>{{item.titulo}}</h5></router-link>
+                      <router-link class="nav-link text-dark" to="/publication"><h5>{{item.titulo}}</h5></router-link>
                       <p class="card-text">
                       {{item.abstract}}
                       </p>
