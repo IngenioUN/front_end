@@ -24,10 +24,15 @@
                         </p>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <label for="exampleFormControlInput1">Tarjeta Profesional</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tarjeta Profesional">
+                        <label for="exampleFormControlInput1">Tarjeta Laboral</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput12" placeholder="Tarjeta Laboral">
                         <br/>
-                        <div class="mb-3">
+                        <label for="exampleFormControlInput2">Historia Laboral</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput22" placeholder="Historia Laboral">
+                        <br/>
+                        <label for="exampleFormControlInput3">Historial Academico</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput23" placeholder="Historial Academico">
+                        <!-- <div class="mb-3">
                             <label for="exampleFormControlInput2">¿A que te dedicas?</label>
                             <select class="custom-select" required>
                             <option value="">Seleccionar...</option>
@@ -36,12 +41,13 @@
                             <option value="3">Estudiante</option>
                             </select>
                             <div class="invalid-feedback">Example invalid custom select feedback</div>
-                        </div>
-                        <div class="custom-file mb-3">
+                        </div> -->
+                        <br/>
+                        <!-- <div class="custom-file mb-3">
                             <input type="file" class="custom-file-input" id="validatedCustomFile" required>
                             <label class="custom-file-label" for="validatedCustomFile">Añadir diploma...</label>
                             <div class="invalid-feedback">Error al cargar el archivo</div>
-                        </div>
+                        </div> -->
                         <div class="custom-control custom-checkbox mb-3">
                             <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
                             <label class="custom-control-label" for="customControlValidation1">

@@ -15,6 +15,7 @@
           </ul>
         </div>
       <button @click="register()" class="btn btn-outline-dark mb-3 mt-3">Agregar usuario</button>
+      <button @click="getPersonalData()" class="btn btn-outline-dark mb-3 mt-3">Get Data</button>
       </div>  
     </div>
   </div>
@@ -95,6 +96,29 @@ import axios from 'axios';
                     alert( "Credenciales incorrectas" );
                 }else{
                     alert( "¡Parece que hubo un error de comunicación con el servidor!" );
+                }
+            } );
+            //event.preventDefault();
+        },
+        getPersonalData( event ){
+            axios
+            .get( "http://localhost:3000/user/get-personal-data"//this.$store.state.backURL + "/user/get-personal-data", // URL
+            ).then( response => {
+                if( response.status !== 200 ){
+                    alert( "Error en la autenticación" );
+                }else{
+                    //localStorage.setItem( 'token', response.data.access_token );
+                    //alert( "Funciono esta vaina!" )
+                    console.log(response.data);
+                    this.roles = response.data;
+                }
+            } ).catch( error => {
+                if( error.response.status === 400 ){
+                    alert( "Credenciales incorrectas" );
+                }
+                else{
+                    //alert( "¡Parece que hubo un error de comunicación con el servidor!" );
+                    console.log(error.response.status);
                 }
             } );
             //event.preventDefault();
