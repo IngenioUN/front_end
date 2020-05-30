@@ -55,7 +55,7 @@
           <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
               <div class="modal-content">
                   <div class="modal-header bg-light">
-                  <h1 class="modal-title" id="SubirPublicacionModal"><i>Add new publication</i></h1>
+                  <h1 class="modal-title" id="SubirPublicacionModal"><i>Add New Publication</i></h1>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>

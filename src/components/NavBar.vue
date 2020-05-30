@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <!-- fixed-top  -->
-                <nav id="navbar" class="navbar navbar-expand-lg d-flex justify-content-between">                    
+                <nav id="navbar" class="navbar navbar-expand-lg nav-justified">
                     <!-- <i><h1>Ingenio</h1></i> -->
                     <router-link class="nav-link text-white" to="/">
                         <img src="../assets/images/IngenioLogo.png" class="card-img-top" alt="Personaje" style="height: 80px; width:160px">
@@ -17,24 +17,30 @@
                         <router-link class="nav-link text-white" to="/categorias">Categorias</router-link>
                         <!-- Recientes -->
                         <router-link class="nav-link text-white" to="/lomasreciente">Lo mas reciente</router-link>
-                        <!-- Perfil -->
-                        <router-link class="nav-link text-white" to="/Perfil">Perfil</router-link>
                         <!-- Publicacion -->
-                        <router-link class="nav-link text-white" to="/Publicacion">Publicacion</router-link>
+                        <router-link class="nav-link text-white" to="/Publication">Publicacion</router-link>
                         <!-- Contactenos -->
                         <router-link class="nav-link text-white" to="/contactenos">Contactenos</router-link>
                         <!-- Contactenos -->
                         <router-link class="nav-link text-white"  to="/pruebas">Pruebas</router-link>
+                        <!-- Perfil -->
+                        <router-link class="nav-link text-white" to="/Perfil" v-if="Role!=3">Perfil</router-link>
                         <!-- Registro -->
-                        <a data-toggle="modal" data-target="#RegistrarseModal">
+                        <a data-toggle="modal" data-target="#RegistrarseModal" v-if="Role==3">
                             <div class="card-body">
-                                <button type="button" class="btn btn-outline-light">Registrarse</button>
+                                <button type="button" class="btn btn-outline-light">Sign Up</button>
                             </div>
                         </a>
                         <!-- Iniciar sesion -->
-                        <a data-toggle="modal" data-target="#IniciarSesionModal">
+                        <a data-toggle="modal" data-target="#IniciarSesionModal" > <!--v-if="Role==3"-->>
                             <div class="card-body">
-                                <button type="button" class="btn btn-outline-light" style="">Iniciar Sesion</button>
+                                <button type="button" class="btn btn-outline-light" style="">Sign In</button>
+                            </div>
+                        </a>
+                        <!-- Cerrar sesion -->
+                        <a data-toggle="modal" data-target="#CerrarSesionModal" > <!--v-if="Role!=3"-->
+                            <div class="card-body">
+                                <button type="button" class="btn btn-outline-light" style="">Sign Out</button>
                             </div>
                         </a>
                     </div>

@@ -29,14 +29,14 @@ export default {
             type: 0, // 0 - Iniciar Sesion , 1 - Registro,  2 - Recuperar contraseña
             email1:"",
             password:""
-            //passwordos:""           
+            //passwordos:""
         }
     }
     },
     methods:{
         login( event ){
                 axios
-                .post( this.$store.state.backURL + '/ingenio/signin', // URL
+                .post( this.$store.state.backURL + '/session/signin', // URL
                     {
                         "email1": this.form.email1,
                         "password": this.form.password
@@ -48,6 +48,7 @@ export default {
                     }else{
                         localStorage.setItem( 'token', response.data.access_token );
                         alert( "¡Autenticación Exitosa! El token se ha almacenado en el Local Storage" )
+                        console.log(response);
                         //this.$router.push('principal')
                     }
                 } ).catch( error => {

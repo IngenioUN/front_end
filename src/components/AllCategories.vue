@@ -1,6 +1,6 @@
 <template>
     <div class="divlogin">
-        <hr width="70%"/>
+        <!-- <hr width="70%"/> -->
         <div class="row">
           <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mt-5 offset-1">
             <div class="row">
@@ -21,7 +21,7 @@
             </div>
           </div>
         </div>
-        <hr width="70%"/>
+        <!-- <hr width="70%"/> -->
         <!-- <div class="row">
           <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mt-5 offset-1">
             <div class="row row-cols-1 row-cols-md-3">
@@ -58,7 +58,7 @@
             </div>
           </div>
         </div> -->
-        <hr width="70%"/>
+        <!-- <hr width="70%"/> -->
     </div>
 </template>
 
@@ -72,7 +72,6 @@ export default {
   components: {},
   data: function (){
     return {
-      categories:["Sytems", "Chemistry", "Civil", "Industrial"],
       publicaciones:{
         pub1:{
           id: 1,
@@ -80,7 +79,7 @@ export default {
           titulo: 'Paris, la capital del mundo',
           abstract: 'Paris ha sido una de las ciudades mas importantes debido a la cantidad de personas en el mundo que la visitan constantemente, dado que...',
           tags: {
-            _1: 'Lugares Importantes'
+            _1: 'Sytems'
           }
         },
         pub2:{
@@ -89,7 +88,7 @@ export default {
           titulo: 'El secreto de New York',
           abstract: 'New York ha sido por mucho tiempo la ciudad mas cara para vivir. Pero lo que muchos no saben es que...',
           tags: {
-            _1: 'USA'
+            _1: 'Chemistry'
           }
         },
         pub3:{
@@ -98,7 +97,7 @@ export default {
           titulo: 'Trabajo Remoto',
           abstract: 'La mejor forma de trabajar en 2020, es de forma remota. Y hay formas muy faciles de hacerlo.',
           tags: {
-            _1: 'Online'
+            _1: 'Civil'
           }
         },
         pub4:{
@@ -107,7 +106,7 @@ export default {
           titulo: 'Prueba',
           abstract: 'Pruebita',
           tags: {
-            _1: 'Ok'
+            _1: 'Civil'
           }
         },
         pub6:{
@@ -116,7 +115,7 @@ export default {
           titulo: 'Prueba2',
           abstract: 'Pruebita2',
           tags: {
-            _1: 'Ok2'
+            _1: 'Industrial'
           }
         },
         pub7:{
@@ -125,7 +124,7 @@ export default {
           titulo: 'Prueba2',
           abstract: 'Pruebita2',
           tags: {
-            _1: 'Ok2'
+            _1: 'Systems'
           }
         },
         pub7:{
@@ -134,7 +133,7 @@ export default {
           titulo: 'Prueba2',
           abstract: 'Pruebita2',
           tags: {
-            _1: 'Ok2'
+            _1: 'Civil'
           }
         },
         pub9:{
@@ -143,7 +142,9 @@ export default {
           titulo: 'Prueba2',
           abstract: 'Pruebita2',
           tags: {
-            _1: 'Ok2'
+            _1: 'Chemistry',
+            _2: 'Systems',
+            _3: 'Civil'
           }
         }
       },
