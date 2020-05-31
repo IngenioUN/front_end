@@ -5,9 +5,9 @@
             <form @submit.prevent="sendForm()">
                 <!-- Clases para form utiles: action="/action_page.php class="was-validated" -->
                 <div class="form-group">
-                    <label for="uname">Usuario:</label>                        
+                    <label for="uname">Usuario:</label>
                     <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email" v-model="form.email1" required>
-                    <label for="pwd">Contraseña:</label>                        
+                    <label for="pwd">Contraseña:</label>
                     <input type="password" class="form-control" v-if="form.type!=2" :class="{'border border-success':!validaPassword}" placeholder="Contraseña" v-model="form.password" required>
                     <button @click="login()" class="btn btn-outline-dark mb-3 mt-3">Ingresar</button>
                 </div>
