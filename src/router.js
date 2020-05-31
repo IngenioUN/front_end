@@ -93,7 +93,7 @@ export default new Router({
           name: "solicitudautor",
           component: SolicitudAutor
         },
-        { 
+        {
           path: "subirpublicacion",
           name: "subirpublicacion",
           component: SubirPublicacion

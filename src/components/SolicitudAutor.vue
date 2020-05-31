@@ -26,12 +26,12 @@
                     <div class="col-md-8 mb-3">
                         <label for="email2">E-mail de respaldo</label>
                         <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email" v-model="form.email2" required>
-                        <label for="TP">Tarjeta Profesional</label>
-                        <input type="professionalCard" class="form-control" placeholder="Tarjeta Profesional" v-model="form.professionalCard" required>
-                        <label for="HE">Historial de Empleo</label>
-                        <input type="employmentHistory" class="form-control" placeholder="Historial de empleo" v-model="form.employmentHistory" required>
-                        <label for="HA">Historia Academica</label>
-                        <input type="academicHistory" class="form-control" placeholder="Historia Academica" v-model="form.academicHistory" required>
+                        <label for="professionalCard">Tarjeta Profesional</label>
+                        <input type="text" class="form-control" placeholder="Tarjeta Profesional" v-model="form.professionalCard" required>
+                        <label for="employmentHistory">Historial de Empleo</label>
+                        <input type="text" class="form-control" placeholder="Historial de empleo" v-model="form.employmentHistory" required>
+                        <label for="academicHistory">Historia Academica</label>
+                        <input type="text" class="form-control" placeholder="Historia Academica" v-model="form.academicHistory" required>
                         <br/>
                         <div class="mb-3">
                             <label for="exampleFormControlInput2">¿A que te dedicas?</label>
@@ -82,26 +82,33 @@ export default {
     },
     methods: {
         sendAuthReq( event ){
-
-            axios
-                .post( this.$store.state.backURL + "/author-request/add-author-request", // URL
-                    {
-                        "email2": this.form.email2,
-                        "professionalCard": this.form.professionalCard,
-                        "employmentHistory": this.form.employmentHistory,
-                        "academicHistory": this.form.academicHistory
-                        //grant_type: 'password'
-                    }
-                ).then( response => {
-                    if( response.status !== 200 ){
-                        alert( "Error al solicitar la peticion de autor" );
-                    }else{
-                        alert( "Exito" )
+            var reqData = {
+                "email2": this.form.email2,
+                "professionalCard": this.form.professionalCard,
+                "employmentHistory": this.form.employmentHistory,
+                "academicHistory": this.form.academicHistory
+            }
+            axios({
+                method: 'post',
+                url: this.$store.state.backURL + "/author-request/add-author-request",
+                withCredentials: true,
+                crossdomain: true,    //Changed the format in order to solve the issue
+                data: $.param (reqData)
+            }).then( response => {
+                    if( response.status == 201){
+                        alert( "Solicitud creada" );
+                    }else if( response.status == 200){
+                        alert( "Ya haz enviado tu solicitud" )
                         //this.$router.push('principal')
+                    }
+                    else {
+                        alert( "Error al solicitar la peticion de autor" );
                     }
                 } ).catch( error => {
                     if( error.response.status === 400 ){
                       alert( "Credenciales incorrectas" );
+                      alert(error.response.status);
+
                     }else{
                       alert( "¡Parece que hubo un error de comunicación con el servidor!" );
                     }
