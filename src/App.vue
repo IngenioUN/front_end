@@ -15,7 +15,10 @@ name: 'App',
 components:{
   NavBar,
   Footer
-  }
+  },
+  created: function(){
+    //localStorage.setItem('Role',3);
+  },
 }
 </script>
 <style>

@@ -1,17 +1,24 @@
 <template>
-    <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 offset-2">
-        <div class="divcont">
-            <h2><i>Iniciar Sesion</i></h2>
-            <form @submit.prevent="sendForm()">
-                <!-- Clases para form utiles: action="/action_page.php class="was-validated" -->
-                <div class="form-group">
-                    <label for="uname">Usuario:</label>
-                    <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email" v-model="form.email1" required>
-                    <label for="pwd">Contraseña:</label>
-                    <input type="password" class="form-control" v-if="form.type!=2" :class="{'border border-success':!validaPassword}" placeholder="Contraseña" v-model="form.password" required>
-                    <button @click="login()" class="btn btn-outline-dark mb-3 mt-3">Ingresar</button>
-                </div>
-            </form>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <label for="validationServer01"><h5>E-Mail: </h5></label>
+            {{userdata.EMail}}
+        </div>
+        <br/>
+        <div class="d-flex justify-content-between align-items-center">
+            <label for="validationServer01"><h5>Profesional Card: </h5></label>
+            {{userdata.ProfCard}}
+        </div>
+        <br/>
+        <div class="d-flex justify-content-between align-items-center">
+            <label for="validationServer01"><h5>Employment History: </h5></label>
+            {{userdata.EmpHis}}
+        </div>
+        <br/>
+        <div class="d-flex justify-content-between align-items-center">
+            <label for="validationServer01"><h5>Academic History: </h5></label>
+            {{userdata.AcaHis}}
+            {{id}}
         </div>
     </div>
 </template>
@@ -19,24 +26,30 @@
 <script>
 import axios from 'axios'
 import router from '../router'
+import MoreInfoUser from '../components/MoreInfoUser.vue'
 
 export default {
   name: 'Ingreso.vue',
-  components: {},
+  components: {
+      MoreInfoUser
+  },
   data: function (){
     return {
-        form:{
-            type: 0, // 0 - Iniciar Sesion , 1 - Registro,  2 - Recuperar contraseña
-            email1:"",
-            password:""
-            //passwordos:""
+        
+        userdata: {
+            EMail: 'pp@gmail.com',
+            ProfCard: '12345678-9',
+            EmpHis: 'Nada',
+            AcaHis: 'Nada'
         }
+    
     }
     },
+    props:['id'],
     methods:{
         login( event ){
                 axios
-                .post( this.$store.state.backURL + '/session/signin', // URL
+                .post( this.$store.state.backURL + '/ingenio/signin', // URL
                     {
                         "email1": this.form.email1,
                         "password": this.form.password
@@ -48,7 +61,6 @@ export default {
                     }else{
                         localStorage.setItem( 'token', response.data.access_token );
                         alert( "¡Autenticación Exitosa! El token se ha almacenado en el Local Storage" )
-                        console.log(response);
                         //this.$router.push('principal')
                     }
                 } ).catch( error => {

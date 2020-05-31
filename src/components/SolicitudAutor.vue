@@ -24,6 +24,7 @@
                         </p>
                     </div>
                     <div class="col-md-8 mb-3">
+
                         <label for="email2">E-mail de respaldo</label>
                         <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email" v-model="form.email2" required>
                         <label for="professionalCard">Tarjeta Profesional</label>
@@ -33,7 +34,12 @@
                         <label for="academicHistory">Historia Academica</label>
                         <input type="text" class="form-control" placeholder="Historia Academica" v-model="form.academicHistory" required>
                         <br/>
-                        <div class="mb-3">
+                        <label for="exampleFormControlInput2">Historia Laboral</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput22" placeholder="Historia Laboral">
+                        <br/>
+                        <label for="exampleFormControlInput3">Historial Academico</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput23" placeholder="Historial Academico">
+                        <!-- <div class="mb-3">
                             <label for="exampleFormControlInput2">¿A que te dedicas?</label>
                             <select class="custom-select" required>
                             <option value="">Seleccionar...</option>
@@ -42,12 +48,13 @@
                             <option value="3">Estudiante</option>
                             </select>
                             <div class="invalid-feedback">Example invalid custom select feedback</div>
-                        </div>
-                        <div class="custom-file mb-3">
+                        </div> -->
+                        <br/>
+                        <!-- <div class="custom-file mb-3">
                             <input type="file" class="custom-file-input" id="validatedCustomFile" required>
                             <label class="custom-file-label" for="validatedCustomFile">Añadir diploma...</label>
                             <div class="invalid-feedback">Error al cargar el archivo</div>
-                        </div>
+                        </div> -->
                         <div class="custom-control custom-checkbox mb-3">
                             <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
                             <label class="custom-control-label" for="customControlValidation1">

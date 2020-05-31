@@ -8,6 +8,7 @@ import Contactenos from "./views/Contactenos";
 import Categorias from "./views/Categorias";
 import LoMasReciente from "./views/LoMasReciente";
 import Perfil from "./views/Perfil";
+import Publication from "./views/Publication";
 
 //Components
 import IniciarSesion from "./components/IniciarSesion";
@@ -57,6 +58,11 @@ export default new Router({
       path: "/pruebas",
       name: "usuario",
       component: Pruebas
+    },
+    {
+      path: "/publication",
+      name: "publication",
+      component: Publication
     },
     {
       path: "/contactenos",
