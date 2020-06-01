@@ -74,7 +74,6 @@
 </template>
 
 <script>
-import {Vuetify, VSelect } from 'vuetify'
 
 
 export default {
@@ -86,8 +85,6 @@ export default {
     }
     },
     componenets:{
-        Vuetify,
-        VSelect
     },
     methods:{        
         AddKeyWord(){

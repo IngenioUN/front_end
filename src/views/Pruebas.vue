@@ -16,6 +16,10 @@
         </div>
       <button @click="register()" class="btn btn-outline-dark mb-3 mt-3">Agregar usuario</button>
       <button @click="getPersonalData()" class="btn btn-outline-dark mb-3 mt-3">Get Data</button>
+      <br/>
+      <br/>      
+      <b-button variant="secondary" @click="makeToast('danger')" class="mb-2">Danger</b-button>
+      <br/>
       </div>  
     </div>
   </div>
@@ -39,7 +43,10 @@ import axios from 'axios';
         email1: "pperez@gmail.com",
         password: "12345",
         email2: "pepo@gmail.com",
-        description: "Prueba 5 Desde Vue"
+        description: "Prueba 5 Desde Vue",
+        //Alerts
+        showBottom: false,
+        showTop: false
       }
     },
     beforeCreate( ){
@@ -122,7 +129,14 @@ import axios from 'axios';
                 }
             } );
             //event.preventDefault();
-        }
+        },
+        makeToast(variant = null) {
+        this.$bvToast.toast('Toast body content', {
+          title: `Variant ${variant || 'default'}`,
+          variant: variant,
+          solid: true
+        })
+      }
     },
     components:{
     }

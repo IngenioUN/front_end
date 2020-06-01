@@ -29,6 +29,10 @@ components:{
  color: #035951;
  color: #648C88; */
 }
+
+
+/* npm install vue bootstrap-vue bootstrap */
 </style>
+
 
  

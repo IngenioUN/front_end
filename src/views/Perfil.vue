@@ -1,32 +1,35 @@
 <template>
   <div class="divlogin">
-    <div class="row container-fluid">
-        <div class="col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 mt-5 offset-1">
-            <!-- <button @click="setRol(1)" class="btn btn-outline-dark mb-3 mt-3">Rol 1</button>
-            <button @click="setRol(2)" class="btn btn-outline-dark mb-3 mt-3">Rol 2</button>
-            <button @click="setRol(3)" class="btn btn-outline-dark mb-3 mt-3">Rol 3</button> -->
+    <div class="row container-fluid jumbotron">
+        <div class="col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 offset-1 shadow p-3">
             <div class="card text-center" v-if="Role!=2">
-              <div class="card-header">
+              <div class="card-header ">
                 <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
                   <li class="nav-item">
                     <a class="nav-link active" id="siguiendo-tab textcolor" data-toggle="tab" href="#siguiendo1" role="tab" aria-controls="siguiendo1" aria-selected="true">
-                      Siguiendo
+                      Following
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="mesiguen-tab" data-toggle="tab" href="#mesiguen" role="tab" aria-controls="mesiguen" aria-selected="false">Me Siguen</a>
+                    <a class="nav-link" id="mesiguen-tab" data-toggle="tab" href="#mesiguen" role="tab" aria-controls="mesiguen" aria-selected="false">
+                      Follow me
+                    </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" id="categorias-tab" data-toggle="tab" href="#categorias" role="tab" aria-controls="categorias" aria-selected="false">
-                      Categorias
-                      <a href="#" class="badge badge-dark">9</a>                    
+                      Categories
+                      <a href="#" class="badge badge-dark">9</a>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="articulosguardados-tab" data-toggle="tab" href="#articulosguardados" role="tab" aria-controls="articulosguardados" aria-selected="false">Articulos Guardados</a>
+                    <a class="nav-link" id="articulosguardados-tab" data-toggle="tab" href="#articulosguardados" role="tab" aria-controls="articulosguardados" aria-selected="false">
+                      Saved Publications
+                    </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="publicaciones-tab" data-toggle="tab" href="#publicaciones" role="tab" aria-controls="publicaciones" aria-selected="false" v-if="Role==1">Publicaciones</a>
+                    <a class="nav-link" id="publicaciones-tab" data-toggle="tab" href="#publicaciones" role="tab" aria-controls="publicaciones" aria-selected="false" v-if="Role==1">
+                      My Publications
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -35,17 +38,17 @@
                   <Siguiendo/>
                 </div>
                 <div class="tab-pane fade" id="mesiguen" role="tabpanel" aria-labelledby="profile-tab">
-                  Me siguen
+                  <MeSiguen/>
                 </div>
                 <div class="tab-pane fade" id="categorias" role="tabpanel" aria-labelledby="profile-tab">
-                  Categorias
+                  <MyCategories/>
                 </div>
                 <div class="tab-pane fade" id="articulosguardados" role="tabpanel" aria-labelledby="profile-tab">
-                  Articulos Guardados
+                  <SavedPublications/>
                 </div>
-                <div class="tab-pane fade" id="publicaciones" role="tabpanel" aria-labelledby="profile-tab" v-if="Role==2">
-                  Publicaciones
-                </div>              
+                <div class="tab-pane fade" id="publicaciones" role="tabpanel" aria-labelledby="profile-tab" v-if="Role==1">
+                  <MyPublications/>
+                </div>
               </div>
             </div>
             <div class="card text-center" v-if="Role==2">
@@ -75,7 +78,7 @@
               </div>
             </div>
         </div>
-        <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 mt-5">
+        <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
           <PerfilInfoPersonal/>
         </div>
     </div>      
@@ -89,7 +92,11 @@ import SolicitudesAutoria from '../components/SolicitudesAutoria.vue'
 import Usuarios from '../components/Usuarios.vue'
 import Autores from '../components/Autores.vue'
 import Siguiendo from '../components/Siguiendo.vue'
+import MeSiguen from '../components/MeSiguen.vue'
 import PerfilInfoPersonal from '../components/PerfilInfoPersonal.vue'
+import MyCategories from '../components/MyCategories.vue'
+import SavedPublications from '../components/SavedPublications.vue'
+import MyPublications from '../components/MyPublications.vue'
 
 const path = "/user";
 
@@ -100,7 +107,11 @@ export default {
       Usuarios,
       Autores,
       Siguiendo,
-      PerfilInfoPersonal
+      MeSiguen,
+      PerfilInfoPersonal,
+      MyCategories,
+      SavedPublications,
+      MyPublications
   },
   data: function (){
     return {

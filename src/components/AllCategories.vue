@@ -79,7 +79,7 @@ export default {
           titulo: 'Paris, la capital del mundo',
           abstract: 'Paris ha sido una de las ciudades mas importantes debido a la cantidad de personas en el mundo que la visitan constantemente, dado que...',
           tags: {
-            _1: 'Sytems'
+            _1: 'Systems'
           }
         },
         pub2:{
