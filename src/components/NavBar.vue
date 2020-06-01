@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <!-- fixed-top  -->
-                <nav id="navbar" class="navbar navbar-expand-lg d-flex justify-content-around">
+                <nav id="navbar" class="navbar navbar-expand-lg">
                     <!-- <i><h1>Ingenio</h1></i> -->
                     <router-link class="nav-link text-white" to="/">
                         <img src="../assets/images/IngenioLogo.png" class="card-img-top" alt="Personaje" style="height: 80px; width:160px">
@@ -12,35 +12,44 @@
                     <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button> -->
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse d-flex justify-content-around" id="navbarSupportedContent">
                         <!-- Categorias -->
-                        <router-link class="nav-link text-white" to="/categorias">Categorias</router-link>
+                        <router-link class="nav-link text-white" to="/categorias">Categories</router-link>
                         <!-- Recientes -->
-                        <router-link class="nav-link text-white" to="/lomasreciente">Lo mas reciente</router-link>
+                        <router-link class="nav-link text-white" to="/lomasreciente">Recently</router-link>
                         <!-- Publicacion -->
-                        <router-link class="nav-link text-white" to="/publication">Publicacion</router-link>
+                        <router-link class="nav-link text-white" to="/publication">Publication</router-link>
                         <!-- Contactenos -->
-                        <router-link class="nav-link text-white" to="/contactenos">Contactenos</router-link>
+                        <router-link class="nav-link text-white" to="/contactenos">Contact us</router-link>
                         <!-- Contactenos -->
-                        <router-link class="nav-link text-white"  to="/pruebas">Pruebas</router-link>
+                        <router-link class="nav-link text-white"  to="/pruebas">Tests</router-link>
                         <!-- Perfil -->
-                        <router-link class="nav-link text-white" to="/Perfil" v-if="Role!=3">Perfil</router-link>
+                        <router-link class="nav-link text-white" to="/Perfil" v-if="Role!=3">Profile</router-link>
                         <!-- Registro -->
                         <a data-toggle="modal" data-target="#RegistrarseModal" v-if="Role==3">
                             <div class="card-body">
-                                <button type="button" class="btn btn-outline-light">Sign Up</button>
+                                <button type="button" class="btn btn-outline-light">
+                                    <b-icon icon="arrow-bar-up" aria-hidden="true"></b-icon>
+                                    Sign Up
+                                </button>
                             </div>
                         </a>
                         <!-- Iniciar sesion -->
                         <a data-toggle="modal" data-target="#IniciarSesionModal" v-if="Role==3">
                             <div class="card-body">
-                                <button type="button" class="btn btn-outline-light" style="">Sign In</button>
+                                <button type="button" class="btn btn-outline-light" style="">
+                                    <b-icon icon="arrow-bar-right" aria-hidden="true"></b-icon>
+                                    Sign In
+                                </button>
                             </div>
                         </a>
                         <!-- Cerrar sesion -->
                         <a data-toggle="modal" data-target="#CerrarSesionModal" v-if="Role!=3">
                             <div class="card-body">
-                                <button type="button" class="btn btn-outline-light" style="">Sign Out</button>
+                                <button type="button" class="btn btn-outline-light" style="">
+                                    <b-icon icon="power" aria-hidden="true"></b-icon>
+                                    Sign Out
+                                </button>
                             </div>
                         </a>
                     </div>

@@ -1,6 +1,6 @@
 <template>
     <div id="PerfilInfoPersonal">
-        <div class="card text-center" style="width: 18rem;">
+        <div class="card text-center shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
             <img src="../assets/images/Perfil1.jpg" class="card-img-top" alt="...">
             <div class="card-body">
             </div>

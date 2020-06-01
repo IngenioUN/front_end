@@ -1,8 +1,8 @@
 <template>
-    <div class="divlogin">
+    <div class="divlogin jumbotron">
         <div class="row container-fuild">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" >
-                <!-- <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                       <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
                       <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -13,21 +13,21 @@
                         <img src="../assets/images/arches.jpg" class="d-block w-100" alt="Arches" style="height: 500px; opacity: 0.2">
                         <div class="carousel-caption d-none d-md-block text-dark">
                           <h1>Ingenio</h1>
-                          <p>Una pagina donde puedes...</p>
+                          <p>A web site where you could...</p>
                         </div>
                       </div>
                       <div class="carousel-item">
                         <img src="../assets/images/building.jpg" class="d-block w-100" alt="building" style="height: 500px; opacity: 0.2">
                         <div class="carousel-caption d-none d-md-block text-dark">
                           <h1>Ingenio</h1>
-                          <p>..encontrar cada noticia, informacion o investigacion ...</p>
+                          <p>..find every notice, information or investigation ...</p>
                         </div>
                       </div>
                       <div class="carousel-item">
                         <img src="../assets/images/car.jpg" class="d-block w-100" alt="car" style="height: 500px; opacity: 0.2">
                         <div class="carousel-caption d-none d-md-block text-dark">
                           <h1>Ingenio</h1>
-                          <p>... de tus temas favoritos.</p>
+                          <p>... of your favorites topics.</p>
                         </div>
                       </div>
                     </div>
@@ -39,10 +39,10 @@
                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                       <span class="sr-only">Next</span>
                     </a>
-                </div> -->
-              <nav class="nav nav-tabs nav-justified">
+                </div>
+              <nav class="nav nav-tabs nav-justified shadow p-3 mb-5 bg-light rounded sticky-top">
                   <a class="nav-item nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All Categories</a>
-                  <a class="nav-item nav-link" id="filter-tab" data-toggle="tab" href="#filter" role="tab" aria-controls="filter" aria-selected="false" v-for="item of categories" :key="item.id">{{item}}</a>
+                  <a class="nav-item nav-link" id="filter-tab" data-toggle="tab" href="#filter" role="tab" aria-controls="filter" aria-selected="false" v-for="item of categories" :key="item.id">{{item.name}}</a>
               </nav>
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
@@ -110,81 +110,7 @@ export default {
   },
   data: function (){
     return {
-      categories:["Sytems", "Chemistry", "Civil", "Industrial", "Mechanical"],
-      publicaciones:{
-        pub1:{
-          id: 1,
-          img: '',
-          titulo: 'Paris, la capital del mundo',
-          abstract: 'Paris ha sido una de las ciudades mas importantes debido a la cantidad de personas en el mundo que la visitan constantemente, dado que...',
-          tags: {
-            _1: 'Sytems'
-          }
-        },
-        pub2:{
-          id: 2,
-          img: '',
-          titulo: 'El secreto de New York',
-          abstract: 'New York ha sido por mucho tiempo la ciudad mas cara para vivir. Pero lo que muchos no saben es que...',
-          tags: {
-            _1: 'Chemistry'
-          }
-        },
-        pub3:{
-          id: 3,
-          img: '',
-          titulo: 'Trabajo Remoto',
-          abstract: 'La mejor forma de trabajar en 2020, es de forma remota. Y hay formas muy faciles de hacerlo.',
-          tags: {
-            _1: 'Civil'
-          }
-        },
-        pub4:{
-          id: 4,
-          img: '',
-          titulo: 'Prueba',
-          abstract: 'Pruebita',
-          tags: {
-            _1: 'Civil'
-          }
-        },
-        pub6:{
-          id: 6,
-          img: '',
-          titulo: 'Prueba2',
-          abstract: 'Pruebita2',
-          tags: {
-            _1: 'Industrial'
-          }
-        },
-        pub7:{
-          id: 7,
-          img: '',
-          titulo: 'Prueba2',
-          abstract: 'Pruebita2',
-          tags: {
-            _1: 'Systems'
-          }
-        },
-        pub7:{
-          id: 8,
-          img: '',
-          titulo: 'Prueba2',
-          abstract: 'Pruebita2',
-          tags: {
-            _1: 'Civil'
-          }
-        },
-        pub9:{
-          id: 9,
-          img: '',
-          titulo: 'Prueba2',
-          abstract: 'Pruebita2',
-          tags: {
-            _1: 'Chemistry'
-          }
-        }
-      },
+      categories:{},
       Role:3
     }
   },
@@ -202,9 +128,51 @@ export default {
          break;
        default:
          this.nameRole = 'Error'
-    }
+    };
+
+    //Get Categories
+    axios
+      .get( this.$store.state.backURL + '/category/get-all-categories',
+      ).then( response => {
+          if( response.status !== 201 ){
+              alert( "Error en la autenticación" );
+          }else{
+              console.log(response);
+              this.categories = response.data;
+              //this.$router.push('ingenio')
+          }
+      }).catch( error => {
+          if( error.response.status === 400 ){
+            alert( "Credenciales incorrectas" );
+          }else{
+            alert( "¡Parece que hubo un error de comunicación con el servidor!" );
+          }
+      });
+
   },
-  methods:{},
+  methods:{    
+    getCategories( event ){
+      axios
+      .get( this.$store.state.backURL + '/category/get-all-categories',
+      ).then( response => {
+          if( response.status !== 201 ){
+              alert( "Error en la autenticación" );
+          }else{
+              console.log(response);
+              this.categories = response.data;
+              //this.$router.push('ingenio')
+          }
+      }).catch( error => {
+          if( error.response.status === 400 ){
+            alert( "Credenciales incorrectas" );
+          }else{
+            alert( "¡Parece que hubo un error de comunicación con el servidor!" );
+          }
+      });
+      // event.preventDefault();
+    }
+    
+  },
   computed:{}
 }
 </script>
