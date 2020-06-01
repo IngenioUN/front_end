@@ -56,7 +56,7 @@ export default new Router({
     },
     {
       path: "/pruebas",
-      name: "usuario",
+      name: "pruebas",
       component: Pruebas
     },
     {
@@ -94,12 +94,12 @@ export default new Router({
       name: "perfil",
       component: Perfil,
       children:[
-        { 
+        {
           path: "solicitudautor",
           name: "solicitudautor",
           component: SolicitudAutor
         },
-        { 
+        {
           path: "subirpublicacion",
           name: "subirpublicacion",
           component: SubirPublicacion

@@ -1,8 +1,7 @@
-<template>  
-<!----------------------------------------------- Barra de navegacion ------------------------------------------------------->
-    <div id="NavBar">
-        <div class="row">            
-            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 offset-3 mt-4">                
+<template> 
+    <div id="divclas">
+        <div class="row jumbotron">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 offset-3 shadow-lg p-3 mb-5">                
                 <p class="text-right"><i><h1>Contactenos</h1></i></p>
                 <br/>
                 <p class="text-right" ><i><h3>
@@ -22,10 +21,33 @@
                 </h3></i></p>
             </div>
         </div>
+        
+
     </div>
-<!----------------------------------------------- Barra de navegacion ------------------------------------------------------->    
 </template>
 
 <script>
+import axios from 'axios';
+import { ToastPlugin } from 'bootstrap-vue';
+import { BToast } from 'bootstrap-vue';
+
+const path = "/user";
+
+export default {
+  name: 'Publication.vue',
+  components: { 
+    ToastPlugin,
+    BToast
+  },
+  data: function (){
+    return {
+      hide: false,
+      message: '',
+      toastCount: 0 
+    }
+    },
+    methods: {
+    }
+}
 </script>
 

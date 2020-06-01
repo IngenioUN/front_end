@@ -1,11 +1,11 @@
 <template>
-    <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 offset-2 mt-3">                
+    <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 offset-2 mt-3">
         <div class="divcont">
             <h1><i>Olvidar Contraseña</i></h1>
             <form @submit.prevent="sendForm()">
-                <!-- Clases para form utiles: action="/action_page.php class="was-validated" -->                    
+                <!-- Clases para form utiles: action="/action_page.php class="was-validated" -->
                 <div>
-                    <label for="uname">Ingresar Email:</label>                        
+                    <label for="uname">Ingresar Email:</label>
                     <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email" v-model="form.email" required>
                     <button @click="validar()" class="btn btn-outline-dark mb-3 mt-3">Olvide Contraseña</button>
                 </div>
@@ -24,9 +24,9 @@ export default {
   components: {},
   data: function (){
     return {
-        form:{            
+        form:{
             email:"",
-            password:"", 
+            password:"",
             passwordos:"",
 
             //Post
@@ -44,7 +44,7 @@ export default {
         register( event ){
             axios
             .post( this.$store.state.backURL + path, // URL
-                
+
                 {
                     "firstName": this.firstName,
                     "lastName": this.lastName,
@@ -88,7 +88,7 @@ export default {
             }
             return false;
         }
-        
+
     },
     computed:{
         validaEmail(){
