@@ -115,7 +115,7 @@ export default {
                 } ).catch( error => {
                     if( error.response.status === 400 ){
                       alert( "Credenciales incorrectas" );
-                      alert(error.response.status);
+                      alert(error.response.status);   //undefined
 
                     }else{
                       alert( "¡Parece que hubo un error de comunicación con el servidor!" );
