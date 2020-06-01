@@ -33,13 +33,14 @@
                         <input type="text" class="form-control" placeholder="Historial de empleo" v-model="form.employmentHistory" required>
                         <label for="academicHistory">Historia Academica</label>
                         <input type="text" class="form-control" placeholder="Historia Academica" v-model="form.academicHistory" required>
+                        <!--
                         <br/>
                         <label for="exampleFormControlInput2">Historia Laboral</label>
                         <input type="text" class="form-control" id="exampleFormControlInput22" placeholder="Historia Laboral">
                         <br/>
                         <label for="exampleFormControlInput3">Historial Academico</label>
                         <input type="text" class="form-control" id="exampleFormControlInput23" placeholder="Historial Academico">
-                        <!-- <div class="mb-3">
+                        <div class="mb-3">
                             <label for="exampleFormControlInput2">¿A que te dedicas?</label>
                             <select class="custom-select" required>
                             <option value="">Seleccionar...</option>
