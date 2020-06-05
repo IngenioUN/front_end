@@ -137,7 +137,7 @@ export default {
           if( response.status !== 201 ){
               alert( "Error en la autenticación" );
           }else{
-              console.log(response);
+              //console.log(response);
               this.categories = response.data;
               //this.$router.push('ingenio')
           }
@@ -148,7 +148,6 @@ export default {
             alert( "¡Parece que hubo un error de comunicación con el servidor!" );
           }
       });
-
   },
   methods:{    
     getCategories( event ){

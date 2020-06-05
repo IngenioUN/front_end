@@ -62,7 +62,7 @@
                             </label>
                             <div class="invalid-feedback">Debe marcar la casilla</div>
                         </div>
-                        <button  @click="sendAuthReq()" class="btn btn-dark mb-2">Enviar Solicitud</button>
+                        <button @click="sendAuthReq()" class="btn btn-dark mb-2">Enviar Solicitud</button>
                     </div>
                 </form>
             </div>
@@ -98,26 +98,31 @@ export default {
             axios({
                 method: 'post',
                 url: this.$store.state.backURL + "/author-request/add-author-request",
-                withCredentials: true,
+                /*withCredentials: true,
                 crossdomain: true,    //Changed the format in order to solve the issue
                 data: $.param (reqData)
+                */
             }).then( response => {
                     if( response.status == 201){
                         alert( "Solicitud creada" );
+                        console.log(response);
                     }else if( response.status == 200){
                         alert( "Ya haz enviado tu solicitud" )
                         //this.$router.push('principal')
+                        console.log(response);
                     }
                     else {
                         alert( "Error al solicitar la peticion de autor" );
+                        console.log(response);
                     }
                 } ).catch( error => {
                     if( error.response.status === 400 ){
                       alert( "Credenciales incorrectas" );
                       alert(error.response.status);
-
+                        console.log(response);
                     }else{
                       alert( "¡Parece que hubo un error de comunicación con el servidor!" );
+                      console.log(response);
                     }
                 } );
         },
