@@ -6,13 +6,13 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                    <h5 class="card-title">Pepito Perez</h5>
+                    <h5 class="card-title"> {{user.firstName}} {{user.lastName}} </h5>
                     Tu rol: {{nameRole}}<br/>
-                    pp@gmail.com
+                    {{user.email1}}
                     <p class="card-text">
                     Hola! <br/>
-                    Me gusta la ingenieria.
-                    </p>  
+                    {{user.description}}
+                    </p>
                     <a data-toggle="modal" data-target="#SolicitudAutorModal" v-if="Role==0">
                         <div class="card-body">
                             <button id="boton" type="button" class="btn btn-outline-dark">Solicitud Autor</button>
@@ -101,6 +101,7 @@ import SolicitudAutor from '../components/SolicitudAutor.vue'
 import SubirPublicacion from '../components/SubirPublicacion.vue'
 import SubirCategoria from '../components/SubirCategoria.vue'
 
+import axios from'axios';
 export default {
   name: 'PerfilInfoPersonal',
   components:{
@@ -111,10 +112,22 @@ export default {
   data: function (){
     return {
       Role:3,
-      nameRole: ''
+      nameRole: '',
+      user: {}
     }
   },
   created: function(){
+    axios
+    .get(this.$store.state.backURL + '/user/get-personal-data')
+    .then( response => {
+      this.user = response.data;
+    }).catch( error => {
+      if( error.response.status === 401){
+        alert("El usuario no se ha logueado en el plataforma");
+      }else{
+        alert("Problemas en la base de datos.");
+      }
+    });
     this.Role = localStorage.getItem('Role');
     switch(this.Role) {
       case "0":
@@ -131,7 +144,7 @@ export default {
     }
   },
   methods:{
-    ...mapMutations(['cambiarRol'])  
+    ...mapMutations(['cambiarRol'])
   },
   computed:{
     ...mapState(['rol'])
@@ -139,6 +152,6 @@ export default {
 }
 </script>
 
- <style scoped> 
+ <style scoped>
 
  </style>
