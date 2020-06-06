@@ -26,8 +26,8 @@ Vue.use(Router);
 
 export default new Router({
   mode: 'history',
-  //base: process.env.BASE_URL,
-  base: 'https://ingeniofrontend.herokuapp.com',
+  base: process.env.BASE_URL,
+  //base: 'https://ingeniofrontend.herokuapp.com',
   routes: [
     //End Points Ingenio
     {

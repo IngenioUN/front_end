@@ -1,8 +1,12 @@
-// vue-loader is a loader for webpack that allows you to author Vue components in 
+// vue-loader is a loader for webpack that allows you to author Vue components in
 // a format called Single-File Components (SFCs)
 const { VueLoaderPlugin } = require('vue-loader');
 module.exports = {
     entry: './src/app/index.js',
+    devServer: {
+        host: '0.0.0.0',
+        disableHostCheck: true
+        },
     output: {
         path: __dirname + '/src/public/js',
         filename: 'bundle.js' // Translate App.vue file to bundle.js
