@@ -97,8 +97,9 @@
 
 <script>
 import axios from 'axios';
-import AllCategories from '../components/AllCategories.vue'
-import FilterCategories from '../components/FilterCategories.vue'
+axios.defaults.withCredentials = true;
+import AllCategories from '../components/AllCategories.vue';
+import FilterCategories from '../components/FilterCategories.vue';
 
 const path = "/user";
 

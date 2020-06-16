@@ -72,8 +72,9 @@
 </template>
 
 <script>
-import axios from 'axios'
-import router from '../router'
+import axios from 'axios';
+axios.defaults.withCredentials = true;
+import router from '../router';
 
 export default {
   name: 'SolicitudAutor',

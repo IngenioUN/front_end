@@ -18,7 +18,8 @@
 
 <script>
 import axios from 'axios'
-import router from '../router'
+axios.defaults.withCredentials = true;
+import router from '../router';
 
 export default {
   name: 'Ingreso.vue',

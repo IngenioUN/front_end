@@ -87,16 +87,17 @@
 
 <script>
 import axios from 'axios';
+axios.defaults.withCredentials = true;
 import {mapState,mapMutations} from 'vuex';
-import SolicitudesAutoria from '../components/SolicitudesAutoria.vue'
-import Usuarios from '../components/Usuarios.vue'
-import Autores from '../components/Autores.vue'
-import Siguiendo from '../components/Siguiendo.vue'
-import MeSiguen from '../components/MeSiguen.vue'
-import PerfilInfoPersonal from '../components/PerfilInfoPersonal.vue'
-import MyCategories from '../components/MyCategories.vue'
-import SavedPublications from '../components/SavedPublications.vue'
-import MyPublications from '../components/MyPublications.vue'
+import SolicitudesAutoria from '../components/SolicitudesAutoria.vue';
+import Usuarios from '../components/Usuarios.vue';
+import Autores from '../components/Autores.vue';
+import Siguiendo from '../components/Siguiendo.vue';
+import MeSiguen from '../components/MeSiguen.vue';
+import PerfilInfoPersonal from '../components/PerfilInfoPersonal.vue';
+import MyCategories from '../components/MyCategories.vue';
+import SavedPublications from '../components/SavedPublications.vue';
+import MyPublications from '../components/MyPublications.vue';
 
 const path = "/user";
 

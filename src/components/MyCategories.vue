@@ -20,6 +20,7 @@
 <script>
 import axios from 'axios';
 const path = "/user";
+axios.defaults.withCredentials = true;
 
 export default {
   name: 'Siguiendo.vue',
