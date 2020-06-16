@@ -28,6 +28,7 @@
 
 <script>
 import axios from 'axios';
+axios.defaults.withCredentials = true;
 import { ToastPlugin } from 'bootstrap-vue';
 import { BToast } from 'bootstrap-vue';
 

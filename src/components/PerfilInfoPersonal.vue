@@ -102,6 +102,7 @@ import SubirPublicacion from '../components/SubirPublicacion.vue'
 import SubirCategoria from '../components/SubirCategoria.vue'
 
 import axios from'axios';
+axios.defaults.withCredentials = true;
 export default {
   name: 'PerfilInfoPersonal',
   components:{

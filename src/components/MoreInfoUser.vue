@@ -24,9 +24,10 @@
 </template>
 
 <script>
-import axios from 'axios'
-import router from '../router'
-import MoreInfoUser from '../components/MoreInfoUser.vue'
+import axios from 'axios';
+axios.defaults.withCredentials = true;
+import router from '../router';
+import MoreInfoUser from '../components/MoreInfoUser.vue';
 
 export default {
   name: 'Ingreso.vue',
