@@ -2,7 +2,7 @@
     <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 offset-2">
         <div class="divcont">
             <h2><em>Iniciar Sesion</em></h2>
-            <form @submit.prevent="sendForm()">
+            <form>
                 <div class="form-group">
                     <label for="uname">Usuario:</label>
                     <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email" v-model="form.email1" required>
@@ -51,21 +51,16 @@ export default {
                         //this.$router.push('principal')
                     }
                 } ).catch( error => {
+                    console.log(error.response);
                     if( error.response.status === 400 ){
-                      alert( "Credenciales incorrectas" );
+                      alert( error.response.data.message );
                     }else{
                       alert( "¡Parece que hubo un error de comunicación con el servidor!" );
                     }
+                    console.log(error.response);
                 } );
-
-               // event.preventDefault();
-            },
-        sendForm(){
-
-            if(this.validaType()){
-                console.log(this.form);
+               //event.preventDefault();
             }
-        }
     },
     computed:{
         validaEmail(){

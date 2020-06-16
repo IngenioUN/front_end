@@ -2,7 +2,7 @@
     <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 offset-2">
         <div class="divcont">
             <h1><em>Registro</em></h1>
-            <form @submit.prevent="sendForm()" class="was-validated">
+            <form class="was-validated">
                 <div class="form-group">
                     <label for="uname">Nombre:</label>
                     <input type="text" class="form-control" placeholder="Nombre" v-model="form.firstName" required>
@@ -87,13 +87,7 @@ export default {
                 }
             } );
             //event.preventDefault();
-        },
-        sendForm(){
-            if(this.validaType()){
-                console.log(this.form);
-            }
         }
-
     },
     computed:{
         validaEmail(){
