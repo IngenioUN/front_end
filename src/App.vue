@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <NavBar id="navbar"/>
-    <!-- <NavBar/> -->
     <router-view/>
     <Footer id="navbar"/>
   </div>
@@ -33,6 +32,3 @@ components:{
 
 /* npm install vue bootstrap-vue bootstrap */
 </style>
-
-
- 

@@ -18,7 +18,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <label for="validationServer01"><h5>Academic History: </h5></label>
             {{aH}}
-            
+
         </div>
     </div>
 </template>
@@ -26,7 +26,6 @@
 <script>
 import axios from 'axios';
 axios.defaults.withCredentials = true;
-import router from '../router';
 import MoreInfoUser from '../components/MoreInfoUser.vue';
 
 export default {
@@ -36,7 +35,7 @@ export default {
   },
   data: function (){
     return {
-        
+
         userdata: {
             EMail: 'pp@gmail.com',
             ProfCard: '12345678-9',

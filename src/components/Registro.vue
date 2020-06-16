@@ -1,9 +1,8 @@
 <template>
     <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 offset-2">
         <div class="divcont">
-            <h1><i>Registro</i></h1>
+            <h1><em>Registro</em></h1>
             <form @submit.prevent="sendForm()" class="was-validated">
-                <!-- Clases para form utiles: action="/action_page.php class="was-validated" -->
                 <div class="form-group">
                     <label for="uname">Nombre:</label>
                     <input type="text" class="form-control" placeholder="Nombre" v-model="form.firstName" required>
@@ -20,7 +19,6 @@
                     <label for="pwd">Descripcion:</label>
                     <div class="input-group">
                     <div class="input-group-prepend">
-                        <!-- <span class="input-group-text">With textarea</span> -->
                     </div>
                     <textarea class="form-control" aria-label="With textarea" placeholder="Cuentanos algo de ti..." v-model="form.description"></textarea>
                     </div>
@@ -39,7 +37,6 @@
 <script>
 import axios from 'axios';
 axios.defaults.withCredentials = true;
-import router from '../router';
 
 export default {
   name: 'Ingreso.vue',
@@ -95,47 +92,20 @@ export default {
             if(this.validaType()){
                 console.log(this.form);
             }
-        },
-        validaType(){
-            if(this.form.type==0 && !this.validaEmail && !this.validaPassword){
-                return true;
-            }
-            else if(this.form.type==1 && !this.validaEmail && !this.validaRepetirPassword){
-                return true;
-            }
-            else if(this.form.type==2 && !this.validaEmail){
-                return true;
-            }
-            return false;
         }
 
     },
     computed:{
         validaEmail(){
             var exp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-            if(exp.test(this.form.email)){
-                return false;
-            } else{
-                return true;
-            }
+            return (exp.test(this.form.email1));
         },
         validaPassword(){
             var exp = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
-            if(exp.test(this.form.password)){
-                return false;
-            } else{
-                return true;
-            }
+            return (exp.test(this.form.password));
         },
         validaRepetirPassword(){
-            if(this.form.password==this.form.confirmPassword && this.form.confirmPassword != ''){
-                return false;
-            } else{
-                return true;
-            }
-        },
-        title(){
-            return (this.form.type==0)?'Iniciar Sesion':(this.form.type==1)?'Registro':'Recuperar contraseña';
+            return(this.form.password==this.form.passwordos && this.form.passwordos != '')
         }
     }
 }

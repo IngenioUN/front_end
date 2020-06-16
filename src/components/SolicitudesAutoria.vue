@@ -1,6 +1,6 @@
 <template>
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <table class="table table-hover table-bordered" >
+        <table class="table table-hover table-bordered" aria-describedby="Author requestes Table">
             <thead class="thead-light">
                 <tr>
                     <th scope="col">#</th>
@@ -23,7 +23,7 @@
                     </td>
                     <td>
                         <button type="button" class="btn btn-primary" @click="addAutor(item.userId._id)">Send</button>
-                        
+
                     </td>
                 </tr>
             </tbody>
@@ -32,16 +32,14 @@
           <div class="modal-dialog modal-md modal-dialog-scrollable" role="document" >
               <div class="modal-content">
                   <div class="modal-header bg-light">
-                  <h1 class="modal-title" id="MoreInfoUserModal"><i>User Information</i></h1>
+                  <h1 class="modal-title" id="MoreInfoUserModal"><em>User Information</em></h1>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
                       <span aria-hidden="true" >&times;</span>
                   </button>
                   </div>
                   <div class="modal-body bg-light container" >
                       <MoreInfoUser  :email2="datoPasar.email2" :pC="datoPasar.professionalCard" :eH="datoPasar.employementHistory" :aH="datoPasar.academicHistory"/>
-                      <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Ver mas</button>
-                      <button type="button" class="btn btn-primary">Ir al sitio</button> -->
-                  </div>
+                      </div>
                   <div class="modal-footer bg-light">
                       Terms y Conditions
                   </div>
@@ -54,7 +52,6 @@
 <script>
 import axios from 'axios';
 axios.defaults.withCredentials = true;
-import router from '../router';
 import MoreInfoUser from '../components/MoreInfoUser.vue';
 
 export default {
@@ -63,7 +60,7 @@ export default {
         MoreInfoUser
     },
     data(){
-        
+
         return {
             disabled:0,
             datoPasar : [],
@@ -78,7 +75,7 @@ export default {
             axios
             .get(
             this.$store.state.backURL + "/author-request/get-all-author-requests"
-            )   
+            )
             .then(response => {
                 console.log(response);
                 this.items = response.data;

@@ -81,14 +81,13 @@
         <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
           <PerfilInfoPersonal/>
         </div>
-    </div>      
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 axios.defaults.withCredentials = true;
-import {mapState,mapMutations} from 'vuex';
 import SolicitudesAutoria from '../components/SolicitudesAutoria.vue';
 import Usuarios from '../components/Usuarios.vue';
 import Autores from '../components/Autores.vue';

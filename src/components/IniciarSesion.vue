@@ -1,9 +1,8 @@
 <template>
     <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 offset-2">
         <div class="divcont">
-            <h2><i>Iniciar Sesion</i></h2>
+            <h2><em>Iniciar Sesion</em></h2>
             <form @submit.prevent="sendForm()">
-                <!-- Clases para form utiles: action="/action_page.php class="was-validated" -->
                 <div class="form-group">
                     <label for="uname">Usuario:</label>
                     <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email" v-model="form.email1" required>
@@ -19,7 +18,6 @@
 <script>
 import axios from 'axios'
 axios.defaults.withCredentials = true;
-import router from '../router';
 
 export default {
   name: 'Ingreso.vue',
@@ -67,44 +65,16 @@ export default {
             if(this.validaType()){
                 console.log(this.form);
             }
-        },
-        validaType(){
-            if(this.form.type==0 && !this.validaEmail && !this.validaPassword){
-                return true;
-            }
-            else if(this.form.type==1 && !this.validaEmail && !this.validaRepetirPassword){
-                return true;
-            }
-            else if(this.form.type==2 && !this.validaEmail){
-                return true;
-            }
-            return false;
         }
-
     },
     computed:{
         validaEmail(){
             var exp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-            if(exp.test(this.form.email1)){
-                return false;
-            } else{
-                return true;
-            }
+            return (exp.test(this.form.email1));
         },
         validaPassword(){
             var exp = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
-            if(exp.test(this.form.password)){
-                return false;
-            } else{
-                return true;
-            }
-        },
-        validaRepetirPassword(){
-            if(this.form.password==this.form.passwordos && this.form.passwordos != ''){
-                return false;
-            } else{
-                return true;
-            }
+            return (exp.test(this.form.password));
         }
     }
 }

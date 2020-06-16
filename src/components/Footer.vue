@@ -4,7 +4,7 @@
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <!-- fixed-bottom  -->
                 <nav id="navbar" class="navbar navbar-expand-lg d-flex justify-content-between">
-                    <router-link class="nav-link text-white" to="/"><i><h1>Ingenio</h1></i></router-link>
+                    <router-link class="nav-link text-white" to="/"><em><h1>Ingenio</h1></em></router-link>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -30,7 +30,5 @@ export default {
 </script>
 
  <style scoped>
- #footer {
-    /* background-color: #012626; */
- }
+
  </style>

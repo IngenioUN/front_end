@@ -5,15 +5,12 @@ import Router from 'vue-router';
 import Pruebas from "./views/Pruebas";
 import Ingenio from "./views/Ingenio";
 import Contactenos from "./views/Contactenos";
-import Categorias from "./views/Categorias";
-import LoMasReciente from "./views/LoMasReciente";
 import Perfil from "./views/Perfil";
 import Publication from "./views/Publication";
 
 //Components
 import IniciarSesion from "./components/IniciarSesion";
 import Registro from "./components/Registro";
-import OlvidarContrasena from "./components/OlvidarContrasena";
 import SolicitudesAutoria from "./components/SolicitudesAutoria";
 import Siguiendo from "./components/Siguiendo";
 import PerfilInfoPersonal from "./components/PerfilInfoPersonal";
@@ -41,11 +38,6 @@ export default new Router({
       component: Registro
     },
     {
-      path: "/olvidarcontrasena",
-      name: "forgetpass",
-      component: OlvidarContrasena
-    },
-    {
       path: "/ingresar",
       name: "signin",
       component: IniciarSesion
@@ -69,16 +61,6 @@ export default new Router({
       path: "/contactenos",
       name: "contactenos",
       component: Contactenos
-    },
-    {
-      path: "/categorias",
-      name: "categorias",
-      component: Categorias
-    },
-    {
-      path: "/lomasreciente",
-      name: "lomasreciente",
-      component: LoMasReciente
     },
     {
       path: "/solicitudesautoria",
