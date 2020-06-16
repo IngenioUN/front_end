@@ -54,44 +54,6 @@
               </div>
             </div>
         </div>
-        
-        <!-- <hr width="70%"/> -->
-        <!-- <div class="row">
-          <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mt-5 offset-1">
-            <div class="row row-cols-1 row-cols-md-3">
-              <div class="col mb-3">
-                <div class="card h-100">
-                  <img src="../assets/images/Perfil1.jpg" class="card-img-top" alt="Perfil1">
-                  <div class="card-body">
-                    <h5 class="card-title">Autor 1</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <a href="http://www.freepik.com" target="_blank">Designed by Freepik</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col mb-3">
-                <div class="card h-100">
-                  <img src="../assets/images/Perfil2.jpg" class="card-img-top" alt="Perfil2">
-                  <div class="card-body">
-                    <h5 class="card-title">Autor 2</h5>
-                    <p class="card-text">This is a short card.</p>
-                    <a href="http://www.freepik.com" target="_blank">Designed by Freepik</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col mb-3">
-                <div class="card h-100">
-                  <img src="../assets/images/Perfil3.jpg" class="card-img-top" alt="Perfil3">
-                  <div class="card-body">
-                    <h5 class="card-title">Autor 3</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                    <a href="http://www.freepik.com" target="_blank">Designed by Freepik</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
     </div>
 </template>
 
@@ -129,7 +91,7 @@ export default {
          break;
        default:
          this.nameRole = 'Error'
-    };
+    }
 
     //Get Categories
     axios
@@ -150,7 +112,7 @@ export default {
           }
       });
   },
-  methods:{    
+  methods:{
     getCategories( event ){
       axios
       .get( this.$store.state.backURL + '/category/get-all-categories',
@@ -171,7 +133,7 @@ export default {
       });
       // event.preventDefault();
     }
-    
+
   },
   computed:{}
 }

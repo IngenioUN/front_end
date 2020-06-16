@@ -35,15 +35,13 @@
           <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
               <div class="modal-content">
                   <div class="modal-header bg-light">
-                  <h1 class="modal-title" id="IniciarSesionModal"><i>Solicitud Autoria</i></h1>
+                  <h1 class="modal-title" id="IniciarSesionModal"><em>Solicitud Autoria</em></h1>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
                   </div>
                   <div class="modal-body bg-light container">
                       <SolicitudAutor/>
-                      <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Ver mas</button>
-                      <button type="button" class="btn btn-primary">Ir al sitio</button> -->
                   </div>
                   <div class="modal-footer bg-light">
                       Terms y Conditions
@@ -55,15 +53,13 @@
           <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
               <div class="modal-content">
                   <div class="modal-header bg-light">
-                  <h1 class="modal-title" id="SubirPublicacionModal"><i>Add New Publication</i></h1>
+                  <h1 class="modal-title" id="SubirPublicacionModal"><em>Add New Publication</em></h1>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
                   </div>
                   <div class="modal-body bg-light container">
                       <SubirPublicacion/>
-                      <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Ver mas</button>
-                      <button type="button" class="btn btn-primary">Ir al sitio</button> -->
                   </div>
                   <div class="modal-footer bg-light">
                       Terms y Conditions
@@ -75,15 +71,13 @@
           <div class="modal-dialog modal-md modal-dialog-scrollable" role="document">
               <div class="modal-content">
                   <div class="modal-header bg-light">
-                  <h1 class="modal-title" id="CrearCategoriaModal"><i>Add new category</i></h1>
+                  <h1 class="modal-title" id="CrearCategoriaModal"><em>Add new category</em></h1>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
                   </div>
                   <div class="modal-body bg-light container">
                       <SubirCategoria/>
-                      <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Ver mas</button>
-                      <button type="button" class="btn btn-primary">Ir al sitio</button> -->
                   </div>
                   <div class="modal-footer bg-light">
                       Terms y Conditions
@@ -95,11 +89,10 @@
 </template>
 
 <script>
-import Contactenos from '../views/Contactenos.vue'
 import {mapState,mapMutations} from 'vuex';
-import SolicitudAutor from '../components/SolicitudAutor.vue'
-import SubirPublicacion from '../components/SubirPublicacion.vue'
-import SubirCategoria from '../components/SubirCategoria.vue'
+import SolicitudAutor from '../components/SolicitudAutor.vue';
+import SubirPublicacion from '../components/SubirPublicacion.vue';
+import SubirCategoria from '../components/SubirCategoria.vue';
 
 import axios from'axios';
 axios.defaults.withCredentials = true;

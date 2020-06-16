@@ -7,7 +7,7 @@
       <h1>Pruebas de REST API</h1>
       <br/>
       <button @click="get()" class="btn btn-outline-dark mb-3 mt-3">Obtener usuarios</button>
-      <div class="form-group col-12">   
+      <div class="form-group col-12">
           <ul id="roles">
             <li v-for="role in roles" :key="role.id" :value="role.id">
               {{role.firstName}}, {{role.lastName}}, {{role.email1}}, {{role.description}}
@@ -17,10 +17,10 @@
       <button @click="register()" class="btn btn-outline-dark mb-3 mt-3">Agregar usuario</button>
       <button @click="getPersonalData()" class="btn btn-outline-dark mb-3 mt-3">Get Data</button>
       <br/>
-      <br/>      
+      <br/>
       <b-button variant="secondary" @click="makeToast('danger')" class="mb-2">Danger</b-button>
       <br/>
-      </div>  
+      </div>
     </div>
   </div>
 </template>

@@ -1,12 +1,10 @@
 <template>
     <div class="divlogin">
-        <hr width="70%"/>
         <div class="row">
           <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" v-for="item of items" :key="item.id">
             <div class="card" >
               <div  class="card">
                 <img src="../assets/images/Perfil1.jpg" class="card-img-top" alt="item.img" />
-                <!-- <img :src="item.img" class="card-img-top" alt="item.img" /> -->
                 <div class="card-body">
                   <small class="card-title">{{item.nombre}}</small>
                 </div>

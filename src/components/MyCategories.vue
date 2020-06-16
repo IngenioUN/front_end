@@ -12,7 +12,6 @@
             Hi {{item.Name}}, you have {{item.NumNot}} notifications.
           </div>
         </div>
-        <hr width="70%"/>
       </div>
     </div>
 </template>
@@ -48,7 +47,7 @@ export default {
     }
   },
   methods:{
-    
+
   },
   computed:{}
 }

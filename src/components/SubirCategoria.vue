@@ -9,9 +9,6 @@
                         <br/>
                         <label for="validationTextarea">Description</label>
                         <textarea class="form-control" id="validationTextarea1" placeholder="Something about this category..." required></textarea>
-                        <!-- <div class="invalid-feedback">
-                        Please enter a message in the textarea.
-                        </div> -->
                         <br>
                         <button type="submit" class="btn btn-dark mb-2">Add Category</button>
                     </div>
@@ -34,7 +31,7 @@ export default {
     },
     componenets:{
     },
-    methods:{        
+    methods:{
         AddKeyWord(){
             this.keywords.push(this.keyword);
             console.log(this.keywords);
@@ -50,5 +47,5 @@ export default {
 </script>
 
  <style scoped>
- 
+
  </style>

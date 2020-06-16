@@ -1,6 +1,6 @@
 <template>
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <table class="table table-hover table-bordered" >
+        <table class="table table-hover table-bordered" aria-describedby="Author Table" >
             <thead class="thead-light">
                 <tr>
                     <th scope="col">#</th>
@@ -10,24 +10,6 @@
                 </tr>
             </thead>
             <tbody v-for="item of items" :key="item.id">
-                <!-- <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr> -->
                 <tr>
                     <th scope="row">{{item.id}}</th>
                     <td>{{item.nombre}}</td>
@@ -42,7 +24,6 @@
 <script>
 import axios from 'axios';
 axios.defaults.withCredentials = true;
-import router from '../router';
 
 export default {
   name: 'Autor.vue',
@@ -53,7 +34,7 @@ export default {
             type: 0, // 0 - Iniciar Sesion , 1 - Registro,  2 - Recuperar contraseña
             email1:"",
             password:""
-            //passwordos:""           
+            //passwordos:""
         },
         items: {
         usu1: {
@@ -87,7 +68,7 @@ export default {
           img: '../assets/images/Perfil1.jpg'
         }
       }
-    
+
     }
     },
     methods:{
@@ -119,7 +100,7 @@ export default {
             }
     },
     computed:{
-        
+
     }
 }
 </script>
