@@ -68,8 +68,8 @@ export default {
             return (exp.test(this.form.email1));
         },
         validaPassword(){
-            var exp = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
-            return (exp.test(this.form.password));
+          var exp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+          return (exp.test(this.form.password));
         }
     }
 }

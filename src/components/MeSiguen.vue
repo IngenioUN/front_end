@@ -31,27 +31,27 @@ export default {
       items: {
         usu1: {
           id:1,
-          nombre: 'Pepo Perez',
+          nombre: 'Pepo',
           img: '../assets/images/Perfil1.jpg'
         },
         usu2: {
           id:2,
-          nombre: 'Juana Arevalo',
+          nombre: 'Juana',
           img: '../assets/images/Perfil2.jpg'
         },
         usu3: {
           id:3,
-          nombre: 'Roman Romero',
+          nombre: 'Roma',
           img: '../assets/images/Perfil3.jpg'
         },
         usu4: {
           id:4,
-          nombre: 'Juancho Perez',
+          nombre: 'Juancho',
           img: '../assets/images/Perfil1.jpg'
         },
         usu5: {
           id:5,
-          nombre: 'Juancho Perez 2',
+          nombre: 'Perez',
           img: '../assets/images/Perfil1.jpg'
         }
       }

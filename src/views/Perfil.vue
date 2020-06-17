@@ -55,12 +55,6 @@
               <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs">
                   <li class="nav-item">
-                    <a class="nav-link active" id="usuarios-tab" data-toggle="tab" href="#usuarios" role="tab" aria-controls="usuarios" aria-selected="true">Todos los Usuarios</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="autores-tab" data-toggle="tab" href="#autores" role="tab" aria-controls="autores" aria-selected="true">Todos los Autores</a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link" id="solicitudesautoria-tab" data-toggle="tab" href="#solicitudesautoria" role="tab" aria-controls="solicitudesautoria" aria-selected="false">Solicitudes Autoria</a>
                   </li>
                 </ul>
@@ -89,8 +83,6 @@
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 import SolicitudesAutoria from '../components/SolicitudesAutoria.vue';
-import Usuarios from '../components/Usuarios.vue';
-import Autores from '../components/Autores.vue';
 import Siguiendo from '../components/Siguiendo.vue';
 import MeSiguen from '../components/MeSiguen.vue';
 import PerfilInfoPersonal from '../components/PerfilInfoPersonal.vue';
@@ -104,8 +96,6 @@ export default {
   name: 'Ingenio',
   components:{
       SolicitudesAutoria,
-      Usuarios,
-      Autores,
       Siguiendo,
       MeSiguen,
       PerfilInfoPersonal,
@@ -121,19 +111,6 @@ export default {
   },
   created: function(){
     this.Role = parseInt(localStorage.getItem('Role'));
-    // switch(this.Role) {
-    //   case "0":
-    //     this.nameRole = 'Usuario'
-    //     break;
-    //   case "1":
-    //     this.nameRole = 'Autor'
-    //     break;
-    //   case "2":
-    //     this.nameRole = 'Administrador'
-    //     break;
-    //   default:
-    //     this.nameRole = 'Error'
-    //}
   },
   methods:{
   }

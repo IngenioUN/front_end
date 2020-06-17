@@ -28,7 +28,7 @@
                         <!-- Iniciar sesion -->
                         <a data-toggle="modal" data-target="#IniciarSesionModal" v-if="Role==3">
                             <div class="card-body">
-                                <button type="button" class="btn btn-outline-light" style="">
+                                <button type="button" class="btn btn-outline-light">
                                     <b-icon icon="arrow-bar-right" aria-hidden="true"></b-icon>
                                     Sign In
                                 </button>
@@ -37,7 +37,7 @@
                         <!-- Cerrar sesion -->
                         <a data-toggle="modal" data-target="#CerrarSesionModal" v-if="Role!=3">
                             <div class="card-body">
-                                <button type="button" class="btn btn-outline-light" style="">
+                                <button type="button" class="btn btn-outline-light">
                                     <b-icon icon="power" aria-hidden="true"></b-icon>
                                     Sign Out
                                 </button>
@@ -102,7 +102,3 @@ export default {
   }
 }
 </script>
-
- <style scoped>
-
- </style>
