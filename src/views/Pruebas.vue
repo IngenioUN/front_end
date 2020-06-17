@@ -57,11 +57,9 @@ axios.defaults.withCredentials = true;
                     alert( "Credenciales incorrectas" );
                 }
                 else{
-                    //alert( "¡Parece que hubo un error de comunicación con el servidor!" );
                     console.log(error.response.status);
                 }
             } );
-            //event.preventDefault();
         },
         makeToast(variant = null) {
         this.$bvToast.toast('Toast body content', {
