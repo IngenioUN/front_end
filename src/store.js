@@ -8,10 +8,6 @@ export default new Vuex.Store({
     backURL: 'http://localhost:3000'
     //backURL: 'https://ingeniobackend.herokuapp.com'
   },
-  mutations:{
-
-  },
-  actions: {
-
-  }
+  mutations:{},
+  actions: {}
 })

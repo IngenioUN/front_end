@@ -1,91 +1,91 @@
 <template>
-    <div id="PerfilInfoPersonal">
-        <div class="card text-center shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
-            <img src="../assets/images/Perfil1.jpg" class="card-img-top" alt="...">
+  <div id="PerfilInfoPersonal">
+    <div class="card text-center shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+      <img src="../assets/images/Perfil1.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h5 class="card-title"> {{user.firstName}} {{user.lastName}} </h5>
+          Tu rol: {{nameRole}}<br/>
+          {{user.email1}}
+          <p class="card-text">
+          Hola! <br/>
+          {{user.description}}
+          </p>
+          <a data-toggle="modal" data-target="#SolicitudAutorModal" v-if="Role==0">
             <div class="card-body">
+              <button id="boton" type="button" class="btn btn-outline-dark">Solicitud Autor</button>
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <h5 class="card-title"> {{user.firstName}} {{user.lastName}} </h5>
-                    Tu rol: {{nameRole}}<br/>
-                    {{user.email1}}
-                    <p class="card-text">
-                    Hola! <br/>
-                    {{user.description}}
-                    </p>
-                    <a data-toggle="modal" data-target="#SolicitudAutorModal" v-if="Role==0">
-                        <div class="card-body">
-                            <button id="boton" type="button" class="btn btn-outline-dark">Solicitud Autor</button>
-                        </div>
-                    </a>
-                    <a data-toggle="modal" data-target="#SubirPublicacionModal" v-if="Role==1">
-                        <div class="card-body">
-                            <button id="boton" type="button" class="btn btn-outline-dark">Subir Publicacion</button>
-                        </div>
-                    </a>
-                    <a data-toggle="modal" data-target="#CrearCategoriaModal" v-if="Role==2">
-                        <div class="card-body">
-                            <button id="boton" type="button" class="btn btn-outline-dark">Crear Categorias</button>
-                        </div>
-                    </a>
-                </li>
-            </ul>
+          </a>
+          <a data-toggle="modal" data-target="#SubirPublicacionModal" v-if="Role==1">
+            <div class="card-body">
+              <button id="boton" type="button" class="btn btn-outline-dark">Subir Publicacion</button>
+            </div>
+          </a>
+          <a data-toggle="modal" data-target="#CrearCategoriaModal" v-if="Role==2">
+            <div class="card-body">
+              <button id="boton" type="button" class="btn btn-outline-dark">Crear Categorias</button>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="modal fade" id="SolicitudAutorModal" tabindex="-1" role="dialog" aria-labelledby="SolicitudAutorModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-light">
+          <h1 class="modal-title" id="IniciarSesionModal"><em>Solicitud Autoria</em></h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+          <div class="modal-body bg-light container">
+            <SolicitudAutor/>
+          </div>
+          <div class="modal-footer bg-light">
+            Terms y Conditions
+          </div>
         </div>
-        <div class="modal fade" id="SolicitudAutorModal" tabindex="-1" role="dialog" aria-labelledby="SolicitudAutorModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
-              <div class="modal-content">
-                  <div class="modal-header bg-light">
-                  <h1 class="modal-title" id="IniciarSesionModal"><em>Solicitud Autoria</em></h1>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
-                  </div>
-                  <div class="modal-body bg-light container">
-                      <SolicitudAutor/>
-                  </div>
-                  <div class="modal-footer bg-light">
-                      Terms y Conditions
-                  </div>
-              </div>
-          </div>
       </div>
-      <div class="modal fade" id="SubirPublicacionModal" tabindex="-1" role="dialog" aria-labelledby="SubirPublicacionModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
-              <div class="modal-content">
-                  <div class="modal-header bg-light">
-                  <h1 class="modal-title" id="SubirPublicacionModal"><em>Add New Publication</em></h1>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
-                  </div>
-                  <div class="modal-body bg-light container">
-                      <SubirPublicacion/>
-                  </div>
-                  <div class="modal-footer bg-light">
-                      Terms y Conditions
-                  </div>
-              </div>
+    </div>
+    <div class="modal fade" id="SubirPublicacionModal" tabindex="-1" role="dialog" aria-labelledby="SubirPublicacionModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-light">
+          <h1 class="modal-title" id="SubirPublicacionModal"><em>Add New Publication</em></h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
           </div>
+          <div class="modal-body bg-light container">
+            <SubirPublicacion/>
+          </div>
+          <div class="modal-footer bg-light">
+            Terms y Conditions
+          </div>
+        </div>
       </div>
-      <div class="modal fade" id="CrearCategoriaModal" tabindex="-1" role="dialog" aria-labelledby="CrearCategoriaModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-md modal-dialog-scrollable" role="document">
-              <div class="modal-content">
-                  <div class="modal-header bg-light">
-                  <h1 class="modal-title" id="CrearCategoriaModal"><em>Add new category</em></h1>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
-                  </div>
-                  <div class="modal-body bg-light container">
-                      <SubirCategoria/>
-                  </div>
-                  <div class="modal-footer bg-light">
-                      Terms y Conditions
-                  </div>
-              </div>
+    </div>
+    <div class="modal fade" id="CrearCategoriaModal" tabindex="-1" role="dialog" aria-labelledby="CrearCategoriaModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-md modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-light">
+          <h1 class="modal-title" id="CrearCategoriaModal"><em>Add new category</em></h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+          <div class="modal-body bg-light container">
+            <SubirCategoria/>
+          </div>
+          <div class="modal-footer bg-light">
+            Terms y Conditions
+          </div>
           </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -99,9 +99,9 @@ axios.defaults.withCredentials = true;
 export default {
   name: 'PerfilInfoPersonal',
   components:{
-      SolicitudAutor,
-      SubirPublicacion,
-      SubirCategoria
+    SolicitudAutor,
+    SubirPublicacion,
+    SubirCategoria
   },
   data: function (){
     return {
@@ -115,7 +115,8 @@ export default {
     .get(this.$store.state.backURL + '/user/get-personal-data')
     .then( response => {
       this.user = response.data;
-    }).catch( error => {
+    })
+    .catch( error => {
       if( error.response.status === 401){
         alert("El usuario no se ha logueado en el plataforma");
       }else{
@@ -145,7 +146,3 @@ export default {
   }
 }
 </script>
-
- <style scoped>
-
- </style>

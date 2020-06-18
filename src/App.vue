@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+	<div id="app">
     <NavBar id="navbar"/>
     <router-view/>
     <Footer id="navbar"/>
@@ -11,9 +11,9 @@ import Footer from './components/Footer.vue'
 
 export default {
 name: 'App',
-components:{
-  NavBar,
-  Footer
+  components:{
+    NavBar,
+    Footer
   },
   created: function(){
     //localStorage.setItem('Role',3);
@@ -23,12 +23,5 @@ components:{
 <style>
 #navbar{
   background-color: #000D0D;
-  /* color: #000D0D;
- color: #01403A;
- color: #035951;
- color: #648C88; */
 }
-
-
-/* npm install vue bootstrap-vue bootstrap */
 </style>

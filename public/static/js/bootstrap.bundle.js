@@ -132,7 +132,13 @@
     getUID: function getUID(prefix) {
       do {
         // eslint-disable-next-line no-bitwise
-        prefix += ~~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
+        // === Client side ===
+        const crypto = window.crypto || window.msCrypto;
+        var array = new Uint32Array(1);
+        crypto.getRandomValues(array); // Compliant for security-sensitive use cases
+
+        prefix += ~~(array[0] * MAX_UID); // "~~" acts like a faster Math.floor() here
+        //prefix += ~~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
       } while (document.getElementById(prefix));
 
       return prefix;
