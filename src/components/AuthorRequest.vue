@@ -1,5 +1,5 @@
 <template>
-  <div id="SolicitudAutor">
+  <div id="AuthorRequest">
     <div class="row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <form >
@@ -53,7 +53,7 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 
 export default {
-  name: 'SolicitudAutor',
+  name: 'AuthorRequest.vue',
   components: {},
   data: function (){
     return {

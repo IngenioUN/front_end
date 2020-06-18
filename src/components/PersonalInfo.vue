@@ -1,5 +1,5 @@
 <template>
-  <div id="PerfilInfoPersonal">
+  <div id="PersonalInfo">
     <div class="card text-center shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
       <img src="../assets/images/Perfil1.jpg" class="card-img-top" alt="...">
       <div class="card-body">
@@ -13,12 +13,12 @@
           Hola! <br/>
           {{user.description}}
           </p>
-          <a data-toggle="modal" data-target="#SolicitudAutorModal" v-if="Role==0">
+          <a data-toggle="modal" data-target="#AuthorRequestModal" v-if="Role==0">
             <div class="card-body">
               <button id="boton" type="button" class="btn btn-outline-dark">Solicitud Autor</button>
             </div>
           </a>
-          <a data-toggle="modal" data-target="#SubirPublicacionModal" v-if="Role==1">
+          <a data-toggle="modal" data-target="#AddPublicationModal" v-if="Role==1">
             <div class="card-body">
               <button id="boton" type="button" class="btn btn-outline-dark">Subir Publicacion</button>
             </div>
@@ -31,17 +31,17 @@
         </li>
       </ul>
     </div>
-    <div class="modal fade" id="SolicitudAutorModal" tabindex="-1" role="dialog" aria-labelledby="SolicitudAutorModalLabel" aria-hidden="true">
+    <div class="modal fade" id="AuthorRequestModal" tabindex="-1" role="dialog" aria-labelledby="AuthorRequestModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
         <div class="modal-content">
           <div class="modal-header bg-light">
-          <h1 class="modal-title" id="IniciarSesionModal"><em>Solicitud Autoria</em></h1>
+          <h1 class="modal-title" id="SignInModal"><em>Solicitud Autoria</em></h1>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
           </div>
           <div class="modal-body bg-light container">
-            <SolicitudAutor/>
+            <AuthorRequest/>
           </div>
           <div class="modal-footer bg-light">
             Terms y Conditions
@@ -49,17 +49,17 @@
         </div>
       </div>
     </div>
-    <div class="modal fade" id="SubirPublicacionModal" tabindex="-1" role="dialog" aria-labelledby="SubirPublicacionModalLabel" aria-hidden="true">
+    <div class="modal fade" id="AddPublicationModal" tabindex="-1" role="dialog" aria-labelledby="AddPublicationModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
         <div class="modal-content">
           <div class="modal-header bg-light">
-          <h1 class="modal-title" id="SubirPublicacionModal"><em>Add New Publication</em></h1>
+          <h1 class="modal-title" id="AddPublicationModal"><em>Add New Publication</em></h1>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
           </div>
           <div class="modal-body bg-light container">
-            <SubirPublicacion/>
+            <AddPublication/>
           </div>
           <div class="modal-footer bg-light">
             Terms y Conditions
@@ -77,7 +77,7 @@
           </button>
           </div>
           <div class="modal-body bg-light container">
-            <SubirCategoria/>
+            <AddCategory/>
           </div>
           <div class="modal-footer bg-light">
             Terms y Conditions
@@ -90,18 +90,18 @@
 
 <script>
 import {mapState,mapMutations} from 'vuex';
-import SolicitudAutor from '../components/SolicitudAutor.vue';
-import SubirPublicacion from '../components/SubirPublicacion.vue';
-import SubirCategoria from '../components/SubirCategoria.vue';
+import AuthorRequest from '../components/AuthorRequest.vue';
+import AddPublication from '../components/AddPublication.vue';
+import AddCategory from '../components/AddCategory.vue';
 
 import axios from'axios';
 axios.defaults.withCredentials = true;
 export default {
-  name: 'PerfilInfoPersonal',
+  name: 'PersonalInfo.vue',
   components:{
-    SolicitudAutor,
-    SubirPublicacion,
-    SubirCategoria
+    AuthorRequest,
+    AddPublication,
+    AddCategory
   },
   data: function (){
     return {

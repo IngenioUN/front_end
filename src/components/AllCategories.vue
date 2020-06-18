@@ -28,7 +28,7 @@ axios.defaults.withCredentials = true;
 const path = "/user";
 
 export default {
-  name: 'Ingenio.vue',
+  name: 'AllCategories.vue',
   components: {},
   data: function (){
     return {

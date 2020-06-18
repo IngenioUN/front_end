@@ -28,7 +28,7 @@ axios.defaults.withCredentials = true;
 import MoreInfoUser from '../components/MoreInfoUser.vue';
 
 export default {
-  name: 'Ingreso.vue',
+  name: 'MoreInfoUser.vue',
   components: {
     MoreInfoUser
   },

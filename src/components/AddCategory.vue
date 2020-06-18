@@ -1,5 +1,5 @@
 <template>
-  <div id="SubirPublicacion">
+  <div id="AddPublication">
     <div class="row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <form>
@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'SubirPublicacion',
+  name: 'AddCategory.vue',
   data: function (){
     return {
       keywords:[],

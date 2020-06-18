@@ -25,7 +25,7 @@ axios.defaults.withCredentials = true;
 const path = "/user";
 
 export default {
-  name: 'Siguiendo.vue',
+  name: 'SavedPublications.vue',
   components: {},
   data: function (){
     return {

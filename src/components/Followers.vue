@@ -24,7 +24,7 @@ axios.defaults.withCredentials = true;
 const path = "/user";
 
 export default {
-  name: 'Siguiendo.vue',
+  name: 'Followers.vue',
   components: {},
   data: function (){
     return {}

@@ -2,7 +2,7 @@
 	<div id="divclas">
 		<div class="row jumbotron">
 			<div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 offset-3 shadow-lg p-3 mb-5">
-				<p class="text-right"><em><h1>Contactenos</h1></em></p>
+				<p class="text-right"><em><h1>ContactUs</h1></em></p>
 				<br/>
 				<p class="text-right" ><em><h3>
 				Scrum Master:<br/>
@@ -33,7 +33,7 @@ import { BToast } from 'bootstrap-vue';
 const path = "/user";
 
 export default {
-  name: 'Publication.vue',
+  name: 'ContactUs.vue',
   components: {
     ToastPlugin,
     BToast

@@ -9,8 +9,8 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Contactenos -->
-            <router-link class="nav-link text-white" to="/contactenos">Contactenos</router-link>
+            <!-- ContactUs -->
+            <router-link class="nav-link text-white" to="/contactUs">ContactUs</router-link>
           </div>
         </nav>
       </div>
@@ -19,12 +19,12 @@
 </template>
 
 <script>
-import Contactenos from '../views/Contactenos.vue'
+import ContactUs from '../views/ContactUs.vue'
 
 export default {
-  name: 'Footer',
+  name: 'Footer.vue',
   components:{
-    Contactenos
+    ContactUs
   }
 }
 </script>

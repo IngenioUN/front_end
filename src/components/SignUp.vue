@@ -39,7 +39,7 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 
 export default {
-  name: 'Ingreso.vue',
+  name: 'SignUp.vue',
   components: {},
   data: function (){
     return {
