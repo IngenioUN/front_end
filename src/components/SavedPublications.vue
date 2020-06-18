@@ -30,22 +30,22 @@ export default {
   data: function (){
     return {
       savedPublications: {
-          _1 :{
-            Name: 'Systems',
-            Description: 'Hi, Im systems'
-          },
-          _2:{
-            Name: 'Chemistry',
-            Description: 'Hi, Im chemistry'
-          },
-          _3:{
-            Name: 'Civil',
-            Description: 'Hi, Im civil'
-          },
-          _4:{
-            Name: 'Industrial',
-            Description: 'Hi, Im industrial'
-          }
+        _1 :{
+          Name: 'Systems',
+          Description: 'Hi, Im systems'
+        },
+        _2:{
+          Name: 'Chemistry',
+          Description: 'Hi, Im chemistry'
+        },
+        _3:{
+          Name: 'Civil',
+          Description: 'Hi, Im civil'
+        },
+        _4:{
+          Name: 'Industrial',
+          Description: 'Hi, Im industrial'
+        }
       }
     }
   },

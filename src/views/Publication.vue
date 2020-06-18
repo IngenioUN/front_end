@@ -9,7 +9,6 @@
               <br/>
               <br/>
               <p class="lead text-center font-italic"><strong>{{AuthorName}} {{AuthorLastName}} </strong></p>
-
               <div class="list-group">
                 <a class="list-group-item list-group-item-action" v-for="(item) in Categories" :key="item.id">
                   {{item}}
@@ -63,10 +62,8 @@ export default {
       AuthorLastName: 'Martinez',
       Categories: ['Systems', 'Chemistry', 'Civil', 'Industrial']
     }
-    },
-    methods:{
-
-    },
-    computed:{}
+  },
+  methods:{},
+  computed:{}
 }
 </script>

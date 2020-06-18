@@ -7,11 +7,11 @@
                 <div class="card">
                   <img src="../assets/images/paris.jpg" class="card-img-top" alt="Paris">
                   <div class="card-body">
-                      <router-link class="nav-link text-dark" to="/publication"><h5>{{item.title}}</h5></router-link>
-                      <p class="card-text">
-                      {{item.abstract}}
-                      {{item.date}}
-                      </p>
+                    <router-link class="nav-link text-dark" to="/publication"><h5>{{item.title}}</h5></router-link>
+                    <p class="card-text">
+                    {{item.abstract}}
+                    {{item.date}}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -39,40 +39,41 @@ export default {
   created: function(){
     this.Role = parseInt(localStorage.getItem('Role'));
     switch(this.Role) {
-       case "0":
-         this.nameRole = 'Usuario'
-         break;
-       case "1":
-         this.nameRole = 'Autor'
-         break;
-       case "2":
-         this.nameRole = 'Administrador'
-         break;
-       default:
-         this.nameRole = 'Error'
+      case "0":
+        this.nameRole = 'Usuario'
+        break;
+      case "1":
+        this.nameRole = 'Autor'
+        break;
+      case "2":
+        this.nameRole = 'Administrador'
+        break;
+      default:
+        this.nameRole = 'Error'
     }
     //GetAllPublications
     axios
-      .get( this.$store.state.backURL + '/publication/get-all-publications',
-      ).then( response => {
-          if( response.status !== 200 ){
-              alert( "Error en la autenticación" );
-          }else{
-              this.publicaciones = response.data;
-              //console.log(this.publicaciones);
-              var publication;
-              for(publication of this.publicaciones){
-                 console.log(publication);
-              }
-              //this.$router.push('ingenio')
-          }
-      }).catch( error => {
-          if( error.response.status === 400 ){
-            alert( "Credenciales incorrectas" );
-          }else{
-            alert( "¡Parece que hubo un error de comunicación con el servidor!" );
-          }
-      });
+    .get( this.$store.state.backURL + '/publication/get-all-publications', )
+    .then( response => {
+      if( response.status !== 200 ){
+        alert( "Error en la autenticación" );
+      }else{
+        this.publicaciones = response.data;
+        //console.log(this.publicaciones);
+        var publication;
+        for(publication of this.publicaciones){
+            console.log(publication);
+        }
+        //this.$router.push('ingenio')
+      }
+    })
+    .catch( error => {
+      if( error.response.status === 400 ){
+        alert( "Credenciales incorrectas" );
+      }else{
+        alert( "¡Parece que hubo un error de comunicación con el servidor!" );
+      }
+    });
   },
   methods:{},
   computed:{}

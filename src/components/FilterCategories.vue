@@ -7,13 +7,13 @@
                 <div class="card">
                   <img src="../assets/images/paris.jpg" class="card-img-top" alt="Paris">
                   <div class="card-body">
-                      <router-link class="nav-link text-dark" to="/publication"><h5>{{item.titulo}}</h5></router-link>
-                      <p class="card-text">
-                      {{item.abstract}}
-                      </p>
-                      <div v-for="item2 of item.tags" :key="item2.id">
-                        <button type="button" class="btn btn-outline-dark mt-2">{{item2}}</button>
-                      </div>
+                    <router-link class="nav-link text-dark" to="/publication"><h5>{{item.titulo}}</h5></router-link>
+                    <p class="card-text">
+                    {{item.abstract}}
+                    </p>
+                    <div v-for="item2 of item.tags" :key="item2.id">
+                      <button type="button" class="btn btn-outline-dark mt-2">{{item2}}</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -114,17 +114,17 @@ export default {
   created: function(){
     this.Role = parseInt(localStorage.getItem('Role'));
     switch(this.Role) {
-       case "0":
-         this.nameRole = 'Usuario'
-         break;
-       case "1":
-         this.nameRole = 'Autor'
-         break;
-       case "2":
-         this.nameRole = 'Administrador'
-         break;
-       default:
-         this.nameRole = 'Error'
+      case "0":
+        this.nameRole = 'Usuario'
+        break;
+      case "1":
+        this.nameRole = 'Autor'
+        break;
+      case "2":
+        this.nameRole = 'Administrador'
+        break;
+      default:
+        this.nameRole = 'Error'
     }
   },
   methods:{},

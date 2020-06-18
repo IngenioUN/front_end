@@ -27,12 +27,9 @@ export default {
   name: 'Siguiendo.vue',
   components: {},
   data: function (){
-    return {
-    }
-    },
-    methods:{
-
-    },
-    computed:{}
+    return {}
+  },
+  methods:{},
+  computed:{}
 }
 </script>
