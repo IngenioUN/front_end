@@ -22,7 +22,7 @@ axios.defaults.withCredentials = true;
 const path = "/user";
 
 export default {
-  name: 'Siguiendo.vue',
+  name: 'MyCategories.vue',
   components: {},
   data: function (){
     return {

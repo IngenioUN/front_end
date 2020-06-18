@@ -2,20 +2,20 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 //Views
-import Pruebas from "./views/Pruebas";
+import Tests from "./views/Tests";
 import Ingenio from "./views/Ingenio";
-import Contactenos from "./views/Contactenos";
-import Perfil from "./views/Perfil";
+import ContactUs from "./views/ContactUs";
+import Profile from "./views/Profile";
 import Publication from "./views/Publication";
 
 //Components
-import IniciarSesion from "./components/IniciarSesion";
-import Registro from "./components/Registro";
-import SolicitudesAutoria from "./components/SolicitudesAutoria";
-import Siguiendo from "./components/Siguiendo";
-import PerfilInfoPersonal from "./components/PerfilInfoPersonal";
-import SolicitudAutor from "./components/SolicitudAutor";
-import SubirPublicacion from "./components/SubirPublicacion";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
+import AllAuthorRequest from "./components/AllAuthorRequest";
+import Followed from "./components/Followed";
+import PersonalInfo from "./components/PersonalInfo";
+import AuthorRequest from "./components/AuthorRequest";
+import AddPublication from "./components/AddPublication";
 import NavBar from "./components/NavBar";
 
 
@@ -33,14 +33,14 @@ export default new Router({
       component: NavBar
     },
     {
-      path: "/registrar",
+      path: "/signUp",
       name: "signup",
-      component: Registro
+      component: SignUp
     },
     {
-      path: "/ingresar",
+      path: "/signin",
       name: "signin",
-      component: IniciarSesion
+      component: SignIn
     },
     {
       path: "/",
@@ -48,9 +48,9 @@ export default new Router({
       component: Ingenio
     },
     {
-      path: "/pruebas",
-      name: "pruebas",
-      component: Pruebas
+      path: "/tests",
+      name: "tests",
+      component: Tests
     },
     {
       path: "/publication",
@@ -58,39 +58,39 @@ export default new Router({
       component: Publication
     },
     {
-      path: "/contactenos",
-      name: "contactenos",
-      component: Contactenos
+      path: "/contactUs",
+      name: "contactUs",
+      component: ContactUs
     },
     {
-      path: "/solicitudesautoria",
+      path: "/allAuthorRequest",
       name: "solicitudes autoria",
-      component: SolicitudesAutoria
+      component: AllAuthorRequest
     },
     {
-      path: "/siguiendo",
-      name: "siguiendo",
-      component: Siguiendo
+      path: "/followed",
+      name: "followed",
+      component: Followed
     },
     {
-      path: "/perfil",
-      name: "perfil",
-      component: Perfil,
+      path: "/profile",
+      name: "profile",
+      component: Profile,
       children:[
         {
-          path: "solicitudautor",
-          name: "solicitudautor",
-          component: SolicitudAutor
+          path: "authorRequest",
+          name: "authorRequest",
+          component: AuthorRequest
         },
         {
-          path: "subirpublicacion",
-          name: "subirpublicacion",
-          component: SubirPublicacion
+          path: "addPublication",
+          name: "addPublication",
+          component: AddPublication
         },
         {
-          path: "/pfinfopersonal",
-          name: "pfinfopersonal",
-          component: PerfilInfoPersonal
+          path: "/personalInfo",
+          name: "personalInfo",
+          component: PersonalInfo
         }
       ]
     }

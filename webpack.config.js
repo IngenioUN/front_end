@@ -2,31 +2,31 @@
 // a format called Single-File Components (SFCs)
 const { VueLoaderPlugin } = require('vue-loader');
 module.exports = {
-    entry: './src/app/index.js',
-    devServer: {
-        host: '0.0.0.0',
-        disableHostCheck: true
+  entry: './src/app/index.js',
+  devServer: {
+    host: '0.0.0.0',
+    disableHostCheck: true
+    },
+  output: {
+    path: __dirname + '/src/public/js',
+    filename: 'bundle.js' // Translate App.vue file to bundle.js
+  },
+  module:{
+    rules: [
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader' // Transpiling JavaScript files using Babel and webpack.
+          }
         },
-    output: {
-        path: __dirname + '/src/public/js',
-        filename: 'bundle.js' // Translate App.vue file to bundle.js
-    },
-    module:{
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader' // Transpiling JavaScript files using Babel and webpack.
-                }
-            },
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader'
-            }
-        ]
-    },
-    plugins: [
-        new  VueLoaderPlugin()
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader'
+        }
     ]
+  },
+  plugins: [
+    new  VueLoaderPlugin()
+  ]
 };

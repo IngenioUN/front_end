@@ -6,7 +6,7 @@
 					<div class="card-header ">
 						<ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
 							<li class="nav-item">
-								<a class="nav-link active" id="siguiendo-tab textcolor" data-toggle="tab" href="#siguiendo1" role="tab" aria-controls="siguiendo1" aria-selected="true">
+								<a class="nav-link active" id="followed-tab textcolor" data-toggle="tab" href="#siguiendo1" role="tab" aria-controls="siguiendo1" aria-selected="true">
 									Following
 								</a>
 							</li>
@@ -35,10 +35,10 @@
 					</div>
 					<div class="card-body tab-content">
 						<div class="tab-pane fade show active" id="siguiendo1" role="tabpanel" aria-labelledby="profile-tab">
-							<Siguiendo/>
+							<Followed/>
 						</div>
 						<div class="tab-pane fade" id="mesiguen" role="tabpanel" aria-labelledby="profile-tab">
-							<MeSiguen/>
+							<Followers/>
 						</div>
 						<div class="tab-pane fade" id="categorias" role="tabpanel" aria-labelledby="profile-tab">
 							<MyCategories/>
@@ -55,7 +55,7 @@
 						<div class="card-header">
 							<ul class="nav nav-tabs card-header-tabs">
 								<li class="nav-item">
-									<a class="nav-link" id="solicitudesautoria-tab" data-toggle="tab" href="#solicitudesautoria" role="tab" aria-controls="solicitudesautoria" aria-selected="false">Solicitudes Autoria</a>
+									<a class="nav-link" id="allAuthorRequest-tab" data-toggle="tab" href="#allAuthorRequest" role="tab" aria-controls="allAuthorRequest" aria-selected="false">Solicitudes Autoria</a>
 								</li>
 							</ul>
 						</div>
@@ -66,14 +66,14 @@
 							<div class="tab-pane fade" id="autores" role="tabpanel" aria-labelledby="autores-tab">
 								<Autores/>
 							</div>
-							<div class="tab-pane fade" id="solicitudesautoria" role="tabpanel" aria-labelledby="solicitudesautoria-tab">
-								<SolicitudesAutoria/>
+							<div class="tab-pane fade" id="allAuthorRequest" role="tabpanel" aria-labelledby="allAuthorRequest-tab">
+								<AllAuthorRequest/>
 							</div>
 						</div>
 					</div>
 			</div>
 			<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-				<PerfilInfoPersonal/>
+				<PersonalInfo/>
 			</div>
     </div>
   </div>
@@ -82,10 +82,10 @@
 <script>
 import axios from 'axios';
 axios.defaults.withCredentials = true;
-import SolicitudesAutoria from '../components/SolicitudesAutoria.vue';
-import Siguiendo from '../components/Siguiendo.vue';
-import MeSiguen from '../components/MeSiguen.vue';
-import PerfilInfoPersonal from '../components/PerfilInfoPersonal.vue';
+import AllAuthorRequest from '../components/AllAuthorRequest.vue';
+import Followed from '../components/Followed.vue';
+import Followers from '../components/Followers.vue';
+import PersonalInfo from '../components/PersonalInfo.vue';
 import MyCategories from '../components/MyCategories.vue';
 import SavedPublications from '../components/SavedPublications.vue';
 import MyPublications from '../components/MyPublications.vue';
@@ -95,10 +95,10 @@ const path = "/user";
 export default {
   name: 'Ingenio',
   components:{
-		SolicitudesAutoria,
-		Siguiendo,
-		MeSiguen,
-		PerfilInfoPersonal,
+		AllAuthorRequest,
+		Followed,
+		Followers,
+		PersonalInfo,
 		MyCategories,
 		SavedPublications,
 		MyPublications

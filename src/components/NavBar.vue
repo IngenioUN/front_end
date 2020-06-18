@@ -9,13 +9,13 @@
           </router-link>
           <div class="collapse navbar-collapse d-flex justify-content-around" id="navbarSupportedContent">
             <router-link class="nav-link text-white" to="/publication">Publication</router-link>
-            <!-- Contactenos -->
-            <router-link class="nav-link text-white" to="/contactenos">Contact us</router-link>
-            <!-- Contactenos -->
-            <router-link class="nav-link text-white"  to="/pruebas">Tests</router-link>
-            <!-- Perfil -->
-            <router-link class="nav-link text-white" to="/Perfil" v-if="Role!=3">Profile</router-link>
-            <!-- Registro -->
+            <!-- ContactUs -->
+            <router-link class="nav-link text-white" to="/contactUs">Contact us</router-link>
+            <!-- ContactUs -->
+            <router-link class="nav-link text-white"  to="/tests">Tests</router-link>
+            <!-- Profile -->
+            <router-link class="nav-link text-white" to="/profile" v-if="Role!=3">Profile</router-link>
+            <!-- SignUp -->
             <a data-toggle="modal" data-target="#RegistrarseModal" v-if="Role==3">
               <div class="card-body">
                 <button type="button" class="btn btn-outline-light">
@@ -25,7 +25,7 @@
               </div>
             </a>
             <!-- Iniciar sesion -->
-            <a data-toggle="modal" data-target="#IniciarSesionModal" v-if="Role==3">
+            <a data-toggle="modal" data-target="#SignInModal" v-if="Role==3">
               <div class="card-body">
                 <button type="button" class="btn btn-outline-light">
                   <b-icon icon="arrow-bar-right" aria-hidden="true"></b-icon>
@@ -46,11 +46,11 @@
         </nav>
       </div>
     </div>
-    <div class="modal fade" id="IniciarSesionModal" tabindex="-1" role="dialog" aria-labelledby="IniciarSesionModalLabel" aria-hidden="true">
+    <div class="modal fade" id="SignInModal" tabindex="-1" role="dialog" aria-labelledby="SignInModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-body bg-light border border-dark rounded container">
-            <IniciarSesion/>
+            <SignIn/>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-body bg-light border border-dark rounded container">
-            <Registro/>
+            <SignUp/>
           </div>
         </div>
       </div>
@@ -68,14 +68,14 @@
 </template>
 
 <script>
-import IniciarSesion from './IniciarSesion.vue'
-import Registro from './Registro.vue'
+import SignIn from './SignIn.vue'
+import SignUp from './SignUp.vue'
 
 export default {
-  name: 'NavBar',
+  name: 'NavBar.vue',
   components:{
-    IniciarSesion,
-    Registro
+    SignIn,
+    SignUp
   },
   data: function (){
     return {
