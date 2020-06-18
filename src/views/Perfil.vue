@@ -17,7 +17,7 @@
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" id="categorias-tab" data-toggle="tab" href="#categorias" role="tab" aria-controls="categorias" aria-selected="false">
-									Categories djfklaj
+									Categories
 									<a href="#" class="badge badge-dark">9</a>
 								</a>
 							</li>
