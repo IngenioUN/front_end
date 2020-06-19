@@ -5,12 +5,12 @@
         <form>
           <div class="col-md-8 mb-3">
             <label for="exampleFormControlInput100">Name</label>
-            <input type="text" class="form-control" id="exampleFormControlInput200" placeholder="Category Name">
+            <input type="text" class="form-control" id="exampleFormControlInput200" placeholder="Category Name" v-model="name">
             <br/>
             <label for="validationTextarea">Description</label>
-            <textarea class="form-control" id="validationTextarea1" placeholder="Something about this category..." required></textarea>
+            <textarea class="form-control" id="validationTextarea1" placeholder="Something about this category..." required v-model="description"></textarea>
             <br>
-            <button type="submit" class="btn btn-dark mb-2">Add Category</button>
+            <button @click="createCategory()" type="submit" class="btn btn-dark mb-2">Add Category</button>
           </div>
         </form>
       </div>
@@ -19,27 +19,36 @@
 </template>
 
 <script>
+import axios from 'axios'
+axios.defaults.withCredentials = true;
+
 export default {
   name: 'AddCategory.vue',
   data: function (){
     return {
-      keywords:[],
-      keyword: ''
+      name:'',
+      description: ''
     }
   },
   componenets:{
   },
   methods:{
-    AddKeyWord(){
-      this.keywords.push(this.keyword);
-      console.log(this.keywords);
-      this.keyword = ''
-      // this.tags.push({tag: tag});
+    createCategory( event ){
+      axios
+      .post( this.$store.state.backURL + '/category/add-category',
+        {
+          "name": this.name,
+          "description": this.description
+        }
+      ).then( response => {
+        alert(response.data.message);
+        console.log(response.data);
+      })
+      .catch( error => {
+        alert( error.response.data.message );
+        console.log(error.response);
+      });
     },
-    eliminar: function(index){
-      //delete this.keywords[index];
-      this.keywords.splice(index,1);
-    }
   }
 }
 </script>
