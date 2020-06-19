@@ -24,8 +24,8 @@ export default {
     return {
       form:{
         type: 0, // 0 - SignIn , 1 - SignUp
-        email1:"",
-        password:""
+        email1:"author@ingenio.com",
+        password:"aA@12345678"
       }
     }
   },
@@ -38,16 +38,17 @@ export default {
           "password": this.form.password
         }
       ).then( response => {
-        alert(response.data.role);
-        localStorage.setItem( 'Role', parseInt(response.data.role) );
-        localStorage.setItem( 'token', response.data.access_token );
+        alert(response.data.message);
+        localStorage.setItem( 'Role', parseInt(response.data.role));
         console.log(response.data);
-        this.$router.push('principal')
+        //this.$router.push('principal')
+        this.$router.go(0);
       })
       .catch( error => {
         console.log(error.response);
         alert( error.response.data.message );
       });
+      //this.$router.go(0);
     },
   },
   computed:{}

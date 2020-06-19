@@ -43,6 +43,11 @@ export default new Router({
       component: SignIn
     },
     {
+      path: "/principal",
+      name: "principal",
+      component: Ingenio
+    },
+    {
       path: "/",
       name: "ingenio",
       component: Ingenio
