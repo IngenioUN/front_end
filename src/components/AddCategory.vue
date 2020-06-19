@@ -48,7 +48,6 @@ export default {
         alert( error.response.data.message );
         console.log(error.response);
       });
-      //this.$router.go(0);
     },
   }
 }
