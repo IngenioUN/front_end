@@ -3,18 +3,24 @@
     <div class="divcont">
       <h1><em>Sign Up</em></h1>
       <br/>
-      <b-input class="form-control" type="text" name="firstName" v-model="form.firstName" placeholder="Name" />
+      <b-input class="form-control" type="text" name="firstName" v-model="form.firstName" placeholder="Name" :state="verifyName"/>
       <br/>
-      <b-input class="form-control" type="text" name="lastName" v-model="form.lastName" placeholder="Last Name" />
+      <b-input class="form-control" type="text" name="lastName" v-model="form.lastName" placeholder="Last Name" :state="verifyLastName"/>
       <br/>
-      <b-input class="form-control" type="text" name="username" v-model="form.email1" placeholder="Email" />
+      <b-input class="form-control" type="text" name="username" v-model="form.email1" placeholder="Email" :state="verifyEmail"/>
       <br/>
-      <b-input class="form-control" type="password" name="password" v-model="form.password" placeholder="Password" />
+      <b-input class="form-control" type="password" name="password" v-model="form.password" placeholder="Password" :state="verifyPass"/>
       <br/>
-      <b-input class="form-control" type="password" name="confirmPassword" v-model="form.confirmPassword" placeholder="Confirm Password" />
+      <b-input class="form-control" type="password" name="confirmPassword" v-model="form.confirmPassword" placeholder="Confirm Password" :state="verifyPass2"/>
       <br/>
-      <b-input class="form-control" type="text" name="description" v-model="form.description" placeholder="Description" />
+      <b-input class="form-control" type="text" name="description" v-model="form.description" placeholder="Description" :state="verifyDescription"/>
       <br/>
+      <b-form-valid-feedback id="pass-feedback">
+          {{Valid}}
+        </b-form-valid-feedback>
+        <b-form-invalid-feedback id="pass-feedback">
+          {{Invalid}}
+        </b-form-invalid-feedback>
       <button @click="postSignUp()" class="btn btn-outline-dark mb-3 mt-3">Sign Up</button>
       <br/>
     </div>
@@ -37,7 +43,9 @@ export default {
         lastName: "",
         password: "",
         description: ""
-      }
+      },
+      Valid: "Los datos ingresados son validos",
+      Invalid: ""
     }
   },
   methods:{
@@ -54,23 +62,61 @@ export default {
           "description": this.form.description
         }
       ).then( response => {
-        console.log("entra");
-        localStorage.setItem( 'token', response.data.access_token );
-        alert( "¡Autenticación Exitosa! El token se ha almacenado en el Local Storage" )
+        localStorage.setItem( 'Role', response.data.role );
+        alert( response.data.message )
         console.log(response.data);
-        //this.$router.push('principal')
+        this.$router.push('principal');
+        this.$router.go(0);
       })
       .catch( error => {
         console.log(error.response);
         if( error.response.status === 400 ){
           alert( error.response.data.message );
         }else{
-          alert( "¡Parece que hubo un error de comunicación con el servidor!" );
+          alert( "Server Conection Error" );
         }
         console.log(error.response);
       });
     }
   },
-  computed:{}
+  computed: {
+    verifyName() {
+      if(this.form.firstName.length < 1){
+        return null;
+      }
+      return true
+    },
+    verifyLastName() {
+      if(this.form.lastName.length < 1){
+        return null;
+      }
+      return true
+    },
+    verifyEmail() {
+      if(this.form.email1.length < 1){
+        return null;
+      }
+      return true
+    },
+    verifyPass() {
+      if(this.form.password.length < 1){
+        return null;
+      }
+      return true
+    },
+    verifyPass2() {
+      if(this.form.confirmPassword.length < 1){
+        return null;
+      }else if(this.form.password == this.form.confirmPassword){
+        return true
+      }
+    },
+    verifyDescription() {
+      if(this.form.description.length < 1){
+        return null;
+      }
+      return true
+    }
+  },
 }
 </script>
