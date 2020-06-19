@@ -12,7 +12,10 @@
         <button @click="postSignIn()" class="btn btn-outline-dark mb-3 mt-3">SignIn</button>
         <br/>
         <br/>
-        <b-button variant="secondary" @click="makeToast('danger')" class="mb-2">Danger</b-button>
+        <button @click="postSignUp()" class="btn btn-outline-dark mb-3 mt-3">SignIn</button>
+        <br/>
+        <br/>
+        <b-button variant="secondary" @click="makeToast('success')" class="mb-2">Danger</b-button>
         <br/>
       </div>
     </div>
@@ -67,6 +70,31 @@ export default{
     postSignIn( event ){
       axios
       .post( this.$store.state.backURL + '/session/signin', // URL
+        {
+          "email1": "author@ingenio.com",
+          "password": "aA@12345678"
+          //grant_type: 'password'
+        }
+      ).then( response => {
+        console.log("entra");
+        localStorage.setItem( 'token', response.data.access_token );
+        alert( "¡Autenticación Exitosa! El token se ha almacenado en el Local Storage" )
+        console.log(response.data);
+        //this.$router.push('principal')
+      })
+      .catch( error => {
+        console.log(error.response);
+        if( error.response.status === 400 ){
+          alert( error.response.data.message );
+        }else{
+          alert( "¡Parece que hubo un error de comunicación con el servidor!" );
+        }
+        console.log(error.response);
+      });
+    },
+    postSignUp( event ){
+      axios
+      .post( this.$store.state.backURL + '/session/signup', // URL
         {
           "email1": "author@ingenio.com",
           "password": "aA@12345678"
