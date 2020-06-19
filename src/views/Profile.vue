@@ -61,10 +61,10 @@
 						</div>
 						<div class="card-body tab-content">
 							<div class="tab-pane fade show active" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
-								<Usuarios/>
+								<!-- <Usuarios/> -->
 							</div>
 							<div class="tab-pane fade" id="autores" role="tabpanel" aria-labelledby="autores-tab">
-								<Autores/>
+								<!-- <Autores/> -->
 							</div>
 							<div class="tab-pane fade" id="allAuthorRequest" role="tabpanel" aria-labelledby="allAuthorRequest-tab">
 								<AllAuthorRequest/>
