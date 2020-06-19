@@ -43,18 +43,16 @@ export default {
   data: function (){
     return {
       form:{
-        type: 0, // 0 - SignIn , 1 - SignUp
-        // email1:"author@ingenio.com",
-        // password:"aA@12345678"
-        email1:'',
-        password:''
+        type: 0,
+        email1:"author@ingenio.com",
+        password:"aA@12345678"
       }
     }
   },
   methods:{
     postSignIn( event ){
       axios
-      .post( this.$store.state.backURL + '/session/signin', // URL
+      .post( this.$store.state.backURL + '/session/signin',
         {
           "email1": this.form.email1,
           "password": this.form.password
@@ -63,16 +61,13 @@ export default {
         alert(response.data.message);
         localStorage.setItem( 'Role', parseInt(response.data.role));
         console.log(response.data);
-        //this.$router.push('principal');
         this.$router.go(0);
       })
       .catch( error => {
         console.log(error.response);
         alert( error.response.data.message );
-        //this.$router.push('signin');
         this.$router.go(0);
       });
-      //this.$router.go(0);
     },
   },
   computed: {

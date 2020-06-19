@@ -49,10 +49,9 @@ export default {
     }
   },
   methods:{
-    //REST API
     postSignUp( event ){
       axios
-      .post( this.$store.state.backURL + '/session/signup', // URL
+      .post( this.$store.state.backURL + '/session/signup',
         {
           "firstName": this.form.firstName,
           "lastName": this.form.lastName,
