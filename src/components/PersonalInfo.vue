@@ -118,10 +118,12 @@ export default {
     })
     .catch( error => {
       if( error.response.status === 401){
-        alert("El usuario no se ha logueado en el plataforma");
+        alert(error.response.data.message);
       }else{
-        alert("Problemas en la base de datos.");
+        alert("Database Problem.");
       }
+      this.$router.push('principal');
+      this.$router.go(0);
     });
     this.Role = localStorage.getItem('Role');
     switch(this.Role) {

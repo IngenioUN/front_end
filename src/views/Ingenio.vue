@@ -92,16 +92,13 @@ export default {
       default:
         this.nameRole = 'Error'
     }
-    //Get Categories
     axios
     .get( this.$store.state.backURL + '/category/get-all-categories',)
 		.then( response => {
 			if( response.status !== 201 ){
 				alert( "Error en la autenticación" );
 			}else{
-				//console.log(response);
 				this.categories = response.data;
-				//this.$router.push('ingenio')
 			}
 		})
 		.catch( error => {
@@ -122,7 +119,6 @@ export default {
 				}else{
 					console.log(response);
 					this.categories = response.data;
-					//this.$router.push('ingenio')
 				}
       })
 			.catch( error => {

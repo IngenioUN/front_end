@@ -2,7 +2,6 @@
   <div id="NavBar">
     <div class="row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <!-- fixed-top  -->
         <nav id="navbar" class="navbar navbar-expand-lg">
           <router-link class="nav-link text-white" to="/">
             <img src="../assets/images/IngenioLogo.png" class="card-img-top" alt="Personaje" style="height: 80px; width:160px">
@@ -108,13 +107,16 @@ export default {
       .get( this.$store.state.backURL + "/session/signout" )
       .then( response => {
         alert(response.data.message);
-        localStorage.setItem( 'Role', 3 );
-        // Redirect principal page
+        localStorage.setItem( 'Role', 3);
+        console.log(response.data);
+        this.$router.push('principal');
+        this.$router.go(0);
       })
       .catch( error => {
         if( error.response.status == 401 ) {
           alert(error.response.data.message);
-          // Redirect SignIn
+          localStorage.setItem( 'Role', 3 );
+          this.$router.go(0);
         } else {
           alert("Could not establish communication with the server");
         }
