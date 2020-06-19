@@ -36,7 +36,7 @@
             <!-- Cerrar sesion -->
             <a data-toggle="modal" data-target="#CerrarSesionModal" v-if="Role!=3">
               <div class="card-body">
-                <button type="button" class="btn btn-outline-light">
+                <button type="button" class="btn btn-outline-light" @click="getSignOut()">
                   <b-icon icon="power" aria-hidden="true"></b-icon>
                   Sign Out
                 </button>
@@ -68,6 +68,9 @@
 </template>
 
 <script>
+import axios from 'axios'
+axios.defaults.withCredentials = true;
+
 import SignIn from './SignIn.vue'
 import SignUp from './SignUp.vue'
 
@@ -97,6 +100,25 @@ export default {
         break;
       default:
         this.nameRole = 'Error'
+    }
+  },
+  methods: {
+    getSignOut( event ){
+      axios
+      .get( this.$store.state.backURL + "/session/signout" )
+      .then( response => {
+        alert(response.data.message);
+        localStorage.setItem( 'Role', 3 );
+        // Redirect principal page
+      })
+      .catch( error => {
+        if( error.response.status == 401 ) {
+          alert(error.response.data.message);
+          // Redirect SignIn
+        } else {
+          alert("Could not establish communication with the server");
+        }
+      });
     }
   }
 }

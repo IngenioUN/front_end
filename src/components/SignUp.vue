@@ -1,35 +1,22 @@
 <template>
   <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 offset-2">
     <div class="divcont">
-      <h1><em>Registro</em></h1>
-      <form class="was-validated">
-        <div class="form-group">
-          <label for="uname">Nombre:</label>
-          <input type="text" class="form-control" placeholder="Nombre" v-model="form.firstName" required>
-          <label for="uname">Apellido:</label>
-          <input type="text" class="form-control" placeholder="Apellido" v-model="form.lastName" required>
-          <label for="uname">Email:</label>
-          <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email" v-model="form.email1" required>
-          <label for="pwd">Contraseña:</label>
-          <input type="password" class="form-control" :class="{'border border-success':!validaPassword}" placeholder="Ingresar contraseña" v-model="form.password" required>
-          <label for="pwd">Repetir Contraseña:</label>
-          <input type="password" class="form-control" :class="{'border border-success':!validaRepetirPassword, 'border border-danger':validaRepetirPassword}" placeholder="Repetir contraseña" v-model="form.confirmPassword" required>
-          <label for="pwd">Email 2:</label>
-          <input type="email" class="form-control" :class="{'border border-success':!validaEmail}" placeholder="Email2" v-model="form.email2" required>
-          <label for="pwd">Descripcion:</label>
-          <div class="input-group">
-          <div class="input-group-prepend">
-          </div>
-          <textarea class="form-control" aria-label="With textarea" placeholder="Cuentanos algo de ti..." v-model="form.description"></textarea>
-          </div>
-          <div class="form-group form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" name="remember" required> Acepto los terminos y condiciones de Ingenio.
-            </label>
-          </div>
-          <button @click="register()"  class="btn btn-outline-dark">Registrarme</button>
-        </div>
-      </form>
+      <h1><em>Sign Up</em></h1>
+      <br/>
+      <b-input class="form-control" type="text" name="firstName" v-model="form.firstName" placeholder="Name" />
+      <br/>
+      <b-input class="form-control" type="text" name="lastName" v-model="form.lastName" placeholder="Last Name" />
+      <br/>
+      <b-input class="form-control" type="text" name="username" v-model="form.email1" placeholder="Email" />
+      <br/>
+      <b-input class="form-control" type="password" name="password" v-model="form.password" placeholder="Password" />
+      <br/>
+      <b-input class="form-control" type="password" name="confirmPassword" v-model="form.confirmPassword" placeholder="Confirm Password" />
+      <br/>
+      <b-input class="form-control" type="text" name="description" v-model="form.description" placeholder="Description" />
+      <br/>
+      <button @click="postSignUp()" class="btn btn-outline-dark mb-3 mt-3">Sign Up</button>
+      <br/>
     </div>
   </div>
 </template>
@@ -44,63 +31,46 @@ export default {
   data: function (){
     return {
       form:{
-        type: 0, // 0 - Iniciar Sesion , 1 - Registro,  2 - Recuperar contraseña
         email1:"",
         confirmPassword:"",
-        //Post
         firstName: "",
         lastName: "",
         password: "",
-        email2: "",
         description: ""
       }
     }
   },
   methods:{
-      //REST API
-    register( event ){
+    //REST API
+    postSignUp( event ){
       axios
-      .post( this.$store.state.backURL +'/ingenio/signup', // URL
+      .post( this.$store.state.backURL + '/session/signup', // URL
         {
           "firstName": this.form.firstName,
           "lastName": this.form.lastName,
           "email1": this.form.email1,
           "password": this.form.password,
           "confirmPassword": this.form.confirmPassword,
-          "email2": this.form.email2,
           "description": this.form.description
         }
-      )
-      .then( response => {
-        if( response.status !== 201 ){
-          alert( "Error en la autenticación" );
-        }else{
-          //localStorage.setItem( 'token', response.data.access_token );
-          //alert( "Funciono esta vaina!" )
-          console.log(response);
-          //this.$router.replace( {name: 'ingenio'} )
-        }
-      }).catch( error => {
+      ).then( response => {
+        console.log("entra");
+        localStorage.setItem( 'token', response.data.access_token );
+        alert( "¡Autenticación Exitosa! El token se ha almacenado en el Local Storage" )
+        console.log(response.data);
+        //this.$router.push('principal')
+      })
+      .catch( error => {
+        console.log(error.response);
         if( error.response.status === 400 ){
-          alert( "Credenciales incorrectas" );
+          alert( error.response.data.message );
         }else{
           alert( "¡Parece que hubo un error de comunicación con el servidor!" );
         }
+        console.log(error.response);
       });
     }
   },
-  computed:{
-    validaEmail(){
-      var exp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-      return (exp.test(this.form.email1));
-    },
-    validaPassword(){
-      var exp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
-      return (exp.test(this.form.password));
-    },
-    validaRepetirPassword(){
-      return(this.form.password==this.form.passwordos && this.form.passwordos != '')
-    }
-  }
+  computed:{}
 }
 </script>
