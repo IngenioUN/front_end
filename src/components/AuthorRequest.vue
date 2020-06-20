@@ -67,10 +67,15 @@ export default {
     },
     methods: {
       sendAuthReq( event ){
-        axios({
-          method: 'post',
-          url: this.$store.state.backURL + "/author-request/add-author-request",
-        })
+        axios
+          .post( this.$store.state.backURL + "/author-request/add-author-request",
+        {
+          "email2": this.form.email2,
+          "professionalCard": this.form.professionalCard,
+          "employmentHistory": this.form.employmentHistory,
+          "academicHistory": this.form.academicHistory
+        }
+      )
         .then( response => {
           if( response.status == 201){
             alert( "Solicitud creada" );
