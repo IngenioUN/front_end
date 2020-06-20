@@ -2,17 +2,31 @@
   <div id="AddPublication">
     <div class="row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <form>
-          <div class="col-md-8 mb-3">
-            <label for="exampleFormControlInput100">Name</label>
-            <input type="text" class="form-control" id="exampleFormControlInput200" placeholder="Category Name" v-model="name">
-            <br/>
-            <label for="validationTextarea">Description</label>
-            <textarea class="form-control" id="validationTextarea1" placeholder="Something about this category..." required v-model="description"></textarea>
-            <br>
-            <button @click="createCategory()" type="submit" class="btn btn-dark mb-2">Add Category</button>
-          </div>
-        </form>
+        <b-col sm="8">
+          <b-form-group
+            class="mb-0"
+            label="CategoryName"
+            label-for="input-formatter">
+            <b-input
+              id="email"
+              class="form-control"
+              type="text"
+              name="categoryName"
+              v-model="name"
+              placeholder="Category Name"/>
+          </b-form-group>
+        </b-col>
+        <br/>
+        <b-col sm="11">
+          <b-form-textarea
+            class="form-control"
+            id="categoryDescription"
+            v-model="description"
+            placeholder="Enter Category Description...">
+          </b-form-textarea>
+          <br/>
+          <button @click="createCategory()" class="btn btn-outline-dark mb-3 mt-3" >Add Category</button>
+        </b-col>
       </div>
     </div>
   </div>
