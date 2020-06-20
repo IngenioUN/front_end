@@ -37,7 +37,7 @@
           </button>
           </div>
           <div class="modal-body bg-light container" >
-            <MoreInfoUser  :email2="datoPasar.email2" :pC="datoPasar.professionalCard" :eH="datoPasar.employementHistory" :aH="datoPasar.academicHistory"/>
+            <MoreInfoUser  :email2="datoPasar.email2" :pC="datoPasar.professionalCard" :eH="datoPasar.employmentHistory" :aH="datoPasar.academicHistory"/>
             </div>
           <div class="modal-footer bg-light">
             Terms y Conditions
