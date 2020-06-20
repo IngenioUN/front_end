@@ -12,6 +12,8 @@ import Publication from "./views/Publication";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import AllAuthorRequest from "./components/AllAuthorRequest";
+import Authors from "./components/Authors";
+import Users from "./components/Users";
 import Followed from "./components/Followed";
 import PersonalInfo from "./components/PersonalInfo";
 import AuthorRequest from "./components/AuthorRequest";
@@ -69,8 +71,18 @@ export default new Router({
     },
     {
       path: "/allAuthorRequest",
-      name: "solicitudes autoria",
+      name: "allAuthorRequest",
       component: AllAuthorRequest
+    },
+    {
+      path: "/authors",
+      name: "authors",
+      component: Authors
+    },
+    {
+      path: "/users",
+      name: "users",
+      component: Users
     },
     {
       path: "/followed",
