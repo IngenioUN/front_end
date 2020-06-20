@@ -54,7 +54,7 @@ axios.defaults.withCredentials = true;
 import MoreInfoUser from '../components/MoreInfoUser.vue';
 
 export default {
-  name: 'AllAuthorRequest.vue',
+  name: 'Users.vue',
   components: {
     MoreInfoUser
   },

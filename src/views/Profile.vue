@@ -23,6 +23,11 @@
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" id="articulosguardados-tab" data-toggle="tab" href="#articulosguardados" role="tab" aria-controls="articulosguardados" aria-selected="false">
+									Authors
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="articulosguardados-tab" data-toggle="tab" href="#articulosguardados" role="tab" aria-controls="articulosguardados" aria-selected="false">
 									Saved Publications
 								</a>
 							</li>
@@ -55,16 +60,22 @@
 						<div class="card-header">
 							<ul class="nav nav-tabs card-header-tabs">
 								<li class="nav-item">
-									<a class="nav-link" id="allAuthorRequest-tab" data-toggle="tab" href="#allAuthorRequest" role="tab" aria-controls="allAuthorRequest" aria-selected="false">Solicitudes Autoria</a>
+									<a class="nav-link" id="allAuthorRequest-tab" data-toggle="tab" href="#allAuthorRequest" role="tab" aria-controls="allAuthorRequest" aria-selected="false">Authors Requests</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="authors-tab" data-toggle="tab" href="#authors" role="tab" aria-controls="authors" aria-selected="false">Authors</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="users-tab" data-toggle="tab" href="#users" role="tab" aria-controls="users" aria-selected="false">Users</a>
 								</li>
 							</ul>
 						</div>
 						<div class="card-body tab-content">
-							<div class="tab-pane fade show active" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
-								<!-- <Usuarios/> -->
+							<div class="tab-pane fade show active" id="users" role="tabpanel" aria-labelledby="usuarios-tab">
+								<Users/>
 							</div>
-							<div class="tab-pane fade" id="autores" role="tabpanel" aria-labelledby="autores-tab">
-								<!-- <Autores/> -->
+							<div class="tab-pane fade" id="authors" role="tabpanel" aria-labelledby="autores-tab">
+								<Authors/>
 							</div>
 							<div class="tab-pane fade" id="allAuthorRequest" role="tabpanel" aria-labelledby="allAuthorRequest-tab">
 								<AllAuthorRequest/>
@@ -83,6 +94,8 @@
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 import AllAuthorRequest from '../components/AllAuthorRequest.vue';
+import Authors from '../components/Authors.vue';
+import Users from '../components/Users.vue';
 import Followed from '../components/Followed.vue';
 import Followers from '../components/Followers.vue';
 import PersonalInfo from '../components/PersonalInfo.vue';
@@ -96,6 +109,8 @@ export default {
   name: 'Ingenio',
   components:{
 		AllAuthorRequest,
+		Users,
+		Authors,
 		Followed,
 		Followers,
 		PersonalInfo,
