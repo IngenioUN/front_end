@@ -41,17 +41,17 @@
 					</a>
 				</div>
 				<nav class="nav nav-tabs nav-justified shadow p-3 mb-5 bg-light rounded sticky-top">
-					<a class="nav-item nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All Categories</a>
-					<a class="nav-item nav-link" id="filter-tab" data-toggle="tab" href="#forum" role="tab" aria-controls="filter" aria-selected="false" v-for="item of categories" :key="item.id" @click="cambiarId(item._id)">
+					<a class="nav-item nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true" @click="getAllPublications()">All Categories</a>
+					<a class="nav-item nav-link" id="filter-tab" data-toggle="tab" href="#forum" role="tab" aria-controls="filter" aria-selected="false" v-for="item of categories" :key="item.id" @click="cambiarId(item._id); setIdName(item._id,item.name)">
 						{{item.name}}
 					</a>
 				</nav>
 				<div class="tab-content" id="myTabContent">
 					<div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
-						<AllCategories/>
+						<AllCategories :Allpublica="publicaciones"/>
 					</div>
 					<div class="tab-pane fade" id="forum" role="tabpanel" aria-labelledby="filter-tab">
-						<FilterCategories :publica="publicaciones"/>
+						<FilterCategories :publica="publicaciones" :idCat="id" :nameCat="nameCat"/>
 					</div>
 				</div>
 			</div>
@@ -77,7 +77,8 @@ export default {
     return {
 			categories:{},
 			publicaciones:{},
-			id:''
+			id:'',
+			nameCat: ''
     }
   },
   created: function(){
@@ -97,10 +98,10 @@ export default {
 				alert( "¡Parece que hubo un error de comunicación con el servidor!" );
 			}
 		});
+		this.getAllPublications();
   },
   methods:{
 		cambiarId(categoryId){
-			console.log(categoryId);
 			this.publicaciones = {};
       axios
       .get( this.$store.state.backURL + '/publication/get-all-publications/' + categoryId)
@@ -108,7 +109,16 @@ export default {
         if( response.status !== 200 ){
           alert( "Error en la autenticación" );
         }else{
-          this.publicaciones = response.data;
+					this.publicaciones = response.data;
+					for (let item in this.publicaciones){
+						for (let item2 in this.publicaciones[item].listCategories){
+							for (let cat in this.categories){
+								if(this.categories[cat]._id == this.publicaciones[item].listCategories[item2]){
+									this.publicaciones[item].listCategories[item2] = this.categories[cat].name;
+								}
+							}
+						}
+					}
         }
       })
       .catch( error => {
@@ -118,6 +128,39 @@ export default {
           alert( "¡Parece que hubo un error de comunicación con el servidor!" );
         }
       });
+		},
+		getAllPublications(){
+			this.publicaciones = {};
+			const value2 = "null";
+      axios
+      .get( this.$store.state.backURL + '/publication/get-all-publications/' + value2 )
+      .then( response => {
+        if( response.status !== 200 ){
+          alert( "Error en la autenticación" );
+        }else{
+					this.publicaciones = response.data;
+					for (let item in this.publicaciones){
+						for (let item2 in this.publicaciones[item].listCategories){
+							for (let cat in this.categories){
+								if(this.categories[cat]._id == this.publicaciones[item].listCategories[item2]){
+									this.publicaciones[item].listCategories[item2] = this.categories[cat].name;
+								}
+							}
+						}
+					}
+        }
+      })
+      .catch( error => {
+        if( error.response.status === 400 ){
+          alert( "Credenciales incorrectas" );
+        }else{
+          alert( "¡Parece que hubo un error de comunicación con el servidor!" );
+        }
+      });
+		},
+		setIdName(idnuevo,namenuevo){
+			this.id = idnuevo;
+			this.nameCat = namenuevo;
 		}
 	},
   computed:{}

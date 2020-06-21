@@ -122,8 +122,8 @@ export default {
       }else{
         alert("Database Problem.");
       }
-      this.$router.push('principal');
-      this.$router.go(0);
+      //this.$router.push('principal');
+      //this.$router.go(0);
     });
     this.Role = localStorage.getItem('Role');
     switch(this.Role) {
