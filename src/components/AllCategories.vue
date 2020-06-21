@@ -33,38 +33,18 @@ export default {
   data: function (){
     return {
       publicaciones:{},
-      Role:3
+      value : ""
     }
   },
   created: function(){
-    this.Role = parseInt(localStorage.getItem('Role'));
-    switch(this.Role) {
-      case "0":
-        this.nameRole = 'Usuario'
-        break;
-      case "1":
-        this.nameRole = 'Autor'
-        break;
-      case "2":
-        this.nameRole = 'Administrador'
-        break;
-      default:
-        this.nameRole = 'Error'
-    }
-    //GetAllPublications
+    const value2 = "null";
     axios
-    .get( this.$store.state.backURL + '/publication/get-all-publications', )
+    .get( this.$store.state.backURL + '/publication/get-all-publications/' + value2 )
     .then( response => {
       if( response.status !== 200 ){
         alert( "Error en la autenticación" );
       }else{
         this.publicaciones = response.data;
-        //console.log(this.publicaciones);
-        var publication;
-        for(publication of this.publicaciones){
-            console.log(publication);
-        }
-        //this.$router.push('ingenio')
       }
     })
     .catch( error => {

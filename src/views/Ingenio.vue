@@ -10,21 +10,21 @@
 					</ol>
 					<div class="carousel-inner">
 						<div class="carousel-item active" >
-							<img src="../assets/images/arches.jpg" class="d-block w-100" alt="Arches" style="height: 500px; opacity: 0.2">
+							<img src="../assets/images/arches.jpg" class="d-block w-100" alt="Arches" style="height: 200px; opacity: 0.2">
 							<div class="carousel-caption d-none d-md-block text-dark">
 								<h1>Ingenio</h1>
 								<p>A web site where you could...</p>
 							</div>
 						</div>
 						<div class="carousel-item">
-							<img src="../assets/images/building.jpg" class="d-block w-100" alt="building" style="height: 500px; opacity: 0.2">
+							<img src="../assets/images/building.jpg" class="d-block w-100" alt="building" style="height: 200px; opacity: 0.2">
 							<div class="carousel-caption d-none d-md-block text-dark">
 								<h1>Ingenio</h1>
 								<p>..find every notice, information or investigation ...</p>
 							</div>
 						</div>
 						<div class="carousel-item">
-							<img src="../assets/images/car.jpg" class="d-block w-100" alt="car" style="height: 500px; opacity: 0.2">
+							<img src="../assets/images/car.jpg" class="d-block w-100" alt="car" style="height: 200px; opacity: 0.2">
 							<div class="carousel-caption d-none d-md-block text-dark">
 								<h1>Ingenio</h1>
 								<p>... of your favorites topics.</p>
@@ -42,14 +42,16 @@
 				</div>
 				<nav class="nav nav-tabs nav-justified shadow p-3 mb-5 bg-light rounded sticky-top">
 					<a class="nav-item nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All Categories</a>
-					<a class="nav-item nav-link" id="filter-tab" data-toggle="tab" href="#filter" role="tab" aria-controls="filter" aria-selected="false" v-for="item of categories" :key="item.id">{{item.name}}</a>
+					<a class="nav-item nav-link" id="filter-tab" data-toggle="tab" href="#forum" role="tab" aria-controls="filter" aria-selected="false" v-for="item of categories" :key="item.id" @click="cambiarId(item._id)">
+						{{item.name}}
+					</a>
 				</nav>
 				<div class="tab-content" id="myTabContent">
 					<div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
 						<AllCategories/>
 					</div>
-					<div class="tab-pane fade" id="filter" role="tabpanel" aria-labelledby="filter-tab">
-						<FilterCategories/>
+					<div class="tab-pane fade" id="forum" role="tabpanel" aria-labelledby="filter-tab">
+						<FilterCategories :publica="publicaciones"/>
 					</div>
 				</div>
 			</div>
@@ -69,31 +71,18 @@ export default {
   name: 'Ingenio.vue',
   components: {
     AllCategories,
-    FilterCategories
+		FilterCategories
   },
   data: function (){
     return {
-      categories:{},
-      Role:3
+			categories:{},
+			publicaciones:{},
+			id:''
     }
   },
   created: function(){
-  	this.Role = parseInt(localStorage.getItem('Role'));
-    switch(this.Role) {
-    	case "0":
-      	this.nameRole = 'Usuario'
-				break;
-      case "1":
-        this.nameRole = 'Autor'
-        break;
-      case "2":
-        this.nameRole = 'Administrador'
-        break;
-      default:
-        this.nameRole = 'Error'
-    }
     axios
-    .get( this.$store.state.backURL + '/category/get-all-categories',)
+		.get( this.$store.state.backURL + '/category/get-all-categories',)
 		.then( response => {
 			if( response.status !== 201 ){
 				alert( "Error en la autenticación" );
@@ -110,26 +99,27 @@ export default {
 		});
   },
   methods:{
-    getCategories( event ){
+		cambiarId(categoryId){
+			console.log(categoryId);
+			this.publicaciones = {};
       axios
-      .get( this.$store.state.backURL + '/category/get-all-categories', )
-			.then( response => {
-				if( response.status !== 201 ){
-					alert( "Error en la autenticación" );
-				}else{
-					console.log(response);
-					this.categories = response.data;
-				}
-      })
-			.catch( error => {
-      	if( error.response.status === 400 ){
-        	alert( "Credenciales incorrectas" );
+      .get( this.$store.state.backURL + '/publication/get-all-publications/' + categoryId)
+      .then( response => {
+        if( response.status !== 200 ){
+          alert( "Error en la autenticación" );
         }else{
-        	alert( "¡Parece que hubo un error de comunicación con el servidor!" );
+          this.publicaciones = response.data;
+        }
+      })
+      .catch( error => {
+        if( error.response.status === 400 ){
+          alert( "Credenciales incorrectas" );
+        }else{
+          alert( "¡Parece que hubo un error de comunicación con el servidor!" );
         }
       });
-    }
-  },
+		}
+	},
   computed:{}
 }
 </script>

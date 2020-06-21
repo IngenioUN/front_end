@@ -12,10 +12,10 @@
         <button @click="postSignIn()" class="btn btn-outline-dark mb-3 mt-3">SignIn</button>
         <br/>
         <br/>
-        <button @click="postSignUp()" class="btn btn-outline-dark mb-3 mt-3">SignIn</button>
+        <button @click="postSignUp()" class="btn btn-outline-dark mb-3 mt-3">SignUp</button>
         <br/>
         <br/>
-        <b-button variant="secondary" @click="makeToast('success')" class="mb-2">Danger</b-button>
+        <b-button variant="secondary" @click="makeToast('success','Hola')" class="mb-2">Danger</b-button>
         <br/>
       </div>
     </div>
@@ -53,8 +53,6 @@ export default{
         if( response.status !== 200 ){
           alert( "Error en la autenticación" );
         }else{
-          //localStorage.setItem( 'token', response.data.access_token );
-          //alert( "Funciono esta vaina!" )
           console.log(response.data);
           this.roles = response.data;
         }
@@ -69,27 +67,29 @@ export default{
     },
     postSignIn( event ){
       axios
-      .post( this.$store.state.backURL + '/session/signin', // URL
+      .post( this.$store.state.backURL + '/session/signin',
         {
           "email1": "author@ingenio.com",
           "password": "aA@12345678"
-          //grant_type: 'password'
         }
       ).then( response => {
-        console.log("entra");
-        localStorage.setItem( 'token', response.data.access_token );
-        alert( "¡Autenticación Exitosa! El token se ha almacenado en el Local Storage" )
-        console.log(response.data);
-        //this.$router.push('principal')
+        localStorage.setItem('Role',response.data.role);
+        this.$bvToast.toast(response.data.message, {
+        title: `Success`,
+        variant: 'success',
+        solid: true
+        })
       })
       .catch( error => {
-        console.log(error.response);
         if( error.response.status === 400 ){
-          alert( error.response.data.message );
+          this.$bvToast.toast(error.response.data.message, {
+          title: `Error`,
+          variant: 'danger',
+          solid: true
+          })
         }else{
           alert( "¡Parece que hubo un error de comunicación con el servidor!" );
         }
-        console.log(error.response);
       });
     },
     postSignUp( event ){
@@ -117,8 +117,8 @@ export default{
         console.log(error.response);
       });
     },
-    makeToast(variant = null) {
-      this.$bvToast.toast('Toast body content', {
+    makeToast(variant = null, message) {
+      this.$bvToast.toast(message, {
         title: `Variant ${variant || 'default'}`,
         variant: variant,
         solid: true
