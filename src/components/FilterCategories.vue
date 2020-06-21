@@ -1,26 +1,43 @@
 <template>
     <div class="divlogin">
         <div class="row">
-          <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mt-5 offset-1">
+          <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 mt-5">
             <div class="row">
-              <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" v-for="item of publica" :key="item.id">
+              <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" v-for="item of publica" :key="item.id">
+                <!-- <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" v-for="item of publica" :key="item.id"> -->
                 <div class="card">
                   <img src="../assets/images/paris.jpg" class="card-img-top" alt="Paris">
                   <div class="card-body">
-                    <router-link class="nav-link text-dark" to="/publication"><h5>
-                      {{item.title}}
-                    </h5></router-link>
+                    <router-link class="nav-link text-dark" to="/publication"><h5>{{item.title}}</h5></router-link>
                     <p class="card-text">
                     {{item.abstract}}
                     </p>
-                    <div v-for="item2 of item.tags" :key="item2.id">
-                      <button type="button" class="btn btn-outline-dark mt-2">
-                        {{item2}}
-                      </button>
+                    <div v-for="item2 of item.listCategories" :key="item2.id">
+                      <b-button class="mt-2" block variant="outline-dark">{{item2}}</b-button>
                     </div>
+                    <b-button class="mt-3 mb-1" block variant="outline-primary">Save Publication</b-button>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 mt-5">
+            <b-button class="mt-2" block variant="outline-primary">Suscribe to {{nameCat}}
+              <br/>
+              <!-- Para probar que se esta trayendo correctmente el id de la categoria Id: {{idCat}} -->
+              </b-button>
+            <br/>
+            <div class="border" style="height: 300px; max-width: 600px; overflow-y: scroll; overflow-x: hidden;">
+              <p class="text-muted text-center">
+                Authors you may know...
+              </p>
+              <RandomAuthors :IdCat="idCat"/>
+            </div>
+            <div class="border mt-3" style="height: 300px; max-width: 600px; overflow-y: scroll; overflow-x: hidden;">
+              <p class="text-muted text-center">
+                Users you may know...
+              </p>
+              <RandomUsers :IdCat="idCat"/>
             </div>
           </div>
         </div>
@@ -30,42 +47,23 @@
 <script>
 import axios from 'axios';
 axios.defaults.withCredentials = true;
+import RandomAuthors from '../components/RandomAuthors.vue';
+import RandomUsers from '../components/RandomUsers.vue';
 
 export default {
   name: 'FilterCategories.vue',
-  components: {},
+  components: {
+    RandomAuthors,
+    RandomUsers
+  },
   data: function (){
     return {
-      publicaciones: {}
     }
   },
-  created: function(){},
-  methods:{},
-  computed:{
-    changePublications(){
-      this.publicaciones = {};
-      axios
-      .get( this.$store.state.backURL + '/publication/get-all-publications',
-      {
-        "categoryId": this.publica
-      })
-      .then( response => {
-        if( response.status !== 200 ){
-          alert( "Error en la autenticación" );
-        }else{
-          this.publicaciones = response.data;
-        }
-      })
-      .catch( error => {
-        if( error.response.status === 400 ){
-          alert( "Credenciales incorrectas" );
-        }else{
-          alert( "¡Parece que hubo un error de comunicación con el servidor!" );
-        }
-      });
-      return this.publica;
-    }
+  created: function(){
   },
-  props:['publica']
+  methods:{  },
+  computed:{},
+  props:['publica', 'idCat', 'nameCat']
 }
 </script>
