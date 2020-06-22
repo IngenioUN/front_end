@@ -39,10 +39,10 @@
 						</ul>
 					</div>
 					<div class="card-body tab-content">
-						<div class="tab-pane fade show active" id="siguiendo1" role="tabpanel" aria-labelledby="profile-tab">
+						<div class="tab-pane fade show active" id="siguiendo1" role="tabpanel" aria-labelledby="profile-tab" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;">
 							<Followed/>
 						</div>
-						<div class="tab-pane fade" id="mesiguen" role="tabpanel" aria-labelledby="profile-tab">
+						<div class="tab-pane fade" id="mesiguen" role="tabpanel" aria-labelledby="profile-tab" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;">
 							<Followers/>
 						</div>
 						<div class="tab-pane fade" id="categorias" role="tabpanel" aria-labelledby="profile-tab">
