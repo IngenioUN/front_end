@@ -26,7 +26,6 @@
                   <b-button class="mt-2 btn btn-sm align-rigth" variant="outline-dark" @click="searchNotifications(item._id)">
                   <!-- <a href="#" class="badge badge-danger">9</a> -->
                   Notifications
-                  {{notifications}}
                   </b-button>
                 </a>
               </div>

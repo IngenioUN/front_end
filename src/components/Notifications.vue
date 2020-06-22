@@ -2,13 +2,13 @@
     <div class="divlogin">
       {{numberId}}
         <div class="row">
-          <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10" v-for="item of 5" :key="item.id">
+          <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10" v-for="item of numberId.response" :key="item.id">
             <div class="row no-gutters mb-3 border">
               <div class="col-md-10 text-left">
                 <div class="card-body">
-                  <h5 class="card-title">{{item.notificationId}}</h5>
+                  <h5 class="card-title">{{item.title}}</h5>
                   Pepito Perez
-                  {{item.response}}
+                  {{item._id}}
                 </div>
               </div>
               <div class="col-md-2">
