@@ -21,7 +21,7 @@
 								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" id="articulosguardados-tab" data-toggle="tab" href="#articulosguardados" role="tab" aria-controls="articulosguardados" aria-selected="false">
+								<a class="nav-link" id="articulosguardados-tab" data-toggle="tab" href="#myauthorsguardados" role="tab" aria-controls="articulosguardados" aria-selected="false">
 									Authors
 								</a>
 							</li>
@@ -46,6 +46,9 @@
 						</div>
 						<div class="tab-pane fade" id="categorias" role="tabpanel" aria-labelledby="profile-tab" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;">
 							<MyCategories/>
+						</div>
+						<div class="tab-pane fade" id="myauthorsguardados" role="tabpanel" aria-labelledby="profile-tab" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;">
+							<MyAuthors/>
 						</div>
 						<div class="tab-pane fade" id="articulosguardados" role="tabpanel" aria-labelledby="profile-tab" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;">
 							<SavedPublications/>
@@ -94,6 +97,7 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 import AllAuthorRequest from '../components/AllAuthorRequest.vue';
 import Authors from '../components/Authors.vue';
+import MyAuthors from '../components/MyAuthors.vue';
 import Users from '../components/Users.vue';
 import Followed from '../components/Followed.vue';
 import Followers from '../components/Followers.vue';
@@ -110,6 +114,7 @@ export default {
 		AllAuthorRequest,
 		Users,
 		Authors,
+		MyAuthors,
 		Followed,
 		Followers,
 		PersonalInfo,

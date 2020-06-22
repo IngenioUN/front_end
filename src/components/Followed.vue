@@ -8,8 +8,8 @@
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title">{{item.nombre}}</h5>
-                  <b-button class="mt-2 btn btn-sm" block variant="outline-dark">Stop Follow</b-button>
+                  <h5 class="card-title">{{item.firstName}}{{item.lastName}}</h5>
+                  <b-button class="mt-2 btn btn-sm" block variant="outline-dark" @click="stopFollow(item._id)">Stop Follow</b-button>
                   <b-button class="mt-2 btn btn-sm" block variant="outline-dark">Profile</b-button>
                 </div>
               </div>
@@ -29,36 +29,51 @@ export default {
   components: {},
   data: function (){
     return {
-      items: {
-        usu1: {
-          id:1,
-          nombre: 'Pepo Perez',
-          img: '../assets/images/Perfil1.jpg'
-        },
-        usu2: {
-          id:2,
-          nombre: 'Juana Arevalo',
-          img: '../assets/images/Perfil2.jpg'
-        },
-        usu3: {
-          id:3,
-          nombre: 'Roman Romero',
-          img: '../assets/images/Perfil3.jpg'
-        },
-        usu4: {
-          id:4,
-          nombre: 'Juancho Perez',
-          img: '../assets/images/Perfil1.jpg'
-        },
-        usu5: {
-          id:5,
-          nombre: 'Juancho Perez 2',
-          img: '../assets/images/Perfil1.jpg'
-        }
-      }
+      items: {}
     }
   },
-  methods:{},
+  created: function(){
+    axios
+		.get( this.$store.state.backURL + '/user/get-following/null')
+		.then( response => {
+			if( response.status !== 200 ){
+        alert( response.data.message );
+			}else{
+        this.items = response.data;
+			}
+		})
+		.catch( error => {
+			if( error.response.status === 400 ){
+        alert( error.response.data.message );
+			}else{
+        alert( error.response.data.message );
+			}
+		});
+  },
+  methods:{
+    stopFollow(id){
+      axios
+    .post( this.$store.state.backURL + '/user/stop-following',
+    {
+      "userId": id
+    }
+    )
+		.then( response => {
+			if( response.status !== 200 ){
+        alert( response.data.message );
+			}else{
+        alert( response.data.message );
+			}
+		})
+		.catch( error => {
+			if( error.response.status === 400 ){
+        alert( error.response.data.message );
+			}else{
+        alert( error.response.data.message );
+			}
+		});
+    }
+  },
   computed:{}
 }
 </script>
