@@ -18,7 +18,6 @@
 							<li class="nav-item">
 								<a class="nav-link" id="categorias-tab" data-toggle="tab" href="#categorias" role="tab" aria-controls="categorias" aria-selected="false">
 									Categories
-									<a href="#" class="badge badge-dark">9</a>
 								</a>
 							</li>
 							<li class="nav-item">
@@ -45,13 +44,13 @@
 						<div class="tab-pane fade" id="mesiguen" role="tabpanel" aria-labelledby="profile-tab" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;">
 							<Followers/>
 						</div>
-						<div class="tab-pane fade" id="categorias" role="tabpanel" aria-labelledby="profile-tab">
+						<div class="tab-pane fade" id="categorias" role="tabpanel" aria-labelledby="profile-tab" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;">
 							<MyCategories/>
 						</div>
-						<div class="tab-pane fade" id="articulosguardados" role="tabpanel" aria-labelledby="profile-tab">
+						<div class="tab-pane fade" id="articulosguardados" role="tabpanel" aria-labelledby="profile-tab" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;">
 							<SavedPublications/>
 						</div>
-						<div class="tab-pane fade" id="publicaciones" role="tabpanel" aria-labelledby="profile-tab" v-if="Role==1">
+						<div class="tab-pane fade" id="publicaciones" role="tabpanel" aria-labelledby="profile-tab" v-if="Role==1" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;">
 							<MyPublications/>
 						</div>
 					</div>
