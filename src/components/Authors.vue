@@ -4,25 +4,28 @@
       <thead class="thead-light">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">User Name</th>
-          <th scope="col">Acepted</th>
-          <th scope="col">Send</th>
+          <th scope="col">Name</th>
+          <th scope="col">LastName</th>
+          <th scope="col">Publications</th>
         </tr>
       </thead>
       <tbody v-for="(item,index) of items" :key="item.id">
         <tr>
           <th scope="row">{{index + 1}} </th>
           <td>
-            <a data-toggle="modal" data-target="#MoreInfoUser" @click="getRequest(item.userId._id)" >
-              {{item.userId.firstName}} {{item.userId.lastName}}
+            <a data-toggle="modal" >
+              {{item.firstName}}
             </a>
           </td>
-          <td><div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" :disabled="disabled == 1">
-            </div>
+          <td>
+            <a data-toggle="modal" >
+              {{item.lastName}}
+            </a>
           </td>
           <td>
-            <button type="button" class="btn btn-primary" @click="addAutor(item.userId._id)">Send</button>
+            <a data-toggle="modal" >
+              {{item.myPublications.length}}
+            </a>
           </td>
         </tr>
       </tbody>
@@ -62,18 +65,17 @@ export default {
     return {
       disabled:0,
       datoPasar : [],
-      items: []
+      items: [],
     };
   },
   mounted() {
-    this.getItems();
+    this.getAuthors();
   },
   methods:{
-    getItems() {
+    getAuthors() {
       axios
-      .get(this.$store.state.backURL + "/author-request/get-all-author-requests")
+      .get(this.$store.state.backURL + "/user/get-authors")
       .then(response => {
-        console.log(response);
         this.items = response.data;
       })
       .catch( error => {
@@ -83,47 +85,7 @@ export default {
           console.log( "¡Parece que hubo un error de comunicación con el servidor!" );
         }
       });
-    },
-    getRequest(item) {
-      axios
-      .get(
-        this.$store.state.backURL + "/author-request/get-author-request/" + item
-      )
-      .then(response => {
-        console.log(response);
-        this.datoPasar = response.data;
-      })
-      .catch(error => {
-        if (error.response.status === 400) {
-          console.log(item);
-        } else {
-          console.log("¡Parece que hubo un error de comunicación con el servidor!");
-          console.log(item);
-        }
-      });
-    },
-    addAutor(user) {
-      axios
-      .put(this.$store.state.backURL + "/user/add-author", {
-        "userId": user
-      })
-      .then(response => {
-        console.log("Se añadio autor");
-        console.log(user);
-      })
-      .catch(error => {
-        if (error.response.status === 400) {
-          console.log(user);
-        } else {
-          console.log(
-            "¡Parece que hubo un error de comunicación con el servidor!"
-          );
-          console.log(user);
-        }
-      });
     }
-  },
-  computed:{
   }
 }
 </script>
