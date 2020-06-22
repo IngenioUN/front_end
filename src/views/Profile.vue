@@ -71,14 +71,14 @@
 							</ul>
 						</div>
 						<div class="card-body tab-content">
-							<div class="tab-pane fade show active" id="users" role="tabpanel" aria-labelledby="usuarios-tab">
-								<Users/>
-							</div>
-							<div class="tab-pane fade" id="authors" role="tabpanel" aria-labelledby="autores-tab">
-								<Authors/>
-							</div>
 							<div class="tab-pane fade" id="allAuthorRequest" role="tabpanel" aria-labelledby="allAuthorRequest-tab">
 								<AllAuthorRequest/>
+							</div>
+							<div class="tab-pane fade" id="authors" role="tabpanel" aria-labelledby="allAuthorRequest-tab">
+								<Authors/>
+							</div>
+							<div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="allAuthorRequest-tab">
+								<Users/>
 							</div>
 						</div>
 					</div>

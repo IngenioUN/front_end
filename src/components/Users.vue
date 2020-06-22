@@ -1,6 +1,6 @@
 <template>
   <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-    <table class="table table-hover table-bordered" aria-describedby="Author requestes Table">
+    <table class="table table-hover table-bordered" aria-describedby="Users Table">
       <thead class="thead-light">
         <tr>
           <th scope="col">#</th>
@@ -13,41 +13,23 @@
         <tr>
           <th scope="row">{{index + 1}} </th>
           <td>
-            <a data-toggle="modal" data-target="#MoreInfoUser"  >
+            <a data-toggle="modal"  >
               {{item.firstName}}
             </a>
           </td>
           <td>
-            <a data-toggle="modal" data-target="#MoreInfoUser"  >
+            <a data-toggle="modal" >
               {{item.lastName}}
             </a>
           </td>
           <td>
-            <a data-toggle="modal" data-target="#MoreInfoUser"  >
+            <a data-toggle="modal" >
               {{item.email1}}
             </a>
           </td>
         </tr>
       </tbody>
     </table>
-    <div class="modal fade" id="MoreInfoUser" tabindex="-1" role="dialog" aria-labelledby="MoreInfoUserModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-md modal-dialog-scrollable" role="document" >
-        <div class="modal-content">
-          <div class="modal-header bg-light">
-          <h1 class="modal-title" id="MoreInfoUserModal"><em>User Information</em></h1>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
-            <span aria-hidden="true" >&times;</span>
-          </button>
-          </div>
-          <div class="modal-body bg-light container" >
-            <MoreInfoUser  :email2="datoPasar.email2" :pC="datoPasar.professionalCard" :eH="datoPasar.employmentHistory" :aH="datoPasar.academicHistory"/>
-            </div>
-          <div class="modal-footer bg-light">
-            Terms y Conditions
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
