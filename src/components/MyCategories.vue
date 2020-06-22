@@ -19,10 +19,27 @@
               <div class="col-md-1 text-right">
                 <br/>
                 <br/>
-                <b-button class="mt-2 btn btn-sm align-rigth" variant="outline-dark">
+                <a data-toggle="modal" data-target="#NotificationsModal">
+                  <b-button class="mt-2 btn btn-sm align-rigth" variant="outline-dark">
                   <a href="#" class="badge badge-danger">9</a>
                   Notifications
-                </b-button>
+                  </b-button>
+                </a>
+              </div>
+            </div>
+            <div class="modal fade" id="NotificationsModal" tabindex="-1" role="dialog" aria-labelledby="NotificationsLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                  <div class="modal-header bg-light">
+                  <h1 class="modal-title" id="NotificationsModal"><em>Notifications</em></h1>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  </div>
+                  <div class="modal-body bg-light container">
+                    <Notifications/>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -34,10 +51,13 @@
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 const path = "/user";
+import Notifications from '../components/Notifications.vue';
 
 export default {
   name: 'Followed.vue',
-  components: {},
+  components: {
+    Notifications
+  },
   data: function (){
     return {
       items: {
