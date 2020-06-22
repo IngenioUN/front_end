@@ -1,18 +1,20 @@
 <template>
     <div class="divlogin">
+      {{numberId}}
         <div class="row">
-          <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10" v-for="item of items" :key="item.id">
+          <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10" v-for="item of 5" :key="item.id">
             <div class="row no-gutters mb-3 border">
               <div class="col-md-10 text-left">
                 <div class="card-body">
-                  <h5 class="card-title">{{item.nombre}}</h5>
+                  <h5 class="card-title">{{item.notificationId}}</h5>
                   Pepito Perez
+                  {{item.response}}
                 </div>
               </div>
               <div class="col-md-2">
                 <br/>
                 <b-button class="mt-1 btn btn-sm" block variant="outline-dark">Systems</b-button>
-                <b-button class="mt-1 btn btn-sm" block variant="outline-danger">Delete</b-button>
+                <b-button class="mt-1 btn btn-sm" block variant="outline-danger" @click="deleteNotif()">Delete</b-button>
                 <br/>
               </div>
             </div>
@@ -27,40 +29,41 @@ axios.defaults.withCredentials = true;
 const path = "/user";
 
 export default {
-  name: 'Followed.vue',
+  name: 'Notifications.vue',
   components: {},
   data: function (){
     return {
-      items: {
-        usu1: {
-          id:1,
-          nombre: 'Topic 1',
-          img: '../assets/images/Civil.jpg'
-        },
-        usu2: {
-          id:2,
-          nombre: 'Topic 2',
-          img: '../assets/images/Perfil2.jpg'
-        },
-        usu3: {
-          id:3,
-          nombre: 'Topic 3',
-          img: '../assets/images/Perfil3.jpg'
-        },
-        usu4: {
-          id:4,
-          nombre: 'Topic 4',
-          img: '../assets/images/Perfil1.jpg'
-        },
-        usu5: {
-          id:5,
-          nombre: 'Topic 5',
-          img: '../assets/images/Perfil1.jpg'
-        }
-      }
+      notifications:{}
     }
   },
-  methods:{},
-  computed:{}
+  created: function(){
+
+  },
+  methods:{
+    deleteNotif(){
+      axios
+      .post( this.$store.state.backURL + '/notification/remove-notification',
+      {
+        "notificationId": "5ef07d22a6651d498a52d855",
+	      "publicationId": "5ef07d30a6651d498a52d856"
+      }
+      ).then( response => {
+        if( response.status !== 201 ){
+          alert( response.data.message );
+        }else{
+          alert( response.data.message );
+        }
+      })
+      .catch( error => {
+        if( error.response.status === 400 ){
+          alert( error.response.data.message );
+        }else{
+          alert( error.response.data.message );
+        }
+      });
+    },
+  },
+  computed:{},
+  props:['numberId']
 }
 </script>

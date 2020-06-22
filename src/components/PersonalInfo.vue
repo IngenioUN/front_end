@@ -119,26 +119,15 @@ export default {
     .catch( error => {
       if( error.response.status === 401){
         alert(error.response.data.message);
+        this.Role = localStorage.setItem('Role',3);
       }else{
+        this.Role = localStorage.setItem('Role',3);
         alert("Database Problem.");
       }
       this.$router.push('principal');
       this.$router.go(0);
     });
     this.Role = localStorage.getItem('Role');
-    switch(this.Role) {
-      case "0":
-        this.nameRole = 'Usuario'
-        break;
-      case "1":
-        this.nameRole = 'Autor'
-        break;
-      case "2":
-        this.nameRole = 'Administrador'
-        break;
-      default:
-        this.nameRole = 'Error'
-    }
   },
   methods:{
     ...mapMutations(['cambiarRol'])

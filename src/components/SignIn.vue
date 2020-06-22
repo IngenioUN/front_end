@@ -7,7 +7,7 @@
         class="mb-0"
         label="Email"
         label-for="input-formatter">
-        <b-input id="email" class="form-control" type="text" name="username" v-model="form.email1" placeholder="Username" :state="verifyUser"/>
+        <b-input id="email2" class="form-control" type="text" name="username" v-model="form.email1" placeholder="Username" :state="verifyUser"/>
         <b-form-valid-feedback id="email-feedback">
           Valid
         </b-form-valid-feedback>
