@@ -69,14 +69,13 @@ export default {
     };
   },
   mounted() {
-    this.getItems();
+    this.getAuthors();
   },
   methods:{
-    getItems() {
+    getAuthors() {
       axios
       .get(this.$store.state.backURL + "/user/get-authors")
       .then(response => {
-        console.log(response);
         this.items = response.data;
       })
       .catch( error => {
@@ -87,8 +86,6 @@ export default {
         }
       });
     }
-  },
-  computed:{
   }
 }
 </script>
