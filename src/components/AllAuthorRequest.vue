@@ -22,7 +22,7 @@
             </div>
           </td>
           <td>
-            <button type="button" class="btn btn-primary" @click="addAutor(item.userId._id)" id="botonOn" v-on:click="change" v-if="!Sent">Send</button>
+            <button type="button" class="btn btn-primary" @click="addAutor(item.userId._id), removeR(item.userId._id)" onclick="this.disabled=true"  id="botonOn" v-on:click="change()">Send</button>
           </td>
         </tr>
       </tbody>
@@ -109,7 +109,6 @@ export default {
       });
     },
     addAutor(user) {
-      console.log(this.disabled);
       if (this.disabled ){
       axios
       .put(this.$store.state.backURL + "/user/add-author", {
@@ -117,16 +116,34 @@ export default {
       })
       .then(response => {
         console.log("Se añadio autor");
-        console.log(user);
       })
       .catch(error => {
         if (error.response.status === 400) {
-          console.log(user);
+          console.log(error.response.data);
         } else {
           console.log(
             "¡Parece que hubo un error de comunicación con el servidor!"
           );
-          console.log(user);
+        }
+      });
+      }else{console.log("check")}
+    },
+    removeR(user) {
+      if (this.disabled ){
+      axios
+      .post(this.$store.state.backURL + "/author-request/remove-author-request", {
+        "userId": user
+      })
+      .then(response => {
+        console.log("Se añadio autor");
+      })
+      .catch(error => {
+        if (error.response.status === 400) {
+          console.log(error.response.data);
+        } else {
+          console.log(
+            "¡Parece que hubo un error de comunicación con el servidor!"
+          );
         }
       });
       }else{console.log("check")}
