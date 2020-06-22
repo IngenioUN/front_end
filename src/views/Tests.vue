@@ -37,7 +37,14 @@ export default{
       roles: [],
       //Alerts
       showBottom: false,
-      showTop: false
+      showTop: false,
+      seendMessage: function (variant = null, message) {
+        this.$bvToast.toast(message, {
+          title: `${variant || 'default'}`,
+          variant: variant,
+          solid: true
+        });
+      }
     }
   },
   beforeCreate( ){
@@ -81,6 +88,8 @@ export default{
         })
       })
       .catch( error => {
+        this.seendMessage('success', "OK");
+        this.seendMessage('danger', "Problem");
         if( error.response.status === 400 ){
           this.$bvToast.toast(error.response.data.message, {
           title: `Error`,
@@ -116,7 +125,8 @@ export default{
         }
         console.log(error.response);
       });
-    },
+    }
+    /*
     makeToast(variant = null, message) {
       this.$bvToast.toast(message, {
         title: `Variant ${variant || 'default'}`,
@@ -124,6 +134,7 @@ export default{
         solid: true
       })
     }
+    */
   },
   components:{}
 }
