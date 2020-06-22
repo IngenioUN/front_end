@@ -106,21 +106,27 @@ export default {
       axios
       .get( this.$store.state.backURL + "/session/signout" )
       .then( response => {
-        alert(response.data.message);
+        this.sendMessage("Correct", "success", response.data.message);
         localStorage.setItem( 'Role', 3);
-        console.log(response.data);
         this.$router.push('principal');
         this.$router.go(0);
       })
       .catch( error => {
         if( error.response.status == 401 ) {
-          alert(error.response.data.message);
+          this.sendMessage("Error", "danger", error.response.data.message);
           localStorage.setItem( 'Role', 3 );
           this.$router.go(0);
         } else {
-          alert("Could not establish communication with the server");
+          this.sendMessage("Error", "danger", "Could not establish communication with the server");
         }
       });
+    },
+    sendMessage(title, variant, message){
+      this.$bvToast.toast(message, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
     }
   }
 }
