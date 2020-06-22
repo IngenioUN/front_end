@@ -10,13 +10,6 @@
         <br/>
         <br/>
         <button @click="postSignIn()" class="btn btn-outline-dark mb-3 mt-3">SignIn</button>
-        <br/>
-        <br/>
-        <button @click="postSignUp()" class="btn btn-outline-dark mb-3 mt-3">SignUp</button>
-        <br/>
-        <br/>
-        <b-button variant="secondary" @click="makeToast('success','Hola')" class="mb-2">Danger</b-button>
-        <br/>
       </div>
     </div>
   </div>
@@ -30,29 +23,11 @@ export default{
   name: "Test.vue",
   data: function (){
     return {
-      form:{
-        type: 0 // 0 - Iniciar Sesion , 1 - SignUp,  2 - Recuperar contraseña
-      },
       //Get
       roles: [],
-      //Alerts
-      showBottom: false,
-      showTop: false,
-      seendMessage: function (variant = null, message) {
-        this.$bvToast.toast(message, {
-          title: `${variant || 'default'}`,
-          variant: variant,
-          solid: true
-        });
-      }
     }
   },
-  beforeCreate( ){
-  },
   methods:{
-    changeType(val){
-      this.form.type = val;
-    },
     getPersonalData( event ){
       axios
       .get( this.$store.state.backURL + "/user/get-personal-data", // URL
@@ -63,7 +38,7 @@ export default{
           console.log(response.data);
           this.roles = response.data;
         }
-      } ).catch( error => {
+        }).catch( error => {
         if( error.response.status === 400 ){
           alert( "Credenciales incorrectas" );
         }
@@ -80,61 +55,24 @@ export default{
           "password": "aA@12345678"
         }
       ).then( response => {
-        localStorage.setItem('Role',response.data.role);
-        this.$bvToast.toast(response.data.message, {
-        title: `Success`,
-        variant: 'success',
-        solid: true
-        })
+        localStorage.setItem('Role', response.data.role);
+        this.sendMessage("Correct", "success", response.data.message);
       })
       .catch( error => {
-        this.seendMessage('success', "OK");
-        this.seendMessage('danger', "Problem");
         if( error.response.status === 400 ){
-          this.$bvToast.toast(error.response.data.message, {
-          title: `Error`,
-          variant: 'danger',
-          solid: true
-          })
+          this.sendMessage("Error", "danger", error.response.data.message);
         }else{
-          alert( "¡Parece que hubo un error de comunicación con el servidor!" );
+          this.sendMessage("Error", "danger", "Problem with Server Conection");
         }
       });
     },
-    postSignUp( event ){
-      axios
-      .post( this.$store.state.backURL + '/session/signup', // URL
-        {
-          "email1": "author@ingenio.com",
-          "password": "aA@12345678"
-          //grant_type: 'password'
-        }
-      ).then( response => {
-        console.log("entra");
-        localStorage.setItem( 'token', response.data.access_token );
-        alert( "¡Autenticación Exitosa! El token se ha almacenado en el Local Storage" )
-        console.log(response.data);
-        //this.$router.push('principal')
-      })
-      .catch( error => {
-        console.log(error.response);
-        if( error.response.status === 400 ){
-          alert( error.response.data.message );
-        }else{
-          alert( "¡Parece que hubo un error de comunicación con el servidor!" );
-        }
-        console.log(error.response);
-      });
-    }
-    /*
-    makeToast(variant = null, message) {
+    sendMessage(title, variant, message){
       this.$bvToast.toast(message, {
-        title: `Variant ${variant || 'default'}`,
+        title: title,
         variant: variant,
         solid: true
       })
     }
-    */
   },
   components:{}
 }
