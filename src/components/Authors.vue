@@ -86,44 +86,6 @@ export default {
           console.log( "¡Parece que hubo un error de comunicación con el servidor!" );
         }
       });
-    },
-    getRequest(item) {
-      axios
-      .get(
-        this.$store.state.backURL + "/author-request/get-author-request/" + item
-      )
-      .then(response => {
-        console.log(response);
-        this.datoPasar = response.data;
-      })
-      .catch(error => {
-        if (error.response.status === 400) {
-          console.log(item);
-        } else {
-          console.log("¡Parece que hubo un error de comunicación con el servidor!");
-          console.log(item);
-        }
-      });
-    },
-    addAutor(user) {
-      axios
-      .put(this.$store.state.backURL + "/user/add-author", {
-        "userId": user
-      })
-      .then(response => {
-        console.log("Se añadio autor");
-        console.log(user);
-      })
-      .catch(error => {
-        if (error.response.status === 400) {
-          console.log(user);
-        } else {
-          console.log(
-            "¡Parece que hubo un error de comunicación con el servidor!"
-          );
-          console.log(user);
-        }
-      });
     }
   },
   computed:{
