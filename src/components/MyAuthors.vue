@@ -1,15 +1,15 @@
 <template>
     <div class="divlogin">
         <div class="row">
-          <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10" v-for="(item,index) of categories" :key="item.id">
+          <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10" v-for="(item,index) of 5" :key="item.id">
             <div class="row no-gutters mb-3">
               <div class="col-md-4">
                 <img src="../assets/images/Civil.jpg" class="card-img" alt="FotoPerfil">
               </div>
               <div class="col-md-7 text-left">
                 <div class="card-body">
-                  <h5 class="card-title">{{item.name}}</h5>
-                  <small>{{item.description}}</small>
+                  <h5 class="card-title">Author: {{index}}</h5>
+                  <small> Description: {{index}}</small>
                   <br/>
                   <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" subscribe(item._id); setSubscri(index,true)">Subscribe</b-button>
                   <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" unsubscribe(item._id); setSubscri(index,false)">Unsubscribe</b-button>
@@ -58,7 +58,7 @@
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 const path = "/user";
-import Notifications from '../components/NotificationsCategory.vue';
+import Notifications from '../components/NotificationsAuthors.vue';
 
 export default {
   name: 'Followed.vue',
@@ -77,12 +77,13 @@ export default {
   },
   created: function(){
     axios
-		.get( this.$store.state.backURL + '/user/get-user-categories/null')
+		.get( this.$store.state.backURL + '/user/get-following/null')
 		.then( response => {
 			if( response.status !== 200 ){
         alert( response.data.message );
 			}else{
         this.categories = response.data;
+        console.log(this.categories);
         for(let item in this.categories){
           this.suscri.push(true);
         }
