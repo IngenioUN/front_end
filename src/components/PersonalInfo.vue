@@ -111,7 +111,7 @@ export default {
   },
   created: function(){
     axios
-    .get(this.$store.state.backURL + '/user/get-personal-data')
+    .get(this.$store.state.backURL + '/user/get-personal-data/null')
     .then( response => {
       this.user = response.data;
     })

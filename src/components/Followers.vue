@@ -31,6 +31,7 @@ export default {
     return {}
   },
   methods:{},
-  computed:{}
+  computed:{},
+  props:['id']
 }
 </script>

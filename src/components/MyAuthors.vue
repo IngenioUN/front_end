@@ -1,23 +1,20 @@
 <template>
     <div class="divlogin">
         <div class="row">
-          <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10" v-for="(item,index) of 5" :key="item.id">
+          <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10" v-for="(item,index) of authors" :key="item.id">
             <div class="row no-gutters mb-3">
               <div class="col-md-4">
                 <img src="../assets/images/Civil.jpg" class="card-img" alt="FotoPerfil">
               </div>
               <div class="col-md-7 text-left">
                 <div class="card-body">
-                  <h5 class="card-title">Author: {{index}}</h5>
-                  <small> Description: {{index}}</small>
-                  <br/>
-                  <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" subscribe(item._id); setSubscri(index,true)">Subscribe</b-button>
+                  <h5 class="card-title">{{item.firstName}} {{item.lastName}}</h5>
+                  <!-- <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" subscribe(item._id); setSubscri(index,true)">Subscribe</b-button> -->
                   <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" unsubscribe(item._id); setSubscri(index,false)">Unsubscribe</b-button>
                   <!-- unsubscribe(item._id); -->
                   <!-- {{getVal}} -->
                   <!-- {{suscri[index]}} -->
                   &nbsp;
-                  <b-button class="mt-2 btn btn-sm" variant="outline-dark">Publications</b-button>
                 </div>
               </div>
               <div class="col-md-1 text-right">
@@ -67,31 +64,30 @@ export default {
   },
   data: function (){
     return {
-      categories:{},
+      authors:{},
       notifications:{},
       isSubscribed: true,
       IdActual:'',
-      suscri: [],
-      id:''
+      suscri: []
     }
   },
   created: function(){
-    axios
-		.get( this.$store.state.backURL + '/user/get-following/null')
-		.then( response => {
-			if( response.status !== 200 ){
-        alert( response.data.message );
-			}else{
-        this.categories = response.data;
-        console.log(this.categories);
-        for(let item in this.categories){
-          this.suscri.push(true);
-        }
-			}
-		})
-		.catch( error => {
-      alert( error.response.data.message );
-		});
+    // axios
+		// .get( this.$store.state.backURL + '/user/get-user-authors/' + this.id)
+		// .then( response => {
+		// 	if( response.status !== 200 ){
+    //     alert( response.data.message );
+		// 	}else{
+    //     this.authors = response.data;
+    //     console.log(this.authors);
+    //     // for(let item in this.authors){
+    //     //   this.suscri.push(true);
+    //     // }
+		// 	}
+		// })
+		// .catch( error => {
+    //   alert( error.response.data.message );
+		// });
   },
   methods:{
     setSubscri(num, val){
@@ -140,11 +136,11 @@ export default {
       this.sendMessage("Error", "danger", error.response.data.message);
 		});
     },
-    unsubscribe(CatId){
+    unsubscribe(AutId){
       axios
     .post( this.$store.state.backURL + '/user/stop-following',
     {
-      "categoryId": CatId
+      "authorId": AutId
     })
 		.then( response => {
       this.sendMessage("Correct", "success", response.data.message);
@@ -165,7 +161,7 @@ export default {
       })
     }
   },
-  computed:{
-  }
+  computed:{},
+  props:['id']
 }
 </script>

@@ -8,32 +8,34 @@
               <img src="../assets/images/PerfilMujer.jpg" class="w-100 p-3 border" alt="Image not found">
               <br/>
               <br/>
-              <p class="lead text-center font-italic"><strong>{{AuthorName}} {{AuthorLastName}} </strong></p>
-              {{id}}
+              <p class="lead text-center font-italic"><strong><p class="text-center">{{publication.authorId.firstName}} {{publication.authorId.lastName}}</p></strong></p>
               <div class="list-group">
-                <a class="list-group-item list-group-item-action" v-for="(item) in Categories" :key="item.id">
-                  {{item}}
+                <a class="list-group-item list-group-item-action" v-for="item in categories" :key="item.id">
+                  {{item.name}}
                 </a>
               </div>
             </div>
             <div class="col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 offset-1">
-              <h1 class="display-4 text-center">{{Title}}</h1>
+              <h1 class="display-4 text-center">  {{publication.title}}</h1>
               <hr class="my-4">
-              <p class="lead text-center font-italic"><strong>Abstract: </strong></p>
-              <p class="lead text-justify font-italic">{{Abstract}}</p>
+              <p class="lead text-center font-italic"><strong>Abstract</strong></p>
+              <p class="lead text-justify font-italic">{{publication.abstract}}</p>
               <hr class="my-4">
-              <p class="text-justify">{{Text}}</p>
-              <hr class="my-4">
-              Download PDF
+              <p class="text-justify">{{publication.text}}</p>
               <br/>
-              <button type="button" class="btn btn-outline-dark">
+              <hr class="my-4">
+              <p class="lead text-center font-italic"><strong>Key Words</strong></p>
+              <nav aria-label="breadcrumb" >
+                <ol class="breadcrumb" >
+                  <li class="breadcrumb-item active" aria-current="page" v-for="(item2) in publication.keyWords" :key="item2.id">{{item2}}</li>
+                </ol>
+              </nav>
+              <hr class="my-4">
+              <br/>
+              <button type="button" class="btn btn-outline-dark" data-toggle="popover" title="Comming Soon" data-content="Comming Soon">
                 <b-icon class="text-black" icon="download" font-scale="2"></b-icon>
               </button>
-              <br/>
-              <br/>
-              Share Link
-              <br/>
-              <button type="button" class="btn btn-outline-dark">
+              <button type="button" class="btn btn-outline-dark" data-toggle="popover" title="Comming Soon" data-content="Comming Soon">
                 <b-icon icon="box-arrow-up-right" font-scale="2"></b-icon>
               </button>
             </div>
@@ -53,17 +55,26 @@ export default {
   components: {},
   data: function (){
     return {
-      Title: 'Paris, la capital del mundo',
-      Abstract: 'En el mundo actual... bla bla bla',
-      KeyWords: ['Francia','Capitales del Mundo'],
-      Text: 'Paris ha sido una de las ciudades mas importantes debido a la cantidad de personas en el mundo que la visitan constantemente, dado que...',
-      AuthorName: 'Juana',
-      AuthorLastName: 'Martinez',
-      Categories: ['Systems', 'Chemistry', 'Civil', 'Industrial']
+      publication:{},
+      id: this.$route.params.id,
+      author:'',
+      categories:[]
     }
   },
+  created: function(){
+    axios
+      .get(this.$store.state.backURL + "/publication/get-publication/" + this.id
+      )
+      .then(response => {
+        this.publication = response.data;
+        this.categories = response.data.listCategories;
+        console.log(response.data);
+      })
+      .catch(error => {
+        alert("This publication doesn't exist");
+      });
+  },
   methods:{},
-  computed:{},
-  props:['id']
+  computed:{}
 }
 </script>
