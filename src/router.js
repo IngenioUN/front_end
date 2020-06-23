@@ -6,6 +6,7 @@ import Tests from "./views/Tests";
 import Ingenio from "./views/Ingenio";
 import ContactUs from "./views/ContactUs";
 import Profile from "./views/Profile";
+import UserProfile from "./views/OtherProfile";
 import Publication from "./views/Publication";
 
 //Components
@@ -60,7 +61,7 @@ export default new Router({
       component: Tests
     },
     {
-      path: "/publication",
+      path: "/publication/:id",
       name: "publication",
       component: Publication
     },
@@ -88,6 +89,11 @@ export default new Router({
       path: "/followed",
       name: "followed",
       component: Followed
+    },
+    {
+      path: "/userprofile/:id",
+      name: "userprofile",
+      component: UserProfile,
     },
     {
       path: "/profile",

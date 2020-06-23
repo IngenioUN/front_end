@@ -34,7 +34,7 @@ export default {
   },
   created: function(){
     axios
-		.get( this.$store.state.backURL + '/user/get-following/null')
+		.get( this.$store.state.backURL + '/user/get-following/' + this.id)
 		.then( response => {
 			if( response.status !== 200 ){
         alert( response.data.message );
@@ -47,11 +47,11 @@ export default {
 		});
   },
   methods:{
-    stopFollow(id){
+    stopFollow(idN){
       axios
     .post( this.$store.state.backURL + '/user/stop-following',
     {
-      "userId": id
+      "userId": idN
     }
     )
 		.then( response => {
@@ -63,6 +63,7 @@ export default {
 		});
     }
   },
-  computed:{}
+  computed:{},
+  props:['id']
 }
 </script>

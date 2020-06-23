@@ -11,11 +11,7 @@
                   <h5 class="card-title">{{item.name}}</h5>
                   <small>{{item.description}}</small>
                   <br/>
-                  <!-- <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" subscribe(item._id); setSubscri(index,true)">Subscribe</b-button> -->
                   <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" unsubscribe(item._id); setSubscri(index,false)">Unsubscribe</b-button>
-                  <!-- unsubscribe(item._id); -->
-                  <!-- {{getVal}} -->
-                  <!-- {{suscri[index]}} -->
                   &nbsp;
                   <b-button class="mt-2 btn btn-sm" variant="outline-dark">Publications</b-button>
                 </div>
@@ -71,13 +67,12 @@ export default {
       notifications:{},
       isSubscribed: true,
       IdActual:'',
-      suscri: [],
-      id:''
+      suscri: []
     }
   },
   created: function(){
     axios
-		.get( this.$store.state.backURL + '/user/get-user-categories/null')
+		.get( this.$store.state.backURL + '/user/get-user-categories/' + this.id)
 		.then( response => {
 			if( response.status !== 200 ){
         alert( response.data.message );
@@ -112,9 +107,9 @@ export default {
         alert( error.response.data.message );
       });
     },
-    searchNotifications(id){
+    searchNotifications(idN){
       axios
-      .get( this.$store.state.backURL + '/notification/get-notifications/' + id
+      .get( this.$store.state.backURL + '/notification/get-notifications/' + idN
       ).then( response => {
           alert( response.data.message );
       })
@@ -157,7 +152,7 @@ export default {
       })
     }
   },
-  computed:{
-  }
+  computed:{},
+  props:['id']
 }
 </script>

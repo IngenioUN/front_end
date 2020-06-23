@@ -7,9 +7,7 @@
                 <div class="card">
                   <img src="../assets/images/paris.jpg" class="card-img-top" alt="Paris">
                   <div class="card-body">
-                    <!-- <router-link class="nav-link text-dark" :to="'/publication' + item._id" target="_blank"><h5>{{item.title}}<Publication target="_blank" :id="1"/></h5></router-link> -->
-                    <router-link class="nav-link text-dark" to="/publication" target="_blank"><h5>{{item.title}}</h5></router-link>
-                    {{item._id}}
+                    <router-link :to="{ name: 'publication', params: { id: item._id }}" target="_blank"><h5>{{item.title}}</h5></router-link>
                     <p class="card-text">
                     {{item.abstract}}
                     </p>
@@ -33,9 +31,12 @@ import Publication from '../views/Publication.vue';
 
 export default {
   name: 'AllCategories.vue',
-  components: {},
+  components: {
+    Publication
+  },
   data: function (){
     return {
+      hola:'Hola'
     }
   },
   created: function(){

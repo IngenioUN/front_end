@@ -67,7 +67,6 @@ export default {
     },
     selectCategory(item){
       this.Category = item;
-      console.log(this.Category);
     },
     getSaveP() {
       this.publications=[];
@@ -76,11 +75,9 @@ export default {
       .get(this.$store.state.backURL + "/user/get-save-publication")
       .then(response => {
         this.items = response.data;
-        console.log(this.items);
         for (let item in this.items.savedPublications){
           for (let item2 in this.items.savedPublications[item].listCategories){
                if(this.items.savedPublications[item].listCategories[item2] == this.categoryId){
-                 console.log(this.items.savedPublications[item]);
                  publicat = this.items.savedPublications[item];
                  this.publications.push(publicat);
               }
