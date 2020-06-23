@@ -5,8 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    //backURL: 'http://localhost:3000'
-    backURL: 'https://ingeniobackend.herokuapp.com'
+    backURL: 'http://localhost:3000'
+    //backURL: 'https://ingeniobackend.herokuapp.com'
   },
   mutations:{},
   actions: {}

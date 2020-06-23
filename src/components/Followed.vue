@@ -43,11 +43,7 @@ export default {
 			}
 		})
 		.catch( error => {
-			if( error.response.status === 400 ){
-        alert( error.response.data.message );
-			}else{
-        alert( error.response.data.message );
-			}
+      alert( error.response.data.message );
 		});
   },
   methods:{
@@ -59,18 +55,10 @@ export default {
     }
     )
 		.then( response => {
-			if( response.status !== 200 ){
-        alert( response.data.message );
-			}else{
-        alert( response.data.message );
-			}
+      alert( response.data.message );
 		})
 		.catch( error => {
-			if( error.response.status === 400 ){
-        alert( error.response.data.message );
-			}else{
-        alert( error.response.data.message );
-			}
+      alert( error.response.data.message );
 		});
     }
   },
