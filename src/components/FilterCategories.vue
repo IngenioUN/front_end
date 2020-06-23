@@ -15,7 +15,7 @@
                     <div v-for="item2 of item.listCategories" :key="item2.id">
                       <b-button class="mt-2" block variant="outline-dark">{{item2}}</b-button>
                     </div>
-                    <b-button class="mt-3 mb-1" block variant="outline-primary">Save Publication</b-button>
+                    <b-button class="mt-3 mb-1" block variant="outline-primary" onClick="this.disabled=true" @click="savePublication(item._id)">Save Publication</b-button>
                   </div>
                 </div>
               </div>
@@ -62,7 +62,20 @@ export default {
   },
   created: function(){
   },
-  methods:{  },
+  methods:{
+    savePublication(item) {
+      axios
+      .post(this.$store.state.backURL + "/user/add-save-publication", {
+        "publicationId": item
+      })
+      .then(response => {
+        console.log("success save publication");
+      })
+      .catch(error => {
+        console.log(error.response.data.message)
+      });
+    }
+   },
   computed:{},
   props:['publica', 'idCat', 'nameCat']
 }
