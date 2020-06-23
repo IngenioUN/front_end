@@ -18,11 +18,11 @@
             </a>
           </td>
           <td><div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" :disabled="disabled == 1">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" @click="confirm()" >
             </div>
           </td>
           <td>
-            <button type="button" class="btn btn-primary" @click="addAutor(item.userId._id)">Send</button>
+            <button type="button" class="btn btn-primary" @click="addAutor(item.userId._id), removeR(item.userId._id)" onclick="this.disabled=true"  id="botonOn" v-on:click="change()">Send</button>
           </td>
         </tr>
       </tbody>
@@ -60,15 +60,21 @@ export default {
   },
   data(){
     return {
-      disabled:0,
+      disabled:false,
       datoPasar : [],
-      items: []
+      items: [],
+      valor : true,
+      Sent: false
     };
   },
   mounted() {
     this.getItems();
   },
   methods:{
+    confirm(){
+      this.disabled = !this.disabled;
+      console.log(this.disabled)
+    },
     getItems() {
       axios
       .get(this.$store.state.backURL + "/author-request/get-all-author-requests")
@@ -103,24 +109,53 @@ export default {
       });
     },
     addAutor(user) {
+      if (this.disabled ){
       axios
       .put(this.$store.state.backURL + "/user/add-author", {
         "userId": user
       })
       .then(response => {
         console.log("Se añadio autor");
-        console.log(user);
       })
       .catch(error => {
         if (error.response.status === 400) {
-          console.log(user);
+          console.log(error.response.data);
         } else {
           console.log(
             "¡Parece que hubo un error de comunicación con el servidor!"
           );
-          console.log(user);
         }
       });
+      }else{console.log("check")}
+    },
+    removeR(user) {
+      if (this.disabled ){
+      axios
+      .post(this.$store.state.backURL + "/author-request/remove-author-request", {
+        "userId": user
+      })
+      .then(response => {
+        console.log("Se añadio autor");
+      })
+      .catch(error => {
+        if (error.response.status === 400) {
+          console.log(error.response.data);
+        } else {
+          console.log(
+            "¡Parece que hubo un error de comunicación con el servidor!"
+          );
+        }
+      });
+      }else{console.log("check")}
+    },
+    change: function () {
+      if(this.disabled ){
+        var uno = document.getElementById('botonOn');
+        if (uno.innerHTML == 'Acepted')
+          uno.innerHTML = 'Send';
+        else uno.innerHTML = 'Acepted';
+        this.Sent= true;
+      }
     }
   },
   computed:{

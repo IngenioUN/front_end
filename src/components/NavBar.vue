@@ -7,11 +7,7 @@
             <img src="../assets/images/IngenioLogo.png" class="card-img-top" alt="Personaje" style="height: 80px; width:160px">
           </router-link>
           <div class="collapse navbar-collapse d-flex justify-content-around" id="navbarSupportedContent">
-            <router-link class="nav-link text-white" to="/publication">Publication</router-link>
             <!-- ContactUs -->
-            <router-link class="nav-link text-white" to="/contactUs">Contact us</router-link>
-            <!-- ContactUs -->
-            <router-link class="nav-link text-white"  to="/tests">Tests</router-link>
             <!-- Profile -->
             <router-link class="nav-link text-white" to="/profile" v-if="Role!=3">Profile</router-link>
             <!-- SignUp -->

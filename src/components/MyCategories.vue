@@ -89,11 +89,7 @@ export default {
 			}
 		})
 		.catch( error => {
-			if( error.response.status === 400 ){
-        alert( error.response.data.message );
-			}else{
-        alert( error.response.data.message );
-			}
+			alert( error.response.data.message );
 		});
   },
   methods:{
@@ -110,36 +106,20 @@ export default {
         "notificationId": "5ef0a3887f10b612c3663a57"
       }
       ).then( response => {
-        if( response.status !== 201 ){
-          alert( response.data.message );
-        }else{
-          alert( response.data.message );
-        }
+        lert( response.data.message );
       })
       .catch( error => {
-        if( error.response.status === 400 ){
-          alert( error.response.data.message );
-        }else{
-          alert( error.response.data.message );
-        }
+        alert( error.response.data.message );
       });
     },
     searchNotifications(id){
       axios
       .get( this.$store.state.backURL + '/notification/get-notifications/' + id
       ).then( response => {
-        if( response.status !== 201 ){
           alert( response.data.message );
-        }else{
-          this.notifications = response.data;
-        }
       })
       .catch( error => {
-        if( error.response.status === 400 ){
-          alert( error.response.data.message );
-        }else{
-          alert( error.response.data.message );
-        }
+        alert( error.response.data.message );
       });
     },
     subscribe(CatId){
@@ -149,18 +129,10 @@ export default {
       "categoryId": CatId
     })
 		.then( response => {
-			if( response.status !== 201 ){
-        this.sendMessage("Correct", "success", response.data.message);
-			}else{
-        this.sendMessage("Correct", "success", response.data.message);
-			}
+      this.sendMessage("Correct", "success", response.data.message);
 		})
 		.catch( error => {
-			if( error.response.status === 400 ){
-        this.sendMessage("Error", "danger", error.response.data.message);
-			}else{
-        this.sendMessage("Error", "danger", error.response.data.message);
-			}
+      this.sendMessage("Error", "danger", error.response.data.message);
 		});
     },
     unsubscribe(CatId){
@@ -170,18 +142,10 @@ export default {
       "categoryId": CatId
     })
 		.then( response => {
-			if( response.status !== 201 ){
-        this.sendMessage("Correct", "success", response.data.message);
-			}else{
-        this.sendMessage("Correct", "success", response.data.message);
-			}
+      this.sendMessage("Correct", "success", response.data.message);
 		})
 		.catch( error => {
-			if( error.response.status === 400 ){
-        this.sendMessage("Error", "danger", error.response.data.message);
-			}else{
-        this.sendMessage("Error", "danger", "Problem with Server Conection");
-			}
+      this.sendMessage("Error", "danger", error.response.data.message);
 		});
     },
     sendMessage(title, variant, message){

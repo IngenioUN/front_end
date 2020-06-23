@@ -7,7 +7,6 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
           <h5 class="card-title"> {{user.firstName}} {{user.lastName}} </h5>
-          Tu rol: {{nameRole}}<br/>
           {{user.email1}}
           <p class="card-text">
           Hola! <br/>
