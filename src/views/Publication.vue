@@ -63,7 +63,9 @@ export default {
       Categories: ['Systems', 'Chemistry', 'Civil', 'Industrial']
     }
   },
-  methods:{},
+  methods:{
+    
+  },
   computed:{}
 }
 </script>

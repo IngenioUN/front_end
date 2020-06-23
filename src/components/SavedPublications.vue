@@ -13,8 +13,8 @@
             <div class="card-body" v-for="itemS of publications" :key="itemS.id">
               Title: {{itemS.title}}<br/>
               Description: {{itemS.abstract}}<br/>
-              Categories: {{itemS.listCategories}}<br/>
-              Author: {{itemS.authorId}}<br/>
+              <!--Categories: {{itemS.listCategories}}<br/>-->
+              <!--Author: {{itemS.authorId}}<br/>-->
             </div>
           </div>
         </div>
