@@ -22,9 +22,8 @@
             </div>
           </div>
           <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 mt-5">
-            <b-button class="mt-2" block variant="outline-primary">Suscribe to {{nameCat}}
+            <b-button class="mt-2" block variant="outline-primary" @click="subscribeCategory(idCat)">Suscribe to {{nameCat}}
               <br/>
-              <!-- Para probar que se esta trayendo correctmente el id de la categoria Id: {{idCat}} -->
               </b-button>
             <br/>
             <div class="border" style="height: 300px; max-width: 600px; overflow-y: scroll; overflow-x: hidden;">
@@ -73,6 +72,18 @@ export default {
       })
       .catch(error => {
         console.log(error.response.data.message)
+      });
+    },
+    subscribeCategory(item) {
+      axios
+      .post(this.$store.state.backURL + "/user/start-following", {
+        "categoryId": item
+      })
+      .then(response => {
+        alert(response.data.message);
+      })
+      .catch(error => {
+        alert(error.response.data.message);
       });
     }
    },
