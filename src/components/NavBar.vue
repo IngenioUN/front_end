@@ -3,40 +3,46 @@
     <div class="row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <nav id="navbar" class="navbar navbar-expand-lg">
-          <router-link class="nav-link text-white" to="/">
-            <img src="../assets/images/IngenioLogo.png" class="card-img-top" alt="Personaje" style="height: 80px; width:160px">
-          </router-link>
-          <div class="collapse navbar-collapse d-flex justify-content-around" id="navbarSupportedContent">
-            <!-- ContactUs -->
-            <!-- Profile -->
-            <router-link class="nav-link text-white" to="/profile" v-if="Role!=3">Profile</router-link>
-            <!-- SignUp -->
-            <a data-toggle="modal" data-target="#RegistrarseModal" v-if="Role==3">
-              <div class="card-body">
-                <button type="button" class="btn btn-outline-light">
-                  <b-icon icon="arrow-bar-up" aria-hidden="true"></b-icon>
-                  Sign Up
-                </button>
+          <div class="row container-fluid">
+            <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+              <router-link class="nav-link text-white" to="/">
+                <img src="../assets/images/IngenioLogo.png" class="card-img-top" alt="Personaje" style="height: 80px; width:160px">
+              </router-link>
+            </div>
+            <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 offset-5">
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- ContactUs -->
+                <!-- Profile -->
+                <router-link class="nav-link text-white" to="/profile" v-if="Role!=3">Profile</router-link>
+                <!-- SignUp -->
+                <a data-toggle="modal" data-target="#RegistrarseModal" v-if="Role==3">
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-light">
+                      <b-icon icon="arrow-bar-up" aria-hidden="true"></b-icon>
+                      Sign Up
+                    </button>
+                  </div>
+                </a>
+                <!-- Iniciar sesion -->
+                <a data-toggle="modal" data-target="#SignInModal" v-if="Role==3">
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-light">
+                      <b-icon icon="arrow-bar-right" aria-hidden="true"></b-icon>
+                      Sign In
+                    </button>
+                  </div>
+                </a>
+                <!-- Cerrar sesion -->
+                <a data-toggle="modal" data-target="#CerrarSesionModal" v-if="Role!=3">
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-light" @click="getSignOut()">
+                      <b-icon icon="power" aria-hidden="true"></b-icon>
+                      Sign Out
+                    </button>
+                  </div>
+                </a>
               </div>
-            </a>
-            <!-- Iniciar sesion -->
-            <a data-toggle="modal" data-target="#SignInModal" v-if="Role==3">
-              <div class="card-body">
-                <button type="button" class="btn btn-outline-light">
-                  <b-icon icon="arrow-bar-right" aria-hidden="true"></b-icon>
-                  Sign In
-                </button>
-              </div>
-            </a>
-            <!-- Cerrar sesion -->
-            <a data-toggle="modal" data-target="#CerrarSesionModal" v-if="Role!=3">
-              <div class="card-body">
-                <button type="button" class="btn btn-outline-light" @click="getSignOut()">
-                  <b-icon icon="power" aria-hidden="true"></b-icon>
-                  Sign Out
-                </button>
-              </div>
-            </a>
+            </div>
           </div>
         </nav>
       </div>

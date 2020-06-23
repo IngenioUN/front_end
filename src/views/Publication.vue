@@ -9,6 +9,7 @@
               <br/>
               <br/>
               <p class="lead text-center font-italic"><strong>{{AuthorName}} {{AuthorLastName}} </strong></p>
+              {{id}}
               <div class="list-group">
                 <a class="list-group-item list-group-item-action" v-for="(item) in Categories" :key="item.id">
                   {{item}}
@@ -47,8 +48,6 @@
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 
-const path = "/user";
-
 export default {
   name: 'Publication.vue',
   components: {},
@@ -63,9 +62,8 @@ export default {
       Categories: ['Systems', 'Chemistry', 'Civil', 'Industrial']
     }
   },
-  methods:{
-    
-  },
-  computed:{}
+  methods:{},
+  computed:{},
+  props:['id']
 }
 </script>
