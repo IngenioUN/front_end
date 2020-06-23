@@ -43,7 +43,7 @@ export default {
     savePublication(item) {
       axios
       .post(this.$store.state.backURL + "/user/add-save-publication", {
-        "savedPublications": item
+        "publicationId": item
       })
       .then(response => {
         console.log("success save publication");
