@@ -11,7 +11,7 @@
                   <h5 class="card-title">{{item.name}}</h5>
                   <small>{{item.description}}</small>
                   <br/>
-                  <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" subscribe(item._id); setSubscri(index,true)">Subscribe</b-button>
+                  <!-- <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" subscribe(item._id); setSubscri(index,true)">Subscribe</b-button> -->
                   <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" unsubscribe(item._id); setSubscri(index,false)">Unsubscribe</b-button>
                   <!-- unsubscribe(item._id); -->
                   <!-- {{getVal}} -->
@@ -143,6 +143,7 @@ export default {
     })
 		.then( response => {
       this.sendMessage("Correct", "success", response.data.message);
+      this.$router.go(0);
 		})
 		.catch( error => {
       this.sendMessage("Error", "danger", error.response.data.message);

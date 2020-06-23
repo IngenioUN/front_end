@@ -56,6 +56,7 @@ export default {
     )
 		.then( response => {
       alert( response.data.message );
+      this.$router.go(0);
 		})
 		.catch( error => {
       alert( error.response.data.message );
