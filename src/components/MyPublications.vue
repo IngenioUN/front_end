@@ -1,24 +1,39 @@
 <template>
     <div class="divlogin">
-      <div class="accordion" id="accordionExample2">
-        <div class="card" v-for="item of savedPublications" :key="item.id">
-          <div class="card-header" id="headingOne">
-            <h2 class="mb-0">
-              <button class="btn btn-link btn-block text-left " type="button" data-toggle="collapse" :data-target="'#P' + item.Id" aria-expanded="true" aria-controls="collapseOne">
-                {{item.Name}}
-              </button>
-            </h2>
-          </div>
-          <div :id="'P' + item.Id" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample2">
-            <div class="card-body">
-              Description: {{item.Description}}
-              <br/>
-              <br/>
-              Go to: URL...................
-            </div>
-          </div>
-        </div>
-      </div>
+      <table class="table table-hover table-bordered" aria-describedby="Author requestes Table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Publication Name</th>
+            <th scope="col">Abstract</th>
+            <th scope="col">Categories</th>
+            <th scope="col">Go to</th>
+          </tr>
+        </thead>
+        <tbody v-for="(item,index) of MyPublications" :key="item.id">
+          <tr>
+            <th scope="row">{{index + 1}} </th>
+            <td>
+              {{item.title}}
+            </td>
+            <td>
+              <div class="form-check">
+                {{item.abstract}}
+              </div>
+            </td>
+            <td>
+              <a v-for="item2 of item.listCategories" :key="item2.id">
+                {{item2.name}}
+              </a>
+            </td>
+            <td>
+              <router-link :to="{ name: 'publication', params: { id: item._id }}" target="_blank">
+                <button type="button" class="btn btn-primary" >Ir</button>
+              </router-link>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 </template>
 
@@ -32,31 +47,25 @@ export default {
   components: {},
   data: function (){
     return {
-      savedPublications: {
-        _1 :{
-          Id: '1AB1',
-          Name: 'Systemsaroundtheworld',
-          Description: 'The systems are changing all days..'
-        },
-        _2:{
-          Id: '2AB2',
-          Name: 'Chemistrythebaseoflife',
-          Description: 'Im a chemical engineer, and along my life..'
-        },
-        _3:{
-          Id: '3AB3',
-          Name: 'Civil',
-          Description: 'Nowadays, the society...'
-        },
-        _4:{
-          Id: '4AB4',
-          Name: 'Industrial',
-          Description: 'All companies in United States...'
-        }
-      }
+      MyPublications: {}
     }
   },
+  created: function(){
+    axios
+		.get( this.$store.state.backURL + '/user/get-author-publications/' + this.id)
+		.then( response => {
+			if( response.status !== 200 ){
+        alert( response.data.message );
+			}else{
+        this.MyPublications = response.data;
+			}
+		})
+		.catch( error => {
+      alert( error.response.data.message );
+		});
+  },
   methods:{},
-  computed:{}
+  computed:{},
+  props:['id','mine']
 }
 </script>

@@ -41,9 +41,13 @@
 					</a>
 				</div>
 				<nav class="nav nav-tabs nav-justified shadow p-3 mb-5 bg-light rounded sticky-top">
-					<a class="nav-item nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true" @click="getAllPublications()">All Categories</a>
-					<a class="nav-item nav-link" id="filter-tab" data-toggle="tab" href="#forum" role="tab" aria-controls="filter" aria-selected="false" v-for="item of categories" :key="item.id" @click="cambiarId(item._id); setIdName(item._id,item.name)">
+					<a class="nav-item nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true" @click="getAllPublications()">
+						All Categories
+						<span class="badge badge-dark">{{numAll}}</span>
+					</a>
+					<a class="nav-item nav-link" id="filter-tab" data-toggle="tab" href="#forum" role="tab" aria-controls="filter" aria-selected="false" v-for="(item,index) of categories" :key="item.id" @click="cambiarId(item._id); setIdName(item._id,item.name)">
 						{{item.name}}
+						<span class="badge badge-dark">{{numOth[index]}}</span>
 					</a>
 				</nav>
 				<div class="tab-content" id="myTabContent">
@@ -65,8 +69,6 @@ axios.defaults.withCredentials = true;
 import AllCategories from '../components/AllCategories.vue';
 import FilterCategories from '../components/FilterCategories.vue';
 
-const path = "/user";
-
 export default {
   name: 'Ingenio.vue',
   components: {
@@ -78,7 +80,9 @@ export default {
 			categories:{},
 			publicaciones:{},
 			id:'',
-			nameCat: ''
+			nameCat: '',
+			numAll:0,
+			numOth:[]
     }
   },
   created: function(){
@@ -110,6 +114,7 @@ export default {
           alert( "Error en la autenticación" );
         }else{
 					this.publicaciones = response.data;
+					this.numOth.push(this.publicaciones.length);
 					for (let item in this.publicaciones){
 						for (let item2 in this.publicaciones[item].listCategories){
 							for (let cat in this.categories){
@@ -139,6 +144,7 @@ export default {
           alert( "Error en la autenticación" );
         }else{
 					this.publicaciones = response.data;
+					this.numAll = this.publicaciones.length;
 					for (let item in this.publicaciones){
 						for (let item2 in this.publicaciones[item].listCategories){
 							for (let cat in this.categories){

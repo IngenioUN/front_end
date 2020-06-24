@@ -4,7 +4,6 @@
           <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 mt-5">
             <div class="row">
               <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" v-for="item of publica" :key="item.id">
-                <!-- <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" v-for="item of publica" :key="item.id"> -->
                 <div class="card">
                   <img src="../assets/images/paris.jpg" class="card-img-top" alt="Paris">
                   <div class="card-body">
@@ -12,8 +11,8 @@
                     <p class="card-text">
                     {{item.abstract}}
                     </p>
-                    <div v-for="item2 of item.listCategories" :key="item2.id">
-                      <b-button class="mt-2" block variant="outline-dark">{{item2}}</b-button>
+                    <div v-for="item2 of item.listCategories" :key="item2.id" class="text-center">
+                      <span class="badge badge-pill badge-primary btn-lg">{{item2}}</span>
                     </div>
                     <b-button class="mt-3 mb-1" block variant="outline-primary" onClick="this.disabled=true" @click="savePublication(item._id)">Save Publication</b-button>
                   </div>

@@ -54,7 +54,7 @@
 							<SavedPublications/>
 						</div>
 						<div class="tab-pane fade" id="publicaciones" role="tabpanel" aria-labelledby="profile-tab" v-if="Role==1" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;">
-							<MyPublications/>
+							<MyPublications :id="'null'" :mine="true"/>
 						</div>
 					</div>
 					</div>
