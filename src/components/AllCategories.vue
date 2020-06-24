@@ -11,8 +11,8 @@
                     <p class="card-text">
                     {{item.abstract}}
                     </p>
-                    <div v-for="item2 of item.listCategories" :key="item2.id">
-                      <b-button class="mt-2" block variant="outline-dark">{{item2}}</b-button>
+                    <div v-for="item2 of item.listCategories" :key="item2.id" class="text-center">
+                      <span class="badge badge-pill badge-primary badge-lg">{{item2}}</span>
                     </div>
                     <b-button class="mt-3 mb-1" block variant="outline-primary" onClick="this.disabled=true" @click="savePublication(item._id)">Save Publication</b-button>
                   </div>
