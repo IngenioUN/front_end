@@ -6,7 +6,7 @@
 					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-1">
 						<img src="../assets/images/Perfil1.jpg" class="card-img-top" alt="...">
 					</div>
-					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+					<div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
 						<ul class="list-group list-group-flush">
 							<li class="list-group-item">
 								<h5 class="card-title"> {{userData.firstName}} {{userData.lastName}} </h5>
@@ -34,10 +34,10 @@
 					</div>
 					<div class="col-9">
 						<div class="tab-content" id="v-pills-tabContent">
-							<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"><Followed :id="this.id"/></div>
-							<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"><Followers :id="this.id"/></div>
-							<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"><MyCategories :id="this.id"/></div>
-							<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"><MyAuthors :id="this.id"/></div>
+							<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;"><Followed :id="this.id" :mine="false"/></div>
+							<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;"><Followers :id="this.id" :mine="false"/></div>
+							<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;"><MyCategories :id="this.id" :mine="false"/></div>
+							<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;"><MyAuthors :id="this.id" :mine="false"/></div>
 						</div>
 					</div>
 				</div>
