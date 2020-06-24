@@ -11,7 +11,7 @@
                   <h5 class="card-title">{{item.name}}</h5>
                   <small>{{item.description}}</small>
                   <br/>
-                  <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" unsubscribe(item._id); setSubscri(index,false)">Unsubscribe</b-button>
+                  <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" unsubscribe(item._id); setSubscri(index,false)" v-if="mine">Unsubscribe</b-button>
                   &nbsp;
                   <b-button class="mt-2 btn btn-sm" variant="outline-dark">Publications</b-button>
                 </div>
@@ -20,7 +20,7 @@
                 <br/>
                 <br/>
                 <a data-toggle="modal" data-target="#NotificationsModal">
-                  <b-button class="mt-2 btn btn-sm align-rigth" variant="outline-dark" @click="searchNotifications(item._id)" disabled>
+                  <b-button class="mt-2 btn btn-sm align-rigth" variant="outline-dark" @click="searchNotifications(item._id)" v-if="mine" disabled>
                   <!-- <a href="#" class="badge badge-danger">9</a> -->
                   Notifications
                   </b-button>
@@ -153,6 +153,6 @@ export default {
     }
   },
   computed:{},
-  props:['id']
+  props:['id','mine']
 }
 </script>

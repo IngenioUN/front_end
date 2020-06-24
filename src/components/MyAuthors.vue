@@ -9,11 +9,8 @@
               <div class="col-md-7 text-left">
                 <div class="card-body">
                   <h5 class="card-title">{{item.firstName}} {{item.lastName}}</h5>
-                  <!-- <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" subscribe(item._id); setSubscri(index,true)">Subscribe</b-button> -->
-                  <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" unsubscribe(item._id); setSubscri(index,false)">Unsubscribe</b-button>
-                  <!-- unsubscribe(item._id); -->
-                  <!-- {{getVal}} -->
-                  <!-- {{suscri[index]}} -->
+                  <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" Subscribe(item._id); setSubscri(index,false)" v-if="item.isSubscribed == 0 && mine">Subscribe</b-button>
+                  <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" unsubscribe(item._id); setSubscri(index,false)" v-if="item.isSubscribed == 1 && mine">Unsubscribe</b-button>
                   &nbsp;
                 </div>
               </div>
@@ -21,7 +18,7 @@
                 <br/>
                 <br/>
                 <a data-toggle="modal" data-target="#NotificationsModal">
-                  <b-button class="mt-2 btn btn-sm align-rigth" variant="outline-dark" @click="searchNotifications(item._id)" disabled>
+                  <b-button class="mt-2 btn btn-sm align-rigth" variant="outline-dark" @click="searchNotifications(item._id)" v-if="mine" disabled>
                   <!-- <a href="#" class="badge badge-danger">9</a> -->
                   Notifications
                   </b-button>
@@ -72,22 +69,19 @@ export default {
     }
   },
   created: function(){
-    // axios
-		// .get( this.$store.state.backURL + '/user/get-user-authors/' + this.id)
-		// .then( response => {
-		// 	if( response.status !== 200 ){
-    //     alert( response.data.message );
-		// 	}else{
-    //     this.authors = response.data;
-    //     console.log(this.authors);
-    //     // for(let item in this.authors){
-    //     //   this.suscri.push(true);
-    //     // }
-		// 	}
-		// })
-		// .catch( error => {
-    //   alert( error.response.data.message );
-		// });
+    axios
+		.get( this.$store.state.backURL + '/user/get-user-authors/' + this.id)
+		.then( response => {
+			if( response.status !== 200 ){
+        alert( response.data.message );
+			}else{
+        this.authors = response.data;
+        //console.log(this.authors);
+			}
+		})
+		.catch( error => {
+      alert( error.response.data.message );
+		});
   },
   methods:{
     setSubscri(num, val){
@@ -123,11 +117,11 @@ export default {
         alert( error.response.data.message );
       });
     },
-    subscribe(CatId){
+    Subscribe(CatId){
       axios
     .post( this.$store.state.backURL + '/user/start-following',
     {
-      "categoryId": CatId
+      "authorId": CatId
     })
 		.then( response => {
       this.sendMessage("Correct", "success", response.data.message);
@@ -162,6 +156,6 @@ export default {
     }
   },
   computed:{},
-  props:['id']
+  props:['id','mine']
 }
 </script>

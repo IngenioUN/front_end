@@ -9,7 +9,7 @@
               <div class="col-md-8">
                 <div class="card-body">
                   <h5 class="card-title">{{item.firstName}}{{item.lastName}}</h5>
-                  <b-button class="mt-2 btn btn-sm" block variant="outline-dark" @click="stopFollow(item._id)">Stop Follow</b-button>
+                  <b-button class="mt-2 btn btn-sm" block variant="outline-dark" @click="stopFollow(item._id)" v-if="mine">Stop Follow</b-button>
                   <b-button class="mt-2 btn btn-sm" block variant="outline-dark">Profile</b-button>
                 </div>
               </div>
@@ -64,6 +64,6 @@ export default {
     }
   },
   computed:{},
-  props:['id']
+  props:['id','mine']
 }
 </script>

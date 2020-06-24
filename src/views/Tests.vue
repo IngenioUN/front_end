@@ -59,11 +59,7 @@ export default{
         this.sendMessage("Correct", "success", response.data.message);
       })
       .catch( error => {
-        if( error.response.status === 400 ){
-          this.sendMessage("Error", "danger", error.response.data.message);
-        }else{
-          this.sendMessage("Error", "danger", "Problem with Server Conection");
-        }
+        this.sendMessage("Error", "danger", error.response.data.message);
       });
     },
     sendMessage(title, variant, message){

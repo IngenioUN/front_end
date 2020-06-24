@@ -9,7 +9,7 @@
                 <img src="../assets/images/IngenioLogo.png" class="card-img-top" alt="Personaje" style="height: 70px; width:150px">
               </router-link>
             </div>
-            <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 offset-5">
+            <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 offset-4">
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Other profile -->
                 <router-link :to="{ name: 'userprofile', params: { id: '5ef1bdabb4ede80b0f7411b9' }}"><h5>Arnie Smith Profile</h5></router-link>

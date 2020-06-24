@@ -39,16 +39,16 @@
 					</div>
 					<div class="card-body tab-content">
 						<div class="tab-pane fade show active" id="siguiendo1" role="tabpanel" aria-labelledby="profile-tab" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;">
-							<Followed :id="'null'"/>
+							<Followed :id="'null'" :mine="true"/>
 						</div>
 						<div class="tab-pane fade" id="mesiguen" role="tabpanel" aria-labelledby="profile-tab" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;">
-							<Followers :id="'null'"/>
+							<Followers :id="'null'" :mine="true"/>
 						</div>
 						<div class="tab-pane fade" id="categorias" role="tabpanel" aria-labelledby="profile-tab" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;">
-							<MyCategories :id="'null'"/>
+							<MyCategories :id="'null'" :mine="true"/>
 						</div>
 						<div class="tab-pane fade" id="myauthorsguardados" role="tabpanel" aria-labelledby="profile-tab" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;">
-							<MyAuthors :id="'null'"/>
+							<MyAuthors :id="'null'" :mine="true"/>
 						</div>
 						<div class="tab-pane fade" id="articulosguardados" role="tabpanel" aria-labelledby="profile-tab" style="height: 500px; max-width: 700px; overflow-y: scroll; overflow-x: hidden;">
 							<SavedPublications/>
