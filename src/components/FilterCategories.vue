@@ -14,7 +14,7 @@
                     <div v-for="item2 of item.listCategories" :key="item2.id" class="text-center">
                       <span class="badge badge-pill badge-primary btn-lg">{{item2}}</span>
                     </div>
-                    <b-button class="mt-3 mb-1" block variant="outline-primary" onClick="this.disabled=true" @click="savePublication(item._id)">Save Publication</b-button>
+                    <b-button v-if="Role!=3" class="mt-3 mb-1" block variant="outline-primary" onClick="this.disabled=true" @click="savePublication(item._id)">Save Publication</b-button>
                   </div>
                 </div>
               </div>
@@ -56,11 +56,11 @@ export default {
   },
   data: function (){
     return {
-
+      Role:3,
     }
   },
   created: function(){
-
+    this.Role = parseInt(localStorage.getItem('Role'));
   },
   methods:{
     savePublication(item) {

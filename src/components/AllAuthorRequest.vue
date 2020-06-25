@@ -116,6 +116,7 @@ export default {
       })
       .then(response => {
         console.log("Se añadio autor");
+        this.$router.push('profile');
       })
       .catch(error => {
         if (error.response.status === 400) {
@@ -135,11 +136,11 @@ export default {
         "userId": user
       })
       .then(response => {
-        console.log("Se añadio autor");
+        this.sendMessage("Correct", "success", response.data.message);
       })
       .catch(error => {
         if (error.response.status === 400) {
-          console.log(error.response.data);
+          this.sendMessage("Error", "danger", error.response.data.message);
         } else {
           console.log(
             "¡Parece que hubo un error de comunicación con el servidor!"
@@ -156,6 +157,13 @@ export default {
         else uno.innerHTML = 'Acepted';
         this.Sent= true;
       }
+    },
+    sendMessage(title, variant, message){
+      this.$bvToast.toast(message, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
     }
   },
   computed:{
