@@ -116,13 +116,7 @@ export default {
       this.user = response.data;
     })
     .catch( error => {
-      if( error.response.status === 401){
-        alert(error.response.data.message);
-        this.Role = localStorage.setItem('Role',3);
-      }else{
-        this.Role = localStorage.setItem('Role',3);
-        alert("Database Problem.");
-      }
+      this.Role = localStorage.setItem('Role',3);
       this.$router.push('principal');
       this.$router.go(0);
     });

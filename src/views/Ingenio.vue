@@ -45,9 +45,9 @@
 						All Categories
 						<span class="badge badge-dark">{{numAll}}</span>
 					</a>
-					<a class="nav-item nav-link" id="filter-tab" data-toggle="tab" href="#forum" role="tab" aria-controls="filter" aria-selected="false" v-for="(item,index) of categories" :key="item.id" @click="cambiarId(item._id); setIdName(item._id,item.name)">
+					<a class="nav-item nav-link" id="filter-tab" data-toggle="tab" href="#forum" role="tab" aria-controls="filter" aria-selected="false" v-for="item of categories" :key="item.id" @click="cambiarId(item._id); setIdName(item._id,item.name)">
 						{{item.name}}
-						<span class="badge badge-dark">{{numOth[index]}}</span>
+						<span class="badge badge-dark">{{item.publications}}</span>
 					</a>
 				</nav>
 				<div class="tab-content" id="myTabContent">
@@ -55,7 +55,7 @@
 						<AllCategories :Allpublica="publicaciones"/>
 					</div>
 					<div class="tab-pane fade" id="forum" role="tabpanel" aria-labelledby="filter-tab">
-						<FilterCategories :publica="publicaciones" :idCat="id" :nameCat="nameCat"/>
+						<FilterCategories :publica="publicaciones" :idCat="id" :nameCat="nameCat" :users="users" :authors="authors" :logged="logged"/>
 					</div>
 				</div>
 			</div>
@@ -82,7 +82,9 @@ export default {
 			id:'',
 			nameCat: '',
 			numAll:0,
-			numOth:[]
+			authors:{},
+			users:{},
+			logged: false
     }
   },
   created: function(){
@@ -103,6 +105,19 @@ export default {
 			}
 		});
 		this.getAllPublications();
+		//Is Logged?
+		axios
+		.get( this.$store.state.backURL + '/user/get-personal-data/null',)
+		.then( response => {
+			if( response.status !== 200 ){
+				alert( "Error en la autenticación" );
+			}else{
+				this.logged = true;
+			}
+		})
+		.catch( error => {
+			this.logged = false;
+		});
   },
   methods:{
 		cambiarId(categoryId){
@@ -114,7 +129,6 @@ export default {
           alert( "Error en la autenticación" );
         }else{
 					this.publicaciones = response.data;
-					this.numOth.push(this.publicaciones.length);
 					for (let item in this.publicaciones){
 						for (let item2 in this.publicaciones[item].listCategories){
 							for (let cat in this.categories){
@@ -132,7 +146,27 @@ export default {
         }else{
           alert( "¡Parece que hubo un error de comunicación con el servidor!" );
         }
-      });
+			});
+			this.users = {};
+			//Users
+			axios
+			.get(this.$store.state.backURL + "/user/get-random-users/0/" + categoryId)
+			.then(response => {
+				this.users = response.data;
+			})
+			.catch(error => {
+				console.log(error.response.data);
+			});
+			//Authors
+			this.authors = {};
+			axios
+			.get(this.$store.state.backURL + "/user/get-random-users/1/" + categoryId)
+			.then(response => {
+				this.authors = response.data;
+			})
+			.catch(error => {
+				console.log(error.response.data);
+			});
 		},
 		getAllPublications(){
 			this.publicaciones = {};

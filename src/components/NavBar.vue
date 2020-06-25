@@ -9,10 +9,8 @@
                 <img src="../assets/images/IngenioLogo.png" class="card-img-top" alt="Personaje" style="height: 70px; width:150px">
               </router-link>
             </div>
-            <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 offset-4">
+            <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 offset-5">
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Other profile -->
-                <router-link :to="{ name: 'userprofile', params: { id: '5ef1bdabb4ede80b0f7411b9' }}"><h5>Arnie Smith Profile</h5></router-link>
                 <!-- Profile -->
                 <router-link class="nav-link text-white" to="/profile" v-if="Role!=3">Profile</router-link>
                 <!-- SignUp -->
@@ -118,6 +116,7 @@ export default {
         if( error.response.status == 401 ) {
           this.sendMessage("Error", "danger", error.response.data.message);
           localStorage.setItem( 'Role', 3 );
+          this.$router.push('principal');
           this.$router.go(0);
         } else {
           this.sendMessage("Error", "danger", "Could not establish communication with the server");

@@ -16,22 +16,22 @@
                   <b-button class="mt-2 btn btn-sm" variant="outline-dark">Publications</b-button>
                 </div>
               </div>
-              <div class="col-md-1 text-right">
+              <div class="col-md-1">
                 <br/>
-                <br/>
-                <a data-toggle="modal" data-target="#NotificationsModal">
-                  <b-button class="mt-2 btn btn-sm align-rigth" variant="outline-dark" @click="searchNotifications(item._id)" v-if="mine" disabled>
-                  <!-- <a href="#" class="badge badge-danger">9</a> -->
-                  Notifications
-                  </b-button>
+                <a data-toggle="modal" data-target="#AuthorRequestModal">
+                  <div class="card-body">
+                    <b-button class="mt-2 btn btn-sm align-rigth" variant="outline-dark" @click="searchNotifications(item._id)" v-if="mine">
+                      Notifications
+                    </b-button>
+                  </div>
                 </a>
               </div>
             </div>
-            <div class="modal fade" id="NotificationsModal" tabindex="-1" role="dialog" aria-labelledby="NotificationsLabel" aria-hidden="true">
+            <div class="modal fade" id="AuthorRequestModal" tabindex="-1" role="dialog" aria-labelledby="AuthorRequestModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                   <div class="modal-header bg-light">
-                  <h1 class="modal-title" id="NotificationsModal"><em>Notifications</em></h1>
+                  <h1 class="modal-title" id="SignInModal"><em>Notifications</em></h1>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -75,7 +75,8 @@ export default {
 		.get( this.$store.state.backURL + '/user/get-user-categories/' + this.id)
 		.then( response => {
 			if( response.status !== 200 ){
-        alert( response.data.message );
+        this.$router.push('principal');
+        this.$router.go(0);
 			}else{
         this.categories = response.data;
         for(let item in this.categories){
@@ -84,7 +85,8 @@ export default {
 			}
 		})
 		.catch( error => {
-			alert( error.response.data.message );
+			this.$router.push('principal');
+      this.$router.go(0);
 		});
   },
   methods:{
@@ -98,20 +100,26 @@ export default {
       axios
       .post( this.$store.state.backURL + '/notification/remove-all-notifications',
       {
-        "notificationId": "5ef0a3887f10b612c3663a57"
+        "notificationId": this.notifications._id
       }
       ).then( response => {
-        lert( response.data.message );
+        alert( response.data.message );
+        this.$router.go(0);
       })
       .catch( error => {
         alert( error.response.data.message );
+        this.$router.go(0);
       });
     },
     searchNotifications(idN){
       axios
-      .get( this.$store.state.backURL + '/notification/get-notifications/' + idN
+      .get( this.$store.state.backURL + '/notification/get-notifications/null/' + idN
       ).then( response => {
-          alert( response.data.message );
+        if( response.status !== 200 ){
+          alert( response.data);
+        }else{
+          this.notifications = response.data;
+        }
       })
       .catch( error => {
         alert( error.response.data.message );

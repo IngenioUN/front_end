@@ -62,7 +62,7 @@
 						<div class="card-header">
 							<ul class="nav nav-tabs card-header-tabs">
 								<li class="nav-item">
-									<a class="nav-link" id="allAuthorRequest-tab" data-toggle="tab" href="#allAuthorRequest" role="tab" aria-controls="allAuthorRequest" aria-selected="false">Authors Requests</a>
+									<a class="nav-link active" id="allAuthorRequest-tab" data-toggle="tab" href="#allAuthorRequest" role="tab" aria-controls="allAuthorRequest" aria-selected="true">Authors Requests</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" id="authors-tab" data-toggle="tab" href="#authors" role="tab" aria-controls="authors" aria-selected="false">Authors</a>
@@ -73,7 +73,7 @@
 							</ul>
 						</div>
 						<div class="card-body tab-content">
-							<div class="tab-pane fade" id="allAuthorRequest" role="tabpanel" aria-labelledby="allAuthorRequest-tab">
+							<div class="tab-pane fade show active" id="allAuthorRequest" role="tabpanel" aria-labelledby="allAuthorRequest-tab">
 								<AllAuthorRequest/>
 							</div>
 							<div class="tab-pane fade" id="authors" role="tabpanel" aria-labelledby="allAuthorRequest-tab">

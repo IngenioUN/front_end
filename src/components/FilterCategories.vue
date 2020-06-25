@@ -29,13 +29,13 @@
               <p class="text-muted text-center">
                 Authors you may know...
               </p>
-              <RandomAuthors :IdCat="idCat"/>
+              <RandomAuthors :authors="authors" :logged="logged"/>
             </div>
             <div class="border mt-3" style="height: 300px; max-width: 600px; overflow-y: scroll; overflow-x: hidden;">
               <p class="text-muted text-center">
                 Users you may know...
               </p>
-              <RandomUsers :IdCat="idCat"/>
+              <RandomUsers :users="users" :logged="logged"/>
             </div>
           </div>
         </div>
@@ -89,6 +89,6 @@ export default {
     }
    },
   computed:{},
-  props:['publica', 'idCat', 'nameCat']
+  props:['publica', 'idCat', 'nameCat', 'users', 'authors', 'logged']
 }
 </script>

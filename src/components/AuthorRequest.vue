@@ -4,7 +4,7 @@
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <form >
           <div class="col-md-12 mb-3">
-            <label for="validationServer01"><h5>Hola, Mario Lopez</h5></label><br/>
+            <label for="validationServer01"><h5>Hola,</h5></label><br/>
             <br>
             <p>
               Al solicitar el rol de "Autor", adquiere las siguientes funcionalidades:
@@ -33,13 +33,6 @@
             <label for="academicHistory">Historia Academica</label>
             <input type="text" class="form-control" placeholder="Historia Academica" v-model="form.academicHistory" required>
             <br/>
-            <div class="custom-control custom-checkbox mb-3">
-              <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
-              <label class="custom-control-label" for="customControlValidation1">
-                Acepto que todas mis publicaciones sean descargadas y compartidas a los usuarios de Ingenio.
-              </label>
-              <div class="invalid-feedback">Debe marcar la casilla</div>
-            </div>
             <button @click="sendAuthReq()" class="btn btn-dark mb-2">Enviar Solicitud</button>
           </div>
         </form>
