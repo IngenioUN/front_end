@@ -1,20 +1,23 @@
 <template>
     <div class="divlogin">
-      {{numberId}}
         <div class="row">
-          <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10" v-for="item of numberId.response" :key="item.id">
-            <div class="row no-gutters mb-3 border">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="text-center" v-if="numberId.length == 0">
+              {{noNot}}
+            </div>
+            <div class="row no-gutters mb-3 border" v-for="item of numberId.listPublications" :key="item.id">
               <div class="col-md-10 text-left">
                 <div class="card-body">
                   <h5 class="card-title">{{item.title}}</h5>
-                  Pepito Perez
-                  {{item._id}}
+                  Author: {{item.authorId.firstName}} {{item.authorId.lastName}}
                 </div>
               </div>
               <div class="col-md-2">
                 <br/>
-                <b-button class="mt-1 btn btn-sm" block variant="outline-dark">Systems</b-button>
-                <b-button class="mt-1 btn btn-sm" block variant="outline-danger" @click="deleteNotif()">Delete</b-button>
+                <div v-for="item2 of item.listCategories" :key="item2.id">
+                  {{item2.name}}
+                </div>
+                <b-button class="mt-1 btn btn-sm" block variant="outline-danger" @click="deleteNotif(item._id,numberId._id)">Delete</b-button>
                 <br/>
               </div>
             </div>
@@ -33,22 +36,23 @@ export default {
   components: {},
   data: function (){
     return {
-      notifications:{}
+      notifications:{},
+      noNot:'You do not have notifications'
     }
   },
   created: function(){
-
   },
   methods:{
-    deleteNotif(){
+    deleteNotif(idPublic,idNot){
       axios
       .post( this.$store.state.backURL + '/notification/remove-notification',
       {
-        "notificationId": "5ef07d22a6651d498a52d855",
-	      "publicationId": "5ef07d30a6651d498a52d856"
+        "notificationId": idNot,
+	      "publicationId": idPublic
       }
       ).then( response => {
-        alert( response.data.message );
+        alert( response.data.message);
+        this.$router.go(0);
       })
       .catch( error => {
         alert( error.response.data.message );

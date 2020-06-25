@@ -14,22 +14,22 @@
                   &nbsp;
                 </div>
               </div>
-              <div class="col-md-1 text-right">
+              <div class="col-md-1">
                 <br/>
-                <br/>
-                <a data-toggle="modal" data-target="#NotificationsModal">
-                  <b-button class="mt-2 btn btn-sm align-rigth" variant="outline-dark" @click="searchNotifications(item._id)" v-if="mine" disabled>
-                  <!-- <a href="#" class="badge badge-danger">9</a> -->
-                  Notifications
-                  </b-button>
+                <a data-toggle="modal" data-target="#NotModal">
+                  <div class="card-body">
+                    <b-button class="mt-2 btn btn-sm align-rigth" variant="outline-dark" @click="searchNotifications(item._id)" v-if="mine">
+                      Notifications
+                    </b-button>
+                  </div>
                 </a>
               </div>
             </div>
-            <div class="modal fade" id="NotificationsModal" tabindex="-1" role="dialog" aria-labelledby="NotificationsLabel" aria-hidden="true">
+            <div class="modal fade" id="NotModal" tabindex="-1" role="dialog" aria-labelledby="NotModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                   <div class="modal-header bg-light">
-                  <h1 class="modal-title" id="NotificationsModal"><em>Notifications</em></h1>
+                  <h1 class="modal-title" id="SignInModal"><em>Notifications</em></h1>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -76,7 +76,6 @@ export default {
         alert( response.data.message );
 			}else{
         this.authors = response.data;
-        //console.log(this.authors);
 			}
 		})
 		.catch( error => {
@@ -94,21 +93,23 @@ export default {
       axios
       .post( this.$store.state.backURL + '/notification/remove-all-notifications',
       {
-        "notificationId": "5ef0a3887f10b612c3663a57"
+        "notificationId": this.notifications._id
       }
       ).then( response => {
-        alert( response.data.message );
+        alert( response.data );
+        this.$router.go(0);
       })
       .catch( error => {
         alert( error.response.data.message );
+        this.$router.go(0);
       });
     },
-    searchNotifications(id){
+    searchNotifications(idN){
       axios
-      .get( this.$store.state.backURL + '/notification/get-notifications/' + id
+      .get( this.$store.state.backURL + '/notification/get-notifications/' + idN + '/null'
       ).then( response => {
-        if( response.status !== 201 ){
-          alert( response.data.message );
+        if( response.status !== 200 ){
+          alert( response.data);
         }else{
           this.notifications = response.data;
         }
@@ -125,9 +126,11 @@ export default {
     })
 		.then( response => {
       this.sendMessage("Correct", "success", response.data.message);
+      this.$router.go(0);
 		})
 		.catch( error => {
       this.sendMessage("Error", "danger", error.response.data.message);
+      this.$router.go(0);
 		});
     },
     unsubscribe(AutId){
@@ -138,13 +141,11 @@ export default {
     })
 		.then( response => {
       this.sendMessage("Correct", "success", response.data.message);
+      this.$router.go(0);
 		})
 		.catch( error => {
-			if( error.response.status === 400 ){
         this.sendMessage("Error", "danger", error.response.data.message);
-			}else{
-        this.sendMessage("Error", "danger", "Problem with Server Conection");
-			}
+        this.$router.go(0);
 		});
     },
     sendMessage(title, variant, message){

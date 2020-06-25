@@ -19,10 +19,8 @@
 								<p class="card-text">
 								Description <br/>
 								<em>{{userData.description}}</em>
-								<!-- <b-button class="mt-2 btn btn-sm" block variant="outline-dark" @click="Follow(item._id,item.role)" v-if="item.isFollowing == 0">Follow</b-button>
-                <b-button class="mt-2 btn btn-sm" block variant="outline-dark" @click="stopFollow(item._id,item.role)" v-if="item.isFollowing == 1">Stop Follow</b-button> -->
-								<b-button class="mt-2 btn btn-sm" block variant="outline-dark">Follow</b-button>
-                <b-button class="mt-2 btn btn-sm" block variant="outline-dark">Stop Follow</b-button>
+								<b-button class="mt-2 btn btn-sm" block variant="outline-dark" @click="Follow(userData.role)" v-if="userData.isFollowing == 0">Follow</b-button>
+                <b-button class="mt-2 btn btn-sm" block variant="outline-dark" @click="stopFollow(userData.role)" v-if="userData.isFollowing == 1">Stop Follow</b-button>
 								</p>
 							</li>
 						</ul>
@@ -117,12 +115,12 @@ export default {
     this.Role = localStorage.getItem('Role');
   },
   methods:{
-		stopFollow(idN,Role){
+		stopFollow(Role){
       if(Role == 0){
         axios
         .post( this.$store.state.backURL + '/user/stop-following',
         {
-          "userId": idN
+          "userId": this.id
         }
         )
         .then( response => {
@@ -136,7 +134,7 @@ export default {
         axios
         .post( this.$store.state.backURL + '/user/stop-following',
         {
-          "authorId": idN
+          "authorId": this.id
         }
         )
         .then( response => {
@@ -145,17 +143,18 @@ export default {
         })
         .catch( error => {
           alert( error.response.data.message );
+          this.$router.go(0);
         });
       }else{
         alert("Error! Ese rol no existe");
       }
     },
-    Follow(idN, Role){
+    Follow( Role){
       if(Role == 0){
         axios
         .post( this.$store.state.backURL + '/user/start-following',
         {
-          "userId": idN
+          "userId": this.id
         }
         )
         .then( response => {
@@ -164,12 +163,13 @@ export default {
         })
         .catch( error => {
           alert( error.response.data.message );
+          this.$router.go(0);
         });
       }else if(Role == 1){
         axios
         .post( this.$store.state.backURL + '/user/start-following',
         {
-          "authorId": idN
+          "authorId": this.id
         }
         )
         .then( response => {
@@ -178,6 +178,7 @@ export default {
         })
         .catch( error => {
           alert( error.response.data.message );
+          this.$router.go(0);
         });
       }else{
         alert("Error! Ese rol no existe");

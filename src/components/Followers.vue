@@ -11,7 +11,9 @@
                 <h5 class="card-title">{{item.firstName}}{{item.lastName}}</h5>
                 <b-button class="mt-2 btn btn-sm" block variant="outline-dark" @click="Follow(item._id,item.role)" v-if="item.isFollowing == 0 && mine">Follow</b-button>
                 <b-button class="mt-2 btn btn-sm" block variant="outline-dark" @click="stopFollow(item._id,item.role)" v-if="item.isFollowing == 1 && mine">Stop Follow</b-button>
-                <b-button class="mt-2 btn btn-sm" block variant="outline-dark">Profile</b-button>
+                <router-link :to="{ name: 'userprofile', params: { id: item._id }}">
+                  <b-button class="mt-2 btn btn-sm" block variant="outline-dark">Profile</b-button>
+                </router-link>
               </div>
             </div>
           </div>
@@ -44,7 +46,8 @@ export default {
 			}
 		})
 		.catch( error => {
-      alert( error.response.data.message );
+      this.$router.push('principal');
+      this.$router.go(0);
 		});
   },
   methods:{

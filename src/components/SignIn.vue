@@ -44,8 +44,8 @@ export default {
     return {
       form:{
         type: 0,
-        email1:"author@ingenio.com",
-        password:"aA@12345678"
+        email1:"",
+        password:""
       }
     }
   },
@@ -60,12 +60,12 @@ export default {
       ).then( response => {
         alert(response.data.message);
         localStorage.setItem( 'Role', parseInt(response.data.role));
-        console.log(response.data);
+        this.$router.push('principal');
         this.$router.go(0);
       })
       .catch( error => {
         alert( error.response.data.message );
-        console.log(error.response);
+        this.$router.push('principal');
         this.$router.go(0);
       });
     },
