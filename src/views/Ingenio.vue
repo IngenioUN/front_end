@@ -85,7 +85,7 @@ export default {
 			authors:{},
 			users:{},
 			logged: false,
-			isLoggedCategory: false
+			isLoggedCategory: true
     }
   },
   created: function(){
