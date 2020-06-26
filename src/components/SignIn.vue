@@ -58,17 +58,24 @@ export default {
           "password": this.form.password
         }
       ).then( response => {
-        alert(response.data.message);
+        this.sendMessage("Correct", "success", response.data.message);
         localStorage.setItem( 'Role', parseInt(response.data.role));
         this.$router.push('principal');
         this.$router.go(0);
       })
       .catch( error => {
-        alert( error.response.data.message );
+        this.sendMessage("Error", "danger", error.response.data.message);
         this.$router.push('principal');
         this.$router.go(0);
       });
     },
+    sendMessage(title, variant, message){
+      this.$bvToast.toast(message, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
+    }
   },
   computed: {
       verifyUser() {

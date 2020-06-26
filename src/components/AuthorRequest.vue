@@ -4,9 +4,10 @@
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <form >
           <div class="col-md-12 mb-3">
-            <label for="validationServer01"><h5>Hola,</h5></label><br/>
-            <br>
             <p>
+              Bienvenido
+              <br/>
+              <br/>
               Al solicitar el rol de "Autor", adquiere las siguientes funcionalidades:
               <br/>
               <ul id="funciones">
@@ -70,29 +71,18 @@ export default {
         }
       )
         .then( response => {
-          if( response.status == 201){
-            alert( "Solicitud creada" );
-            console.log(response);
-          }else if( response.status == 200){
-            alert( "Ya haz enviado tu solicitud" )
-            //this.$router.push('principal')
-            console.log(response);
-          }
-          else {
-            alert( "Error al solicitar la peticion de autor" );
-            console.log(response);
-          }
+          this.sendMessage("Correct", "success", response.data.message);
         }).catch( error => {
-          if( error.response.status === 400 ){
-            alert( "Credenciales incorrectas" );
-            alert(error.response.status);
-              console.log(response);
-          }else{
-            alert( "¡Parece que hubo un error de comunicación con el servidor!" );
-            console.log(response);
-          }
+          this.sendMessage("Error", "danger", error.response.data.message);
         });
       },
+      sendMessage(title, variant, message){
+        this.$bvToast.toast(message, {
+          title: title,
+          variant: variant,
+          solid: true
+        })
+      }
     },
     computed:{
       validaEmail(){

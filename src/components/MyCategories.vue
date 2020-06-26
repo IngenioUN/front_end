@@ -9,16 +9,16 @@
               <div class="col-md-7 text-left">
                 <div class="card-body">
                   <h5 class="card-title">{{item.name}}</h5>
-                  <small>{{item.description}}</small>
+                  <small>{{item.description}}</small><br/>
+                  <small> Publications: {{item.publications}} </small>
                   <br/>
                   <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" unsubscribe(item._id); setSubscri(index,false)" v-if="mine">Unsubscribe</b-button>
                   &nbsp;
-                  <b-button class="mt-2 btn btn-sm" variant="outline-dark">Publications</b-button>
                 </div>
               </div>
               <div class="col-md-1">
                 <br/>
-                <a data-toggle="modal" data-target="#AuthorRequestModal">
+                <a data-toggle="modal" data-target="#CategoriesNotifications">
                   <div class="card-body">
                     <b-button class="mt-2 btn btn-sm align-rigth" variant="outline-dark" @click="searchNotifications(item._id)" v-if="mine">
                       Notifications
@@ -27,11 +27,11 @@
                 </a>
               </div>
             </div>
-            <div class="modal fade" id="AuthorRequestModal" tabindex="-1" role="dialog" aria-labelledby="AuthorRequestModalLabel" aria-hidden="true">
+            <div class="modal fade" id="CategoriesNotifications" tabindex="-1" role="dialog" aria-labelledby="CategoriesNotificationsLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                   <div class="modal-header bg-light">
-                  <h1 class="modal-title" id="SignInModal"><em>Notifications</em></h1>
+                  <h1 class="modal-title" id="CategoriesNotifications"><em>Notifications</em></h1>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>

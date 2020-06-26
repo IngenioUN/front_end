@@ -7,6 +7,7 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
           <h5 class="card-title"> {{user.firstName}} {{user.lastName}} </h5>
+          Role: {{nameRole}}<br/>
           {{user.email1}}
           <p class="card-text">
           Hola! <br/>
@@ -34,7 +35,7 @@
       <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
         <div class="modal-content">
           <div class="modal-header bg-light">
-          <h1 class="modal-title" id="SignInModal"><em>Solicitud Autoria</em></h1>
+          <h1 class="modal-title" id="AuthorRequestModal"><em>Author Request</em></h1>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -95,6 +96,7 @@ import AddCategory from '../components/AddCategory.vue';
 
 import axios from'axios';
 axios.defaults.withCredentials = true;
+
 export default {
   name: 'PersonalInfo.vue',
   components:{
@@ -114,6 +116,15 @@ export default {
     .get(this.$store.state.backURL + '/user/get-personal-data/null')
     .then( response => {
       this.user = response.data;
+      if(this.user.role == 0){
+        this.nameRole = 'User';
+      }else if(this.user.role == 1){
+        this.nameRole = 'Author';
+      }else if(this.user.role == 2){
+        this.nameRole = 'Admin';
+      }else{
+        this.nameRole = 'Invalid role';
+      }
     })
     .catch( error => {
       this.Role = localStorage.setItem('Role',3);

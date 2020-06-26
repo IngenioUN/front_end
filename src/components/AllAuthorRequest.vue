@@ -73,21 +73,16 @@ export default {
   methods:{
     confirm(){
       this.disabled = !this.disabled;
-      console.log(this.disabled)
     },
     getItems() {
       axios
       .get(this.$store.state.backURL + "/author-request/get-all-author-requests")
       .then(response => {
-        console.log(response);
+        this.sendMessage("Correct", "success", response.data.message);
         this.items = response.data;
       })
       .catch( error => {
-        if( error.response.status === 400 ){
-          console.log( "Credenciales incorrectas" );
-        }else{
-          console.log( "¡Parece que hubo un error de comunicación con el servidor!" );
-        }
+        this.sendMessage("Error", "danger", error.response.data.message);
       });
     },
     getRequest(item) {
@@ -96,16 +91,11 @@ export default {
         this.$store.state.backURL + "/author-request/get-author-request/" + item
       )
       .then(response => {
-        console.log(response);
+        this.sendMessage("Correct", "success", response.data.message);
         this.datoPasar = response.data;
       })
       .catch(error => {
-        if (error.response.status === 400) {
-          console.log(item);
-        } else {
-          console.log("¡Parece que hubo un error de comunicación con el servidor!");
-          console.log(item);
-        }
+        this.sendMessage("Error", "danger", error.response.data.message);
       });
     },
     addAutor(user) {
@@ -115,20 +105,16 @@ export default {
         "userId": user
       })
       .then(response => {
-        console.log("Se añadio autor");
-        this.$router.push('profile');
+        this.sendMessage("Correct", "success", response.data.message);
       })
       .catch(error => {
         if (error.response.status === 400) {
-          console.log(error.response.data);
-        } else {
-          console.log(
-            "¡Parece que hubo un error de comunicación con el servidor!"
-          );
+          this.sendMessage("Error", "danger", error.response.data.message);
         }
       });
       }else{console.log("check")}
     },
+
     removeR(user) {
       if (this.disabled ){
       axios
@@ -139,13 +125,7 @@ export default {
         this.sendMessage("Correct", "success", response.data.message);
       })
       .catch(error => {
-        if (error.response.status === 400) {
-          this.sendMessage("Error", "danger", error.response.data.message);
-        } else {
-          console.log(
-            "¡Parece que hubo un error de comunicación con el servidor!"
-          );
-        }
+        this.sendMessage("Error", "danger", error.response.data.message);
       });
       }else{console.log("check")}
     },

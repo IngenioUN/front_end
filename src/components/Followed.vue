@@ -38,13 +38,10 @@ export default {
     axios
 		.get( this.$store.state.backURL + '/user/get-following/' + this.id)
 		.then( response => {
-			if( response.status !== 200 ){
-        alert( response.data.message );
-			}else{
-        this.items = response.data;
-			}
+      this.items = response.data;
 		})
 		.catch( error => {
+      this.sendMessage("Error", "danger", error.response.data.message);
       this.$router.push('principal');
       this.$router.go(0);
 		});
@@ -58,12 +55,19 @@ export default {
     }
     )
 		.then( response => {
-      alert( response.data.message );
+      this.sendMessage("Correct", "success", response.data.message);
       this.$router.go(0);
 		})
 		.catch( error => {
-      alert( error.response.data.message );
+      this.sendMessage("Error", "danger", error.response.data.message);
 		});
+    },
+    sendMessage(title, variant, message){
+      this.$bvToast.toast(message, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
     }
   },
   computed:{},

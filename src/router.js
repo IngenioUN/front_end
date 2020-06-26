@@ -101,12 +101,12 @@ export default new Router({
       component: Profile,
       children:[
         {
-          path: "authorRequest",
+          path: "/authorRequest",
           name: "authorRequest",
           component: AuthorRequest
         },
         {
-          path: "addPublication",
+          path: "/addPublication",
           name: "addPublication",
           component: AddPublication
         },

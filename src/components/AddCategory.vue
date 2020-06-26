@@ -55,14 +55,20 @@ export default {
           "description": this.description
         }
       ).then( response => {
-        alert(response.data.message);
-        console.log(response.data);
+        this.sendMessage("Correct", "success", response.data.message);
+        this.$router.go(0);
       })
       .catch( error => {
-        alert( error.response.data.message );
-        console.log(error.response);
+        this.sendMessage("Error", "danger", error.response.data.message);
       });
     },
+    sendMessage(title, variant, message){
+      this.$bvToast.toast(message, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
+    }
   }
 }
 </script>

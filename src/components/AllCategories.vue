@@ -50,17 +50,18 @@ export default {
         "publicationId": item
       })
       .then(response => {
-        console.log("success save publication");
+        this.sendMessage("Correct", "success", response.data.message);
       })
       .catch(error => {
-        if (error.response.status === 400) {
-          console.log(item);
-        } else {
-          console.log(
-            "¡Parece que hubo un error de comunicación con el servidor!"
-          );
-        }
+        this.sendMessage("Error", "danger", error.response.data.message);
       });
+    },
+    sendMessage(title, variant, message){
+      this.$bvToast.toast(message, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
     }
   },
   computed:{},

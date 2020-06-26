@@ -62,21 +62,22 @@ export default {
         }
       ).then( response => {
         localStorage.setItem( 'Role', response.data.role );
-        alert( response.data.message )
-        console.log(response.data);
+        this.sendMessage("Correct", "success", response.data.message);
         this.$router.push('principal');
         this.$router.go(0);
       })
       .catch( error => {
-        console.log(error.response);
-        if( error.response.status === 400 ){
-          alert( error.response.data.message );
-        }else{
-          alert( "Server Conection Error" );
-        }
-        console.log(error.response);
+        localStorage.setItem('Role', 3);
+        this.sendMessage("Error", "danger", error.response.data.message);
       });
-    }
+    },
+    sendMessage(title, variant, message){
+      this.$bvToast.toast(message, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
+    } 
   },
   computed: {
     verifyName() {

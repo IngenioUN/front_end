@@ -36,10 +36,16 @@
             disabled-field="notEnabled"
           ></b-form-checkbox-group>
           <div class="mb-3">
-              <label for="exampleFormControlInput2">Key Words</label>
-              <input type="text" class="form-control col-sm-10" id="exampleFormControlInput3" placeholder="New keword..." v-model="keyword">
-              <br/>
-              <button type="button" class="btn btn-sm btn-dark" @click="AddKeyWord()">Add</button>
+            <label for="exampleFormControlInput2">Key Words</label>
+            <div class="col-auto">
+              <label class="sr-only" for="inlineFormInputGroup">New keword...</label>
+              <div class="input-group mb-2">
+                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="New keword..." v-model="keyword">
+                <div class="input-group-prepend">
+                  <button type="button" class="btn btn-sm btn-dark" @click="AddKeyWord()">Add</button>
+                </div>
+              </div>
+            </div>
           </div>
             <div  class="mt-3" v-for="(item,index) in publication.keyWords" :key="item.id">
               <div role="alert" class="alert alert-dark">
@@ -95,6 +101,7 @@ export default {
     .catch( error => {
       alert(error.response.data.message );
       if( error.response.status == 401 ) {
+        this.sendMessage("Error", "danger", error.response.data.message);
         this.$router.push('principal');
         this.$router.go(0);
       }
@@ -113,12 +120,11 @@ export default {
           "text": this.publication.text
         }
       ).then( response => {
-        alert(response.data.message);
-        console.log(response.data);
+        this.sendMessage("Correct", "success", response.data.message);
+        this.$router.go(0);
       })
       .catch( error => {
-        alert( error.response.data.message );
-        console.log(error.response);
+        this.sendMessage("Error", "danger", error.response.data.message);
       });
     },
     AddKeyWord(){
@@ -127,6 +133,13 @@ export default {
     },
     DeleteKeyWord: function(index){
       this.publication.keyWords.splice(index,1);
+    },
+    sendMessage(title, variant, message){
+      this.$bvToast.toast(message, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
     }
   }
 }

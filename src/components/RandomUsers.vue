@@ -51,11 +51,11 @@ export default {
       }
       )
       .then( response => {
-        alert( response.data.message );
+        this.sendMessage("Correct", "success", response.data.message);
         this.$router.go(0);
       })
       .catch( error => {
-        alert( error.response.data.message );
+        this.sendMessage("Error", "danger", error.response.data.message);
       });
     },
     Follow( idN){
@@ -66,11 +66,11 @@ export default {
       }
       )
       .then( response => {
-        alert( response.data.message );
+        this.sendMessage("Correct", "success", response.data.message);
         this.$router.go(0);
       })
       .catch( error => {
-        alert( error.response.data.message );
+        this.sendMessage("Error", "danger", error.response.data.message);
         this.$router.go(0);
       });
     },

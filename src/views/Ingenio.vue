@@ -45,7 +45,7 @@
 						All Categories
 						<span class="badge badge-dark">{{numAll}}</span>
 					</a>
-					<a class="nav-item nav-link" id="filter-tab" data-toggle="tab" href="#forum" role="tab" aria-controls="filter" aria-selected="false" v-for="item of categories" :key="item.id" @click="cambiarId(item._id); setIdName(item._id,item.name)">
+					<a class="nav-item nav-link" id="filter-tab" data-toggle="tab" href="#forum" role="tab" aria-controls="filter" aria-selected="false" v-for="item of categories" :key="item.id" @click="cambiarId(item._id); setIdName(item._id,item.name, item.isFollowing == 0)">
 						{{item.name}}
 						<span class="badge badge-dark">{{item.publications}}</span>
 					</a>
@@ -55,7 +55,7 @@
 						<AllCategories :Allpublica="publicaciones"/>
 					</div>
 					<div class="tab-pane fade" id="forum" role="tabpanel" aria-labelledby="filter-tab">
-						<FilterCategories :publica="publicaciones" :idCat="id" :nameCat="nameCat" :users="users" :authors="authors" :logged="logged"/>
+						<FilterCategories :publica="publicaciones" :idCat="id" :nameCat="nameCat" :users="users" :authors="authors" :logged="logged" :isLoggedCat="isLoggedCategory"/>
 					</div>
 				</div>
 			</div>
@@ -84,7 +84,8 @@ export default {
 			numAll:0,
 			authors:{},
 			users:{},
-			logged: false
+			logged: false,
+			isLoggedCategory: false
     }
   },
   created: function(){
@@ -198,9 +199,10 @@ export default {
         }
       });
 		},
-		setIdName(idnuevo,namenuevo){
+		setIdName(idnuevo,namenuevo,islog){
 			this.id = idnuevo;
 			this.nameCat = namenuevo;
+			this.isLoggedCategory = islog;
 		}
 	},
   computed:{}

@@ -58,15 +58,10 @@ export default {
       axios
       .get(this.$store.state.backURL + "/user/get-users")
       .then(response => {
-        console.log(response);
         this.items = response.data;
       })
       .catch( error => {
-        if( error.response.status === 400 ){
-          console.log( "Credenciales incorrectas" );
-        }else{
-          console.log( "¡Parece que hubo un error de comunicación con el servidor!" );
-        }
+        console.log( "¡Parece que hubo un error de comunicación con el servidor!" );
       });
     }
   },

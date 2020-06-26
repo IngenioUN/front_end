@@ -21,9 +21,8 @@
             </div>
           </div>
           <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 mt-5">
-            <b-button class="mt-2" block variant="outline-primary" @click="subscribeCategory(idCat)">Suscribe to {{nameCat}}
-              <br/>
-              </b-button>
+            <b-button class="mt-2" block variant="outline-primary" @click="subscribeCategory(idCat)" v-if="isLoggedCat">Suscribe to {{nameCat}}</b-button>
+            <b-button class="mt-2" block variant="outline-primary" @click="unsubscribeCategory(idCat)" v-if="!isLoggedCat">Unsuscribe to {{nameCat}}</b-button>
             <br/>
             <div class="border" style="height: 300px; max-width: 600px; overflow-y: scroll; overflow-x: hidden;">
               <p class="text-muted text-center">
@@ -69,11 +68,18 @@ export default {
         "publicationId": item
       })
       .then(response => {
-        console.log("success save publication");
+        this.sendMessage("Correct", "success", response.data.message);
       })
       .catch(error => {
-        console.log(error.response.data.message)
+        this.sendMessage("Error", "danger", error.response.data.message);
       });
+    },
+    sendMessage(title, variant, message){
+      this.$bvToast.toast(message, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
     },
     subscribeCategory(item) {
       axios
@@ -81,14 +87,28 @@ export default {
         "categoryId": item
       })
       .then(response => {
-        alert(response.data.message);
+        this.sendMessage("Correct", "success", response.data.message);
       })
       .catch(error => {
-        alert(error.response.data.message);
+        this.sendMessage("Error", "danger", error.response.data.message);
       });
+    },
+    unsubscribeCategory(CatId){
+      axios
+    .post( this.$store.state.backURL + '/user/stop-following',
+    {
+      "categoryId": CatId
+    })
+		.then( response => {
+      this.sendMessage("Correct", "success", response.data.message);
+      this.$router.go(0);
+		})
+		.catch( error => {
+      this.sendMessage("Error", "danger", error.response.data.message);
+		});
     }
    },
   computed:{},
-  props:['publica', 'idCat', 'nameCat', 'users', 'authors', 'logged']
+  props:['publica', 'idCat', 'nameCat', 'users', 'authors', 'logged', 'isLoggedCat']
 }
 </script>

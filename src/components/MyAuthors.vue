@@ -9,6 +9,8 @@
               <div class="col-md-7 text-left">
                 <div class="card-body">
                   <h5 class="card-title">{{item.firstName}} {{item.lastName}}</h5>
+                  <small> Publications: {{item.publications}} </small>
+                  <br/>
                   <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" Subscribe(item._id); setSubscri(index,false)" v-if="item.isSubscribed == 0 && mine">Subscribe</b-button>
                   <b-button class="mt-2 btn btn-sm" variant="outline-dark" @click=" unsubscribe(item._id); setSubscri(index,false)" v-if="item.isSubscribed == 1 && mine">Unsubscribe</b-button>
                   &nbsp;
@@ -29,7 +31,7 @@
               <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                   <div class="modal-header bg-light">
-                  <h1 class="modal-title" id="SignInModal"><em>Notifications</em></h1>
+                  <h1 class="modal-title" id="NotModal"><em>Notifications</em></h1>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -72,14 +74,11 @@ export default {
     axios
 		.get( this.$store.state.backURL + '/user/get-user-authors/' + this.id)
 		.then( response => {
-			if( response.status !== 200 ){
-        alert( response.data.message );
-			}else{
-        this.authors = response.data;
-			}
+      this.authors = response.data;
+      this.sendMessage("Correct", "success", response.data.message);
 		})
 		.catch( error => {
-      alert( error.response.data.message );
+      this.sendMessage("Error", "danger", error.response.data.message);
 		});
   },
   methods:{
@@ -96,11 +95,11 @@ export default {
         "notificationId": this.notifications._id
       }
       ).then( response => {
-        alert( response.data );
+        this.sendMessage("Correct", "success", response.data.message);
         this.$router.go(0);
       })
       .catch( error => {
-        alert( error.response.data.message );
+        this.sendMessage("Error", "danger", error.response.data.message);
         this.$router.go(0);
       });
     },
@@ -108,14 +107,11 @@ export default {
       axios
       .get( this.$store.state.backURL + '/notification/get-notifications/' + idN + '/null'
       ).then( response => {
-        if( response.status !== 200 ){
-          alert( response.data);
-        }else{
-          this.notifications = response.data;
-        }
+        this.sendMessage("Correct", "success", response.data.message);
+        this.notifications = response.data;
       })
       .catch( error => {
-        alert( error.response.data.message );
+        this.sendMessage("Error", "danger", error.response.data.message);
       });
     },
     Subscribe(CatId){

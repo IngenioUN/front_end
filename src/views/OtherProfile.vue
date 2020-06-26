@@ -124,11 +124,11 @@ export default {
         }
         )
         .then( response => {
-          alert( response.data.message );
+          this.sendMessage("Correct", "success", response.data.message);
           this.$router.go(0);
         })
         .catch( error => {
-          alert( error.response.data.message );
+          this.sendMessage("Error", "danger", error.response.data.message);
         });
       }else if(Role == 1){
         axios
@@ -138,11 +138,11 @@ export default {
         }
         )
         .then( response => {
-          alert( response.data.message );
+          this.sendMessage("Correct", "success", response.data.message);
           this.$router.go(0);
         })
         .catch( error => {
-          alert( error.response.data.message );
+          this.sendMessage("Error", "danger", error.response.data.message);
           this.$router.go(0);
         });
       }else{
@@ -158,11 +158,11 @@ export default {
         }
         )
         .then( response => {
-          alert( response.data.message );
+          this.sendMessage("Correct", "success", response.data.message);
           this.$router.go(0);
         })
         .catch( error => {
-          alert( error.response.data.message );
+          this.sendMessage("Error", "danger", error.response.data.message);
           this.$router.go(0);
         });
       }else if(Role == 1){
@@ -173,18 +173,25 @@ export default {
         }
         )
         .then( response => {
-          alert( response.data.message );
+          this.sendMessage("Correct", "success", response.data.message);
           this.$router.go(0);
         })
         .catch( error => {
-          alert( error.response.data.message );
+          this.sendMessage("Error", "danger", error.response.data.message);
           this.$router.go(0);
         });
       }else{
         alert("Error! Ese rol no existe");
       }
     }
-	}
+  },
+  sendMessage(title, variant, message){
+      this.$bvToast.toast(message, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
+    }
 }
 </script>
 
