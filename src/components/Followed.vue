@@ -56,6 +56,7 @@ export default {
     )
 		.then( response => {
       this.sendMessage("Correct", "success", response.data.message);
+      this.$router.push('/profile');
       this.$router.go(0);
 		})
 		.catch( error => {

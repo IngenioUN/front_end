@@ -96,6 +96,7 @@ export default {
       }
       ).then( response => {
         this.sendMessage("Correct", "success", response.data.message);
+        this.$router.push('/');
         this.$router.go(0);
       })
       .catch( error => {

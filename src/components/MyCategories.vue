@@ -146,7 +146,8 @@ export default {
     })
 		.then( response => {
       this.sendMessage("Correct", "success", response.data.message);
-      this.$router.go(0);
+      this.$router.push('profile');
+        this.$router.go(0);
 		})
 		.catch( error => {
       this.sendMessage("Error", "danger", error.response.data.message);
