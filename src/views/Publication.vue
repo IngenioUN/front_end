@@ -8,7 +8,7 @@
               <img src="../assets/images/PerfilMujer.jpg" class="w-100 p-3 border" alt="Image not found">
               <br/>
               <br/>
-              <p class="lead text-center font-italic"><strong><p class="text-center">{{publication.authorId.firstName}} {{publication.authorId.lastName}}</p></strong></p>
+              <p class="lead text-center font-italic"><strong><p class="text-center">{{this.author.firstName}} {{this.author.lastName}}</p></strong></p>
               <div class="list-group">
                 <a class="list-group-item list-group-item-action" v-for="item in categories" :key="item.id">
                   {{item.name}}
@@ -68,13 +68,21 @@ export default {
       .then(response => {
         this.publication = response.data;
         this.categories = response.data.listCategories;
-        console.log(response.data);
+        this.author = this.publication.authorId;
       })
       .catch(error => {
-        alert("This publication doesn't exist");
+        this.sendMessage("Error", "danger", error.response.data.message);
       });
   },
-  methods:{},
+  methods:{
+    sendMessage(title, variant, message){
+      this.$bvToast.toast(message, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
+    }
+  },
   computed:{}
 }
 </script>
