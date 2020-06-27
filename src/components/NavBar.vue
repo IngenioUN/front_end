@@ -12,9 +12,6 @@
             <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 offset-5">
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Profile -->
-                <button type="button" class="btn btn-outline-light" @click="prueba()">
-                  Prueba
-                </button>
                 <router-link class="nav-link text-white" to="/profile" v-if="Role!=3">Profile</router-link>
                 <!-- SignUp -->
                 <a data-toggle="modal" data-target="#RegistrarseModal" v-if="Role==3">
@@ -106,24 +103,20 @@ export default {
     }
   },
   methods: {
-    prueba(){
-      this.$router.push('/');
-      this.$router.go(0);
-    },
     getSignOut( event ){
       axios
       .get( this.$store.state.backURL + "/session/signout" )
       .then( response => {
         this.sendMessage("Correct", "success", response.data.message);
         localStorage.setItem( 'Role', 3);
-        this.$router.push('principal');
+        this.$router.push('/');
         this.$router.go(0);
       })
       .catch( error => {
         if( error.response.status == 401 ) {
           this.sendMessage("Error", "danger", error.response.data.message);
           localStorage.setItem( 'Role', 3 );
-          this.$router.push('principal');
+          this.$router.push('/');
           this.$router.go(0);
         } else {
           this.sendMessage("Error", "danger", "Could not establish communication with the server");

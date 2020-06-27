@@ -109,7 +109,7 @@ export default {
         this.Role = localStorage.setItem('Role',3);
         alert("Database Problem.");
       }
-      this.$router.push('principal');
+      this.$router.push('/');
       this.$router.go(0);
     });
     this.Role = localStorage.getItem('Role');

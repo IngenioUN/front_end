@@ -102,7 +102,7 @@ export default {
       alert(error.response.data.message );
       if( error.response.status == 401 ) {
         this.sendMessage("Error", "danger", error.response.data.message);
-        this.$router.push('principal');
+        this.$router.push('/');
         this.$router.go(0);
       }
     })

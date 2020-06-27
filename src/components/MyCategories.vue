@@ -75,7 +75,7 @@ export default {
 		.get( this.$store.state.backURL + '/user/get-user-categories/' + this.id)
 		.then( response => {
 			if( response.status !== 200 ){
-        this.$router.push('principal');
+        this.$router.push('/');
         this.$router.go(0);
 			}else{
         this.categories = response.data;
@@ -85,7 +85,7 @@ export default {
 			}
 		})
 		.catch( error => {
-			this.$router.push('principal');
+			this.$router.push('/');
       this.$router.go(0);
 		});
   },

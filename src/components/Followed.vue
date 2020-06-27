@@ -42,7 +42,7 @@ export default {
 		})
 		.catch( error => {
       this.sendMessage("Error", "danger", error.response.data.message);
-      this.$router.push('principal');
+      this.$router.push('/');
       this.$router.go(0);
 		});
   },

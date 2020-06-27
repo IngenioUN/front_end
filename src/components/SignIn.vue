@@ -60,12 +60,12 @@ export default {
       ).then( response => {
         this.sendMessage("Correct", "success", response.data.message);
         localStorage.setItem( 'Role', parseInt(response.data.role));
-        this.$router.push('principal');
+        this.$router.push('/');
         this.$router.go(0);
       })
       .catch( error => {
         this.sendMessage("Error", "danger", error.response.data.message);
-        this.$router.push('principal');
+        this.$router.push('/');
         this.$router.go(0);
       });
     },

@@ -128,7 +128,7 @@ export default {
     })
     .catch( error => {
       this.Role = localStorage.setItem('Role',3);
-      this.$router.push('principal');
+      this.$router.push('/');
       this.$router.go(0);
     });
     this.Role = localStorage.getItem('Role');

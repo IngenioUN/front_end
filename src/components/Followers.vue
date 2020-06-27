@@ -45,7 +45,7 @@ export default {
 			}
 		})
 		.catch( error => {
-      this.$router.push('principal');
+      this.$router.push('/');
       this.$router.go(0);
 		});
   },

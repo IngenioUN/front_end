@@ -63,7 +63,7 @@ export default {
       ).then( response => {
         localStorage.setItem( 'Role', response.data.role );
         this.sendMessage("Correct", "success", response.data.message);
-        this.$router.push('principal');
+        this.$router.push('/');
         this.$router.go(0);
       })
       .catch( error => {
