@@ -66,10 +66,8 @@ import MyCategories from '../components/MyCategories.vue';
 import SavedPublications from '../components/SavedPublications.vue';
 import MyPublications from '../components/MyPublications.vue';
 
-const path = "/user";
-
 export default {
-  name: 'Ingenio',
+  name: 'OtherProfile',
   components:{
 		AllAuthorRequest,
 		Users,

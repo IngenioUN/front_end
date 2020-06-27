@@ -7,7 +7,7 @@
                 <div class="card">
                   <img src="../assets/images/paris.jpg" class="card-img-top" alt="Paris">
                   <div class="card-body">
-                    <router-link :to="{ name: 'publication', params: { id: item._id }}" target="_blank"><h5>{{item.title}}</h5></router-link>
+                    <router-link :to="{ name: 'publication', params: { id: item._id }}"><h5>{{item.title}}</h5></router-link>
                     <p class="card-text">
                     {{item.abstract}}
                     </p>
