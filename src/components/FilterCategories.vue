@@ -21,8 +21,8 @@
             </div>
           </div>
           <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 mt-5">
-            <b-button class="mt-2" block variant="outline-primary" @click="subscribeCategory(idCat)" v-if="isLoggedCat">Suscribe to {{nameCat}}</b-button>
-            <b-button class="mt-2" block variant="outline-primary" @click="unsubscribeCategory(idCat)" v-if="!isLoggedCat">Unsuscribe to {{nameCat}}</b-button>
+            <b-button class="mt-2" block variant="outline-primary" @click="subscribeCategory(idCat)" v-if="isLoggedCat || logged">Suscribe to {{nameCat}}</b-button>
+            <b-button class="mt-2" block variant="outline-primary" @click="unsubscribeCategory(idCat)" v-if="!isLoggedCat && logged">Unsuscribe to {{nameCat}}</b-button>
             <br/>
             <div class="border" style="height: 300px; max-width: 600px; overflow-y: scroll; overflow-x: hidden;">
               <p class="text-muted text-center">
