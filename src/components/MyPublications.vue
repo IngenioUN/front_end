@@ -27,7 +27,7 @@
               </a>
             </td>
             <td>
-              <router-link :to="{ name: 'publication', params: { id: item._id }}" target="_blank">
+              <router-link :to="{ name: 'publication', params: { id: item._id }}">
                 <button type="button" class="btn btn-primary" >Ir</button>
               </router-link>
             </td>

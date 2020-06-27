@@ -52,7 +52,6 @@ export default {
       )
       .then( response => {
         this.sendMessage("Correct", "success", response.data.message);
-        this.$router.go(0);
       })
       .catch( error => {
         this.sendMessage("Error", "danger", error.response.data.message);
@@ -67,11 +66,9 @@ export default {
       )
       .then( response => {
         this.sendMessage("Correct", "success", response.data.message);
-        this.$router.go(0);
       })
       .catch( error => {
         this.sendMessage("Error", "danger", error.response.data.message);
-        this.$router.go(0);
       });
     },
     sendMessage(title, variant, message){
