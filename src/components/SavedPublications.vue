@@ -44,17 +44,13 @@ export default {
 		.get( this.$store.state.backURL + '/category/get-all-categories',)
 		.then( response => {
 			if( response.status !== 201 ){
-				alert( "Error en la autenticación" );
+				this.sendMessage("Error", "danger", response.data.message);
 			}else{
         this.categories = response.data;
 			}
 		})
 		.catch( error => {
-			if( error.response.status === 400 ){
-				alert( "Credenciales incorrectas" );
-			}else{
-				alert( "¡Parece que hubo un error de comunicación con el servidor!" );
-			}
+      this.sendMessage("Error", "danger", error.response.data.message);
     });
   },
   mounted() {
@@ -91,6 +87,13 @@ export default {
           console.log( "¡Parece que hubo un error de comunicación con el servidor!" );
         }
       });
+    },
+    sendMessage(title, variant, message){
+      this.$bvToast.toast(message, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
     }
   },
   computed:{}

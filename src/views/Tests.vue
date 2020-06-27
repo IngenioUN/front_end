@@ -33,18 +33,13 @@ export default{
       .get( this.$store.state.backURL + "/user/get-personal-data", // URL
       ).then( response => {
         if( response.status !== 200 ){
-          alert( "Error en la autenticación" );
+          this.sendMessage("Error", "danger", response.data.message);
         }else{
-          console.log(response.data);
+          this.sendMessage("Correct", "success", response.data.message);
           this.roles = response.data;
         }
         }).catch( error => {
-        if( error.response.status === 400 ){
-          alert( "Credenciales incorrectas" );
-        }
-        else{
-          console.log(error.response.status);
-        }
+          this.sendMessage("Error", "danger", error.response.data.message);
       } );
     },
     postSignIn( event ){

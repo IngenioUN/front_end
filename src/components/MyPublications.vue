@@ -55,13 +55,13 @@ export default {
 		.get( this.$store.state.backURL + '/user/get-author-publications/' + this.id)
 		.then( response => {
 			if( response.status !== 200 ){
-        alert( response.data.message );
+        this.sendMessage("Error", "danger", response.data.message);
 			}else{
         this.MyPublications = response.data;
 			}
 		})
 		.catch( error => {
-      alert( error.response.data.message );
+      this.sendMessage("Error", "danger", error.response.data.message);
 		});
   },
   methods:{},

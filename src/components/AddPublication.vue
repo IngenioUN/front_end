@@ -99,12 +99,9 @@ export default {
       this.categories = response.data;
     })
     .catch( error => {
-      alert(error.response.data.message );
-      if( error.response.status == 401 ) {
-        this.sendMessage("Error", "danger", error.response.data.message);
-        this.$router.push('/');
-        this.$router.go(0);
-      }
+      this.sendMessage("Error", "danger", error.response.data.message);
+      this.$router.push('/');
+      this.$router.go(0);
     })
   },
   componenets:{},

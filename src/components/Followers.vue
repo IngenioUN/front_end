@@ -39,7 +39,7 @@ export default {
 		.get( this.$store.state.backURL + '/user/get-followers/' + this.id)
 		.then( response => {
 			if( response.status !== 200 ){
-        alert( response.data.message );
+        this.sendMessage("Correct", "success", response.data.message);
 			}else{
         this.items = response.data;
 			}
@@ -80,7 +80,7 @@ export default {
           this.sendMessage("Error", "danger", error.response.data.message);
         });
       }else{
-        alert("Error! Ese rol no existe");
+        this.sendMessage("Error", "danger", "Error! Ese rol no existe");
       }
     },
     Follow(idN, Role){
@@ -113,7 +113,7 @@ export default {
           this.sendMessage("Error", "danger", error.response.data.message);
         });
       }else{
-        alert("Error! Ese rol no existe");
+        this.sendMessage("Error", "danger", "Error! Ese rol no existe");
       }
     },
     sendMessage(title, variant, message){

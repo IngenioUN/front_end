@@ -103,11 +103,11 @@ export default {
         "notificationId": this.notifications._id
       }
       ).then( response => {
-        alert( response.data.message );
+        this.sendMessage("Correct", "success", response.data.message);
         this.$router.go(0);
       })
       .catch( error => {
-        alert( error.response.data.message );
+        this.sendMessage("Error", "danger", error.response.data.message);
         this.$router.go(0);
       });
     },
@@ -116,13 +116,13 @@ export default {
       .get( this.$store.state.backURL + '/notification/get-notifications/null/' + idN
       ).then( response => {
         if( response.status !== 200 ){
-          alert( response.data);
+          this.sendMessage("Error", "danger", response.data.message);
         }else{
           this.notifications = response.data;
         }
       })
       .catch( error => {
-        alert( error.response.data.message );
+        this.sendMessage("Error", "danger", error.response.data.message);
       });
     },
     subscribe(CatId){
@@ -146,8 +146,8 @@ export default {
     })
 		.then( response => {
       this.sendMessage("Correct", "success", response.data.message);
-      //this.$router.push('profile');
-        this.$router.go(0);
+      this.$router.push('/');
+      this.$router.go(0);
 		})
 		.catch( error => {
       this.sendMessage("Error", "danger", error.response.data.message);

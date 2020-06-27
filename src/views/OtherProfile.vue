@@ -100,13 +100,8 @@ export default {
 			}
     })
     .catch( error => {
-      if( error.response.status === 401){
-        alert(error.response.data.message);
-        this.Role = localStorage.setItem('Role',3);
-      }else{
-        this.Role = localStorage.setItem('Role',3);
-        alert("Database Problem.");
-      }
+      this.sendMessage("Error", "danger", error.response.data.message);
+      this.Role = localStorage.setItem('Role',3);
       this.$router.push('/');
       this.$router.go(0);
     });
@@ -144,7 +139,7 @@ export default {
           this.$router.go(0);
         });
       }else{
-        alert("Error! Ese rol no existe");
+        this.sendMessage("Error", "danger", "Error! Ese rol no existe");
       }
     },
     Follow( Role){
@@ -179,7 +174,7 @@ export default {
           this.$router.go(0);
         });
       }else{
-        alert("Error! Ese rol no existe");
+        this.sendMessage("Error", "danger", "Error! Ese rol no existe");
       }
     }
   },

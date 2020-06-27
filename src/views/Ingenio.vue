@@ -93,17 +93,13 @@ export default {
 		.get( this.$store.state.backURL + '/category/get-all-categories',)
 		.then( response => {
 			if( response.status !== 201 ){
-				alert( "Error en la autenticación" );
+				this.sendMessage("Error", "danger", response.data.message);
 			}else{
 				this.categories = response.data;
 			}
 		})
 		.catch( error => {
-			if( error.response.status === 400 ){
-				alert( "Credenciales incorrectas" );
-			}else{
-				alert( "¡Parece que hubo un error de comunicación con el servidor!" );
-			}
+			this.sendMessage("Error", "danger", error.response.data.message);
 		});
 		this.getAllPublications();
 		//Is Logged?
@@ -111,7 +107,7 @@ export default {
 		.get( this.$store.state.backURL + '/user/get-personal-data/null',)
 		.then( response => {
 			if( response.status !== 200 ){
-				alert( "Error en la autenticación" );
+				this.sendMessage("Error", "danger", response.data.message);
 			}else{
 				this.logged = true;
 			}
@@ -127,7 +123,7 @@ export default {
       .get( this.$store.state.backURL + '/publication/get-all-publications/' + categoryId)
       .then( response => {
         if( response.status !== 200 ){
-          alert( "Error en la autenticación" );
+          this.sendMessage("Error", "danger", response.data.message);
         }else{
 					this.publicaciones = response.data;
 					for (let item in this.publicaciones){
@@ -142,11 +138,7 @@ export default {
         }
       })
       .catch( error => {
-        if( error.response.status === 400 ){
-          alert( "Credenciales incorrectas" );
-        }else{
-          alert( "¡Parece que hubo un error de comunicación con el servidor!" );
-        }
+				this.sendMessage("Error", "danger", error.response.data.message);
 			});
 			this.users = {};
 			//Users
@@ -176,7 +168,7 @@ export default {
       .get( this.$store.state.backURL + '/publication/get-all-publications/' + value2 )
       .then( response => {
         if( response.status !== 200 ){
-          alert( "Error en la autenticación" );
+          this.sendMessage("Error", "danger", response.data.message);
         }else{
 					this.publicaciones = response.data;
 					this.numAll = this.publicaciones.length;
@@ -192,18 +184,21 @@ export default {
         }
       })
       .catch( error => {
-        if( error.response.status === 400 ){
-          alert( "Credenciales incorrectas" );
-        }else{
-          alert( "¡Parece que hubo un error de comunicación con el servidor!" );
-        }
+				this.sendMessage("Error", "danger", error.response.data.message);
       });
 		},
 		setIdName(idnuevo,namenuevo,islog){
 			this.id = idnuevo;
 			this.nameCat = namenuevo;
 			this.isLoggedCategory = islog;
-		}
+		},
+		sendMessage(title, variant, message){
+      this.$bvToast.toast(message, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
+    }
 	},
   computed:{}
 }
